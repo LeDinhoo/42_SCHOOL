@@ -6,13 +6,10 @@ NAME 			= libftprintf.a
 CFLAGS 			= -Wall -Wextra -Werror
 
 LIST_HEADERS 	= ft_printf.h
-SRCS =			ft_isalpha.c		\
-				ft_atoi.c			\
-				ft_strjoin.c		\
-				ft_putchar_fd.c		\
-				ft_putstr_fd.c		\
-				ft_putnbr_fd.c		\
-				ft_split.c			\
+
+SRCS 			=	ft_printf.c				\
+					ft_printf_utils.c		\
+					ft_printf_utils2.c		\
 
 SRCS_B =
 
