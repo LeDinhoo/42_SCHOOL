@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 14:58:42 by hdupuy            #+#    #+#             */
-/*   Updated: 2022/11/28 19:31:39 by hdupuy           ###   ########.fr       */
+/*   Updated: 2022/11/29 07:26:53 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_putstr(char *s)
 	return (idx);
 }
 
-void	ft_int_char(int nmb)
+int	ft_int_char(int nmb)
 {
 	char	to_char;
 
