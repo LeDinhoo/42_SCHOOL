@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 13:49:58 by hdupuy            #+#    #+#             */
-/*   Updated: 2022/11/29 09:28:05 by hdupuy           ###   ########.fr       */
+/*   Updated: 2022/11/29 13:40:58 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,55 +14,61 @@
 
 int	ft_wich_type(char type, va_list s_arg)
 {
-	ssize_t	count;
+	ssize_t	i;
+	char	*base;
+	char	*base2;
 
-	count = 0;
+	base = "0123456789abcdef";
+	base2 = "0123456789ABCDEF";
+	i = 0;
 	if (type == 'c')
-		count = ft_putchar(va_arg(s_arg, int));
+		i = ft_putchar(va_arg(s_arg, int));
 	else if (type == 's')
-		count = (ft_putstr(va_arg(s_arg, char *)));
+		i = (ft_putstr(va_arg(s_arg, char *)));
 	else if (type == 'i' || type == 'd')
-		count = ft_putnbr_printf(va_arg(s_arg, int));
+		i = ft_putnbr_printf(va_arg(s_arg, int));
 	else if (type == 'u')
-		ft_putnbr_u(va_arg(s_arg, unsigned int));
+		i = ft_putnbr_u(va_arg(s_arg, unsigned int));
 	else if (type == 'x')
-		count = print_hex(va_arg(s_arg, unsigned int), "0123456789abcdef");
+		i = print_hex(va_arg(s_arg, unsigned int), base);
 	else if (type == 'X')
-		count = print_hex(va_arg(s_arg, unsigned int), "0123456789ABCDEF");
+		i = print_hex(va_arg(s_arg, unsigned int), base2);
 	else if (type == 'p')
 	{
-		write (1, "0x", 2);
-		ft_address_hex(va_arg(s_arg, unsigned long long int), 'a');
+		i = write (1, "0x", 2);
+		i += print_hex(va_arg(s_arg, unsigned long long int), base);
 	}
-	return (count);
+	return (i);
 }
 
 int	ft_printf(const char *s, ...)
 {
 	va_list	s_arg;
 	size_t	idx;
-	size_t	count;
+	ssize_t	count;
 
 	idx = 0;
 	count = 0;
 	va_start(s_arg, s);
 	while (s[idx])
 	{
-		if (s[idx] == '%' && s[idx + 1])
+		if (s[idx] == '%' && (s[idx - 1] == '%'))
+			count += ft_putchar('%');
+		else if (s[idx] == '%' && s[idx + 1])
 			count += (ft_wich_type(s[idx + 1], s_arg));
-		else if (s[idx] && s[idx + 1])
-			count += (ft_putchar(s[idx + 1]));
+		else if (s[idx] != '%' && s[idx - 1] != '%')
+			count += ft_putchar(s[idx]);
 		idx++;
 	}
 	return (count);
 }
 
-int main(void)
+/*int main(void)
 {
-	char 	s1[] = "%i Ca marche ?";
-	int		s2 = 1548;
+	char 	s1[] = " %% ";
+	long long int	s2 = 9223372036854775807;
 
 	printf("\n%d\n", ft_printf(s1, s2));
 	printf("\n%d\n", printf(s1, s2));
 	return (0);
-}
+}*/

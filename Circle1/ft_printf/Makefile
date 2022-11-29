@@ -5,18 +5,18 @@
 NAME 			= libftprintf.a
 CFLAGS 			= -Wall -Wextra -Werror -g3
 
-LIST_HEADERS 	=	ft_printf.h	\
-					../libft/libft.h
+LIST_HEADERS 	=	ft_printf.h		\
 
 SRCS 			=	ft_printf.c				\
 					ft_printf_utils.c		\
 					ft_printf_utils2.c		\
+					ft_itoa.c				\
+					ft_strlen.c				\
 
 SRCS_B =
 
 
-DIR_HEADERS 	=	./	\
-					../libft\
+DIR_HEADERS 	=	./			\
 
 INCLUDES		=	${addprefix -I, ${DIR_HEADERS}}
 
