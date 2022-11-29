@@ -70,7 +70,7 @@ $(NAME):		$(DIR_OBJS) $(OBJS) $(LIST_HEADERS) Makefile
 $(DIR_OBJS):
 				mkdir -p $(DIR_OBJS)
 
-bonus: 			$(DIR_OBJS) $(OBJS_B) $(OBJS) $(LIST_HEADERS) Makefile
+bonus: 			$(DIR_OBJS) $(OBJS_B) $(OBJS) $(LIST_HEADERS)
 				$(AR) rcs $(NAME) $(OBJS_B) $(OBJS)
 
 $(DIR_OBJS)%.o: %.c $(LIST_HEADERS) Makefile

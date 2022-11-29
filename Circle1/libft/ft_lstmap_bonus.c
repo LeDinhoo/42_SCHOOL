@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:25:44 by hdupuy            #+#    #+#             */
-/*   Updated: 2022/11/15 17:38:03 by hdupuy           ###   ########.fr       */
+/*   Updated: 2022/11/29 09:58:43 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,19 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*ret;
 	t_list	*new;
+	void	*new_content;
 
 	if (!lst || !f || !del)
 		return (NULL);
 	ret = NULL;
 	while (lst)
 	{
-		new = ft_lstnew(f(lst->content));
+		new_content = f(lst->content);
+		if (!new_content)
+			return (ft_lstclear(&ret, del), NULL);
+		new = ft_lstnew(new_content);
 		if (!new)
-		{
-			ft_lstclear(&ret, del);
-			return (NULL);
-		}
+			return (ft_lstclear(&ret, del), del(new_content), NULL);
 		ft_lstadd_back(&ret, new);
 		lst = lst->next;
 	}

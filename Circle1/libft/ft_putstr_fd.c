@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 22:32:17 by hdupuy            #+#    #+#             */
-/*   Updated: 2022/11/28 14:50:01 by hdupuy           ###   ########.fr       */
+/*   Updated: 2022/11/29 09:42:01 by hdupuy           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_putstr_fd(char *s, int fd)
 		return ;
 	while (s[idx])
 	{
-		ft_putchar(s[idx], fd);
+		ft_putchar_fd(s[idx], fd);
 		idx++;
 	}
 }

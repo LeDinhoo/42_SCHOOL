@@ -6,13 +6,13 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:27:05 by hdupuy            #+#    #+#             */
-/*   Updated: 2022/11/17 15:21:10 by hdupuy           ###   ########.fr       */
+/*   Updated: 2022/11/29 09:39:57 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*int_char(int nmb, char *ret, size_t pos)
+static char	*ft_int_char(int nmb, char *ret, size_t pos)
 {
 	char	to_char;
 
@@ -39,12 +39,12 @@ static char	*ft_fill_malloc(int nb, char *ret, size_t pos)
 	{
 		ft_fill_malloc(nb / 10, ret, --pos);
 	}
-	return (int_char(nb % 10, ret, pos));
+	return (ft_int_char(nb % 10, ret, pos));
 }
 
 static char	*ft_zero(char *ret, int nb)
 {
-	ret = int_char(nb, ret, 0);
+	ret = ft_int_char(nb, ret, 0);
 	ret[1] = '\0';
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 13:49:58 by hdupuy            #+#    #+#             */
-/*   Updated: 2022/11/29 07:27:00 by hdupuy           ###   ########.fr       */
+/*   Updated: 2022/11/29 09:28:05 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 int	ft_wich_type(char type, va_list s_arg)
 {
-	size_t	count;
+	ssize_t	count;
 
 	count = 0;
 	if (type == 'c')
-		ft_putchar(va_arg(s_arg, int));
+		count = ft_putchar(va_arg(s_arg, int));
 	else if (type == 's')
 		count = (ft_putstr(va_arg(s_arg, char *)));
 	else if (type == 'i' || type == 'd')
-		ft_putnbr(va_arg(s_arg, int));
+		count = ft_putnbr_printf(va_arg(s_arg, int));
 	else if (type == 'u')
 		ft_putnbr_u(va_arg(s_arg, unsigned int));
 	else if (type == 'x')
-		ft_putnbr_hex(va_arg(s_arg, int), 'a');
+		count = print_hex(va_arg(s_arg, unsigned int), "0123456789abcdef");
 	else if (type == 'X')
-		ft_putnbr_hex(va_arg(s_arg, int), 'A');
+		count = print_hex(va_arg(s_arg, unsigned int), "0123456789ABCDEF");
 	else if (type == 'p')
 	{
 		write (1, "0x", 2);
@@ -60,7 +60,7 @@ int	ft_printf(const char *s, ...)
 int main(void)
 {
 	char 	s1[] = "%i Ca marche ?";
-	int	s2 = 1548;
+	int		s2 = 1548;
 
 	printf("\n%d\n", ft_printf(s1, s2));
 	printf("\n%d\n", printf(s1, s2));

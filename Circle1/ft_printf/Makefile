@@ -3,9 +3,10 @@
 .PHONY: 		clean fclean re bonus
 
 NAME 			= libftprintf.a
-CFLAGS 			= -Wall -Wextra -Werror
+CFLAGS 			= -Wall -Wextra -Werror -g3
 
-LIST_HEADERS 	= ft_printf.h
+LIST_HEADERS 	=	ft_printf.h	\
+					../libft/libft.h
 
 SRCS 			=	ft_printf.c				\
 					ft_printf_utils.c		\
@@ -14,7 +15,11 @@ SRCS 			=	ft_printf.c				\
 SRCS_B =
 
 
-DIR_HEADERS 	= ./
+DIR_HEADERS 	=	./	\
+					../libft\
+
+INCLUDES		=	${addprefix -I, ${DIR_HEADERS}}
+
 DIR_OBJS 		= .objs/
 RM				= rm -rf
 
@@ -23,7 +28,9 @@ RM				= rm -rf
 OBJS 			= $(addprefix $(DIR_OBJS), $(SRCS:.c=.o))
 OBJS_B 			= $(addprefix $(DIR_OBJS), $(SRCS_B:.c=.o))
 
-all : 			$(NAME) $(BONUS)
+all :
+				${MAKE} -C ../libft
+				${MAKE} $(NAME)
 
 $(NAME):		$(DIR_OBJS) $(OBJS) $(LIST_HEADERS) Makefile
 				$(AR) rcs $(NAME) $(OBJS)
@@ -31,18 +38,17 @@ $(NAME):		$(DIR_OBJS) $(OBJS) $(LIST_HEADERS) Makefile
 $(DIR_OBJS):
 				mkdir -p $(DIR_OBJS)
 
-bonus: 			$(DIR_OBJS) $(OBJS_B) $(OBJS) $(LIST_HEADERS) Makefile
-				$(AR) rcs $(NAME) $(OBJS_B) $(OBJS)
-
 $(DIR_OBJS)%.o: %.c $(LIST_HEADERS) Makefile
-				$(CC) $(CFLAGS) -c $< -o $@ -I $(DIR_HEADERS)
+				$(CC) $(CFLAGS) -c $< -o $@ ${INCLUDES}
 
 # ----------------------------------------------------- #
 
 clean:
+				${MAKE} -C ../libft clean
 				$(RM) $(OBJS) $(OBJS_B)
 
 fclean: clean
+				${MAKE} -C ../libft fclean
 				$(RM) $(NAME)
 
 re: fclean

@@ -6,11 +6,12 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 14:58:42 by hdupuy            #+#    #+#             */
-/*   Updated: 2022/11/29 07:26:53 by hdupuy           ###   ########.fr       */
+/*   Updated: 2022/11/29 09:39:47 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 
 int	ft_isalpha(int c)
 {
@@ -19,11 +20,9 @@ int	ft_isalpha(int c)
 	return (0);
 }
 
-int	ft_putchar(char c)
+ssize_t	ft_putchar(char c)
 {
-	if (write (1, &c, 1))
-		return (1);
-	return (0);
+	return (write (1, &c, 1));
 }
 
 int	ft_putstr(char *s)
@@ -41,36 +40,15 @@ int	ft_putstr(char *s)
 	return (idx);
 }
 
-int	ft_int_char(int nmb)
+ssize_t	ft_putnbr_printf(int n)
 {
-	char	to_char;
+	char	*str;
+	ssize_t	char_written;
 
-	nmb += 48;
-	to_char = (char)nmb;
-	write (1, &to_char, 1);
-}
-
-int	ft_putnbr(int n)
-{
-	if (n == -2147483648)
-	{
-		write (1, "-", 1);
-		write (1, "2", 1);
-		ft_putnbr(147483648);
-	}
-	else if (n < 0)
-	{
-		write (1, "-", 1);
-		ft_putnbr(n * -1);
-	}
-	else if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
-	}
-	else
-	{
-		ft_int_char(n);
-	}
-	return (0);
+	printf("YO");
+	str = ft_itoa(n);
+	char_written = write(1, str, ft_strlen(str));
+	printf("%s\n%zu\n\n\n\n\n", str, char_written);
+	free(str);
+	return (char_written);
 }
