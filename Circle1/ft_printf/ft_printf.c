@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 13:49:58 by hdupuy            #+#    #+#             */
-/*   Updated: 2022/11/28 19:23:06 by hdupuy           ###   ########.fr       */
+/*   Updated: 2022/11/28 19:30:09 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_wich_type(char type, va_list s_arg)
 		write (1, "0x", 2);
 		ft_address_hex(va_arg(s_arg, unsigned long long int), 'a');
 	}
-	//else
+	//else	printf("\n%d\n", printf("%llu", s2));
 	return (0);
 }
 
