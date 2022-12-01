@@ -6,12 +6,11 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 13:49:58 by hdupuy            #+#    #+#             */
-/*   Updated: 2022/12/01 12:39:05 by hdupuy           ###   ########.fr       */
+/*   Updated: 2022/12/01 14:21:14 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <limits.h>
 
 int	ft_wich_type(char type, va_list s_arg)
 {

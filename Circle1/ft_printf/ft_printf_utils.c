@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 14:58:42 by hdupuy            #+#    #+#             */
-/*   Updated: 2022/12/01 12:43:52 by hdupuy           ###   ########.fr       */
+/*   Updated: 2022/12/01 14:18:45 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	ft_putunbr(unsigned int nb)
 		return (ft_putchar(nb % 10 + 48));
 	return (ft_putnbr(nb / 10) + ft_putchar(nb % 10 + 48));
 }
-
 
 int	ft_hex(unsigned long long nb, char *base)
 {

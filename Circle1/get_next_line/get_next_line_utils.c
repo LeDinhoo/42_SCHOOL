@@ -6,19 +6,19 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:08:37 by hdupuy            #+#    #+#             */
-/*   Updated: 2022/11/25 11:16:43 by hdupuy           ###   ########.fr       */
+/*   Updated: 2022/12/01 13:42:52 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen(char *s)
 {
 	size_t	i;
 
 	i = 0;
 	if (!s)
-		return (i);
+		return (0);
 	while (s[i])
 		i++;
 	return (i);
@@ -57,8 +57,8 @@ char	*ft_strjoin(char *s1, char *s2)
 		result[index + len] = s2[len];
 		len++;
 	}
+	result[index + len] = '\0';
 	if (s1)
 		free(s1);
-	result[index + len] = '\0';
 	return (result);
 }
