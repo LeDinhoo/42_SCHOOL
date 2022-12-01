@@ -8,10 +8,7 @@ CFLAGS 			= -Wall -Wextra -Werror -g3
 LIST_HEADERS 	=	ft_printf.h		\
 
 SRCS 			=	ft_printf.c				\
-					ft_printf_utils.c		\
-					ft_printf_utils2.c		\
-					ft_itoa.c				\
-					ft_strlen.c				\
+					ft_printf_utils.c
 
 SRCS_B =
 
@@ -29,7 +26,6 @@ OBJS 			= $(addprefix $(DIR_OBJS), $(SRCS:.c=.o))
 OBJS_B 			= $(addprefix $(DIR_OBJS), $(SRCS_B:.c=.o))
 
 all :
-				${MAKE} -C ../libft
 				${MAKE} $(NAME)
 
 $(NAME):		$(DIR_OBJS) $(OBJS) $(LIST_HEADERS) Makefile
@@ -44,11 +40,11 @@ $(DIR_OBJS)%.o: %.c $(LIST_HEADERS) Makefile
 # ----------------------------------------------------- #
 
 clean:
-				${MAKE} -C ../libft clean
+				${MAKE}
 				$(RM) $(OBJS) $(OBJS_B)
 
 fclean: clean
-				${MAKE} -C ../libft fclean
+				${MAKE}
 				$(RM) $(NAME)
 
 re: fclean

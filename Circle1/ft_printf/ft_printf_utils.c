@@ -6,20 +6,13 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 14:58:42 by hdupuy            #+#    #+#             */
-/*   Updated: 2022/11/29 12:45:34 by hdupuy           ###   ########.fr       */
+/*   Updated: 2022/12/01 12:43:52 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_isalpha(int c)
-{
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
-		return (1);
-	return (0);
-}
-
-ssize_t	ft_putchar(char c)
+int	ft_putchar(char c)
 {
 	return (write (1, &c, 1));
 }
@@ -39,24 +32,28 @@ int	ft_putstr(char *s)
 	return (idx);
 }
 
-ssize_t	ft_putnbr_printf(int n)
+int	ft_putnbr(int nb)
 {
-	char	*str;
-	ssize_t	char_written;
-
-	str = ft_itoa(n);
-	char_written = write(1, str, ft_strlen(str));
-	free(str);
-	return (char_written);
+	if (nb == -2147483648)
+		return (ft_putstr("-2147483648"));
+	if (nb < 0)
+		return (write(1, "-", 1) + ft_putnbr(nb *= -1));
+	if (nb < 10)
+		return (ft_putchar(nb % 10 + 48));
+	return (ft_putnbr(nb / 10) + ft_putchar(nb % 10 + 48));
 }
 
-ssize_t	ft_putnbr_u(unsigned long long int n)
+int	ft_putunbr(unsigned int nb)
 {
-	char	*str;
-	ssize_t	char_written;
+	if (nb < 10)
+		return (ft_putchar(nb % 10 + 48));
+	return (ft_putnbr(nb / 10) + ft_putchar(nb % 10 + 48));
+}
 
-	str = ft_itoa(n);
-	char_written = write(1, str, ft_strlen(str));
-	free(str);
-	return (char_written);
+
+int	ft_hex(unsigned long long nb, char *base)
+{
+	if (nb < 16)
+		return (ft_putchar(base[nb % 16]));
+	return (ft_hex(nb / 16, base) + ft_putchar(base[nb % 16]));
 }
