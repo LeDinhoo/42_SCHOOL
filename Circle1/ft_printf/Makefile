@@ -45,7 +45,7 @@ clean:
 
 fclean: clean
 				${MAKE}
-				$(RM) $(NAME)
+				$(RM) $(NAME) $(DIR_OBJS)
 
 re: fclean
 				$(MAKE) all

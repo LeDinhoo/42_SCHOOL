@@ -6,14 +6,13 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 10:00:11 by hdupuy            #+#    #+#             */
-/*   Updated: 2022/11/15 17:00:39 by hdupuy           ###   ########.fr       */
+/*   Updated: 2022/12/06 12:07:47 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <stdint.h>
 # include <unistd.h>
