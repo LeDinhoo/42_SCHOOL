@@ -6,34 +6,38 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:06:41 by hdupuy            #+#    #+#             */
-/*   Updated: 2022/11/09 14:42:35 by hdupuy           ###   ########.fr       */
+/*   Updated: 2022/12/06 12:03:22 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static int	ft_overflow(int sign)
+{
+	if (sign < 0)
+		return (0);
+	return (-1);
+}
+
 int	ft_atoi(const char *str)
 {
 	long int	result;
 	int			countsign;
-	int			plusorminus;
 
 	result = 0;
 	countsign = 1;
-	plusorminus = 0;
 	while ((*str >= 9 && *str <= 13) || *str == ' ')
 		str++;
-	while (*str == '-' || *str == '+')
+	if (*str == '-' || *str == '+')
 	{
-		plusorminus++;
-		if (plusorminus > 1)
-			return (0);
 		if (*str == '-')
-			countsign *= -1;
+			countsign = countsign * -1;
 		str++;
 	}
 	while (*str >= '0' && *str <= '9')
 	{
+		if (result != ((result * 10 + (*str - '0')) / 10))
+			return ((int)ft_overflow(countsign));
 		result = result * 10 + *str - '0';
 		str++;
 	}
