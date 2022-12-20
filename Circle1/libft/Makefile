@@ -64,14 +64,14 @@ OBJS_B 			= $(addprefix $(DIR_OBJS), $(SRCS_B:.c=.o))
 
 all : 			$(NAME) $(BONUS)
 
-$(NAME):		$(DIR_OBJS) $(OBJS) $(LIST_HEADERS) Makefile
+$(NAME):		$(DIR_OBJS) $(OBJS) $(LIST_HEADERS)
 				$(AR) rcs $(NAME) $(OBJS)
 
 $(DIR_OBJS):
 				mkdir -p $(DIR_OBJS)
 
-bonus: 			$(DIR_OBJS) $(OBJS_B) $(OBJS) $(LIST_HEADERS)
-				$(AR) rcs $(NAME) $(OBJS_B) $(OBJS)
+bonus: 			$(DIR_OBJS) $(OBJS_B) $(LIST_HEADERS)
+				$(AR) rcs $(NAME) $(OBJS_B)
 
 $(DIR_OBJS)%.o: %.c $(LIST_HEADERS) Makefile
 				$(CC) $(CFLAGS) -c $< -o $@ -I $(DIR_HEADERS)

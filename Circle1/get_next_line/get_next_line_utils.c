@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:08:37 by hdupuy            #+#    #+#             */
-/*   Updated: 2022/12/01 13:42:52 by hdupuy           ###   ########.fr       */
+/*   Updated: 2022/12/20 11:31:38 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	len = ft_strlen(s1) + ft_strlen(s2);
 	result = malloc(sizeof(char) * (len + 1));
 	if (!result)
-		return (NULL);
+		return (free(result), free(s1), NULL);
 	index = 0;
 	while (s1 && s1[index])
 	{
@@ -58,7 +58,5 @@ char	*ft_strjoin(char *s1, char *s2)
 		len++;
 	}
 	result[index + len] = '\0';
-	if (s1)
-		free(s1);
-	return (result);
+	return (free(s1), result);
 }
