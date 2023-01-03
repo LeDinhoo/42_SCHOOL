@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 14:57:16 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/03 15:39:27 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/03 17:55:56 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "so_long.h"
 
 void	ft_new_save(char *buff, char *tmp, size_t start)
 {
@@ -97,18 +97,56 @@ char	*ft_cpy_save(char *buff, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char	buff[OPEN_MAX][BUFFER_SIZE + 1];
+	static char	buff[BUFFER_SIZE + 1];
 
-	if (fd < 0 || fd > OPEN_MAX || buff[fd] < 0)
-		return (NULL);
-	if (read(fd, buff, 0) < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || read(fd, buff, 0) < 0 || BUFFER_SIZE <= 0)
 	{
-		buff[fd][0] = '\0';
+		buff[0] = '\0';
 		return (NULL);
 	}
 	if (read(fd, NULL, 0) == -1)
-	{
 		return (NULL);
+	return (ft_cpy_save(buff, fd));
+}
+
+char	**ft_fill_map(int fd, char **map, int count)
+{
+	int		x;
+	char	*line;
+
+	x = 0;
+	while (x < count)
+	{
+		line = get_next_line(fd);
+		map[x] = line;
+		free(line);
+		printf("%s", map[x]);
+		x++;
 	}
-	return (ft_cpy_save(buff[fd], fd));
+	return (map);
+}
+
+#include <string.h>
+
+int	main()
+{
+	int		fd;
+	int		count;
+	char	**map;
+	char	*tmp;
+
+	fd = open("maps/test.ber", O_RDONLY);
+	count = 0;
+	while (read(fd, NULL, BUFFER_SIZE) != 0)
+	{
+		tmp = get_next_line(fd);
+		free(tmp);
+		count++;
+	}
+	close(fd);
+	map = malloc(sizeof(char *) * (count + 1));
+	map[count + 1] = NULL;
+	fd = open("maps/test.ber", O_RDONLY);
+	map = ft_fill_map(fd, map, count);
+	free(map);
 }
