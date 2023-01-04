@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 14:57:16 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/03 17:55:56 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/04 10:34:22 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,46 +107,4 @@ char	*get_next_line(int fd)
 	if (read(fd, NULL, 0) == -1)
 		return (NULL);
 	return (ft_cpy_save(buff, fd));
-}
-
-char	**ft_fill_map(int fd, char **map, int count)
-{
-	int		x;
-	char	*line;
-
-	x = 0;
-	while (x < count)
-	{
-		line = get_next_line(fd);
-		map[x] = line;
-		free(line);
-		printf("%s", map[x]);
-		x++;
-	}
-	return (map);
-}
-
-#include <string.h>
-
-int	main()
-{
-	int		fd;
-	int		count;
-	char	**map;
-	char	*tmp;
-
-	fd = open("maps/test.ber", O_RDONLY);
-	count = 0;
-	while (read(fd, NULL, BUFFER_SIZE) != 0)
-	{
-		tmp = get_next_line(fd);
-		free(tmp);
-		count++;
-	}
-	close(fd);
-	map = malloc(sizeof(char *) * (count + 1));
-	map[count + 1] = NULL;
-	fd = open("maps/test.ber", O_RDONLY);
-	map = ft_fill_map(fd, map, count);
-	free(map);
 }
