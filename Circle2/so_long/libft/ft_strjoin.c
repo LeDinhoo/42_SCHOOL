@@ -1,39 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/18 15:08:37 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/05 08:44:32 by hdupuy           ###   ########.fr       */
+/*   Created: 2023/01/05 10:29:00 by hdupuy            #+#    #+#             */
+/*   Updated: 2023/01/05 10:42:38 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/so_long.h"
-
-size_t	ft_strlen(char *s)
-{
-	size_t	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
-}
-
-ssize_t	ft_strichr(char *s, int c)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		if (s[i++] == (char)c)
-			return (i - 1);
-	return (-1);
-}
+#include "libft.h"
 
 char	*ft_strjoin(char *s1, char *s2)
 {

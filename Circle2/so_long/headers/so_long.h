@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/05 08:15:05 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/05 10:39:19 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,11 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include "../libft/libft.h"
 
 char		*get_next_line(int fd);
-size_t		ft_strlen(char *s);
-ssize_t		ft_strichr(char *s, int c);
-char		*ft_strjoin(char *s1, char *s2);
 int			ft_is_valid(char **map, int x, int y);
 char		**ft_fill_map(int fd, char **map);
-int			ft_create_map(void);
+char		**ft_create_map(void);
 
 #endif

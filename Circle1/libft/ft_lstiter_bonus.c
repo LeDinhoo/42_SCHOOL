@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:42:54 by hdupuy            #+#    #+#             */
-/*   Updated: 2022/11/15 14:24:30 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/05 09:33:46 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 	while (lst != NULL)
 	{
 		if (lst->content != NULL)
-			f(lst->content)
+			f(lst->content);
 		lst = lst->next;
 	}
 }
