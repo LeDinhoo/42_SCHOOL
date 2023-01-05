@@ -16,6 +16,8 @@ LIBFT		= $(addprefix $(LIBF_DIR), $(LIBFT_A))
 SRC = $(SRC_DIR)/main.c \
       $(SRC_DIR)/create_map/ft_fill_map.c \
       $(SRC_DIR)/create_map/ft_is_valid.c \
+	  $(SRC_DIR)/create_map/ft_wall_valid.c \
+	  $(SRC_DIR)/create_map/ft_objects_valid.c \
       $(SRC_DIR)/gnl/get_next_line.c \
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
