@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/04 20:22:42 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/05 08:15:05 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ ssize_t		ft_strichr(char *s, int c);
 char		*ft_strjoin(char *s1, char *s2);
 int			ft_is_valid(char **map, int x, int y);
 char		**ft_fill_map(int fd, char **map);
-int			main(void);
+int			ft_create_map(void);
 
 #endif

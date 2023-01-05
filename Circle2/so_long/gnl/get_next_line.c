@@ -6,11 +6,11 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 14:57:16 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/04 20:22:20 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/05 08:44:35 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./headers/so_long.h"
+#include "../headers/so_long.h"
 
 void	ft_new_save(char *buff, char *tmp, size_t start)
 {
