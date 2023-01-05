@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 13:15:35 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/05 10:34:13 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/05 14:48:33 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	else
 		dest = malloc(sizeof(char) * (len + 1));
 	if (!dest)
-		return (NULL);
+		return (free(dest), NULL);
 	while (s[i] && j < len)
 	{
 		dest[j] = s[i];
@@ -35,5 +35,5 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 		j++;
 	}
 	dest[j] = 0;
-	return (dest);
+	return (free(s), dest);
 }

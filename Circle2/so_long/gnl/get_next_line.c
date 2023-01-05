@@ -6,103 +6,45 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 14:57:16 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/05 08:44:35 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/05 18:19:57 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-void	ft_new_save(char *buff, char *tmp, size_t start)
+char	*get_line(int fd, char *line, char *buffer, int i)
 {
-	size_t	index;
+	int	j;
 
-	index = 0;
-	if (!tmp)
-		return (free(tmp));
-	while (tmp[start + index] != '\0')
+	if (line != NULL)
 	{
-		buff[index] = tmp[start + index];
-		index++;
+		free(line);
+		line = NULL;
 	}
-	buff[index] = '\0';
-}
-
-int	ft_malloc_size(char *tmp)
-{
-	size_t	len;
-
-	len = 0;
-	while (tmp[len] && tmp[len] != '\n')
-		len++;
-	if (tmp[len] == '\n')
-		return (len + 2);
-	else
-		return (len + 1);
-}
-
-char	*ft_return_line(char *tmp, char *buff)
-{
-	ssize_t	idx;
-	char	*r_line;
-
-	if (tmp[0] == '\0')
-		return (free(tmp), NULL);
-	r_line = malloc(sizeof(char) * ft_malloc_size(tmp));
-	if (!r_line)
-		return (free(r_line), free(tmp), NULL);
-	idx = -1;
-	while (tmp[++idx] && tmp[idx] != '\n')
-		r_line[idx] = tmp[idx];
-	r_line[idx] = tmp[idx];
-	if (tmp[idx++] != '\0')
-		ft_new_save(buff, tmp, idx);
-	idx--;
-	if (tmp[idx] == '\n')
+	while (read(fd, buffer + i, 1) > 0 && buffer[i] != '\n')
+		i++;
+	line = malloc(sizeof(char) * i + 1);
+	if (!line)
+		return (NULL);
+	if (line != NULL)
 	{
-		r_line[idx] = tmp[idx];
-		idx++;
+		j = 0;
+		while (j < i)
+		{
+			line[j] = buffer[j];
+			j++;
+		}
 	}
-	r_line[idx] = '\0';
-	free(tmp);
-	return (r_line);
-}
-
-char	*ft_cpy_save(char *buff, int fd)
-{
-	int		nb_char;
-	char	*tmp;
-
-	nb_char = read(fd, 0, 0);
-	if (buff)
-	{
-		tmp = ft_strjoin(NULL, buff);
-		if (!tmp)
-			return (free(tmp), NULL);
-	}
-	nb_char = 1;
-	while (nb_char > 0 && ft_strichr(buff, '\n') == -1)
-	{
-		nb_char = read(fd, buff, BUFFER_SIZE);
-		if (nb_char == -1)
-			return (free(tmp), free(buff), NULL);
-		buff[nb_char] = '\0';
-		tmp = ft_strjoin(tmp, buff);
-		if (tmp == NULL)
-			return (free(tmp), NULL);
-	}
-	return (ft_return_line(tmp, buff));
+	line[i] = '\0';
+	return (line);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	buff[BUFFER_SIZE + 1];
+	static char	buffer[BUFFER_SIZE];
+	char		*line;
 
-	if (fd < 0 || read(fd, buff, 0) < 0 || BUFFER_SIZE <= 0)
-	{
-		buff[0] = '\0';
-		return (NULL);
-	}
-	if (read(fd, NULL, 0) == -1)
-		return (NULL);
-	return (ft_cpy_save(buff, fd));
+	line = NULL;
+	line = get_line(fd, line, buffer, 0);
+	return (line);
 }

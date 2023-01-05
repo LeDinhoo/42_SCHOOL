@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 10:29:00 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/05 10:42:38 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/05 15:22:15 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ char	*ft_strjoin(char *s1, char *s2)
 		len++;
 	}
 	result[index + len] = '\0';
+	free(s2);
 	return (free(s1), result);
 }

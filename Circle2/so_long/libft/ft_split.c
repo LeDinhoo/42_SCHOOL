@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 17:35:07 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/05 10:35:37 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/05 14:39:01 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static char	**ft_fill_malloc(char *s, char c, char **tab, size_t count)
 		j++;
 	}
 	tab[j] = NULL;
-	return (tab);
+	return (free(s), tab);
 }
 
 char	**ft_split(char *s, char c)

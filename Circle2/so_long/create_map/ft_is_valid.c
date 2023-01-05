@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:21:56 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/05 12:38:26 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/05 13:23:55 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_is_square(char **map)
 	return (1);
 }
 
-int	ft_map_len(char **map)
+int	ft_map_height(char **map)
 {
 	int	len;
 
@@ -52,17 +52,14 @@ int	ft_wall_valid(char **map, int size)
 
 int	ft_is_valid(char **map)
 {
-	// if (map[x][y] == '1')
-	// 	ft_is_valid(map, x, (y + 1));
-	// if (map[x][y] == '\n')
-	// 	printf("Line is valid\n");
-	// if (map[x][y] != '1')
-	// 	return (0);
-	int	map_size;
+	int	map_height;
+	int	map_width;
 
-	map_size = ft_map_len(map);
-	printf("Taille de la map: %d\n", map_size);
+	map_height = ft_map_height(map);
+	map_width = ft_strlen(map[0]);
+	printf("Hauteur : %d Largeur: %d\n", map_height, map_width);
 	printf("C'est un rectangle ? %d\n", ft_is_square(map));
-	printf("Les murs sont valides ? %d\n", ft_wall_valid(map, map_size));
+	printf("Les murs sont valides ? %d\n", ft_wall_valid(map, map_height));
+	ft_path_valid(map);
 	return (1);
 }

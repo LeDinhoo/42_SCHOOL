@@ -18,6 +18,7 @@ SRC = $(SRC_DIR)/main.c \
       $(SRC_DIR)/create_map/ft_is_valid.c \
 	  $(SRC_DIR)/create_map/ft_wall_valid.c \
 	  $(SRC_DIR)/create_map/ft_objects_valid.c \
+	  $(SRC_DIR)/create_map/ft_path_valid.c \
       $(SRC_DIR)/gnl/get_next_line.c \
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
@@ -26,7 +27,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
-	@echo "\033[1;34mCompilation terminée avec succès ! 💕\033[0m"
+	@echo "\033[1;34mCompilation terminée avec succès ! ✔️\033[0m"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)/create_map $(OBJ_DIR)/gnl

@@ -6,33 +6,60 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:30:06 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/05 12:34:23 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/05 18:52:27 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-int	ft_char_valid(char *map)
+int	ft_unique_object(char **map)
 {
-	int	i;
-	int	p;
+	int	y;
+	int	x;
 	int	e;
+	int	p;
 
-	i = 0;
-	p = 0;
+	y = 0;
+	x = 0;
 	e = 0;
-	while (map[i])
+	p = 0;
+	while (map[y])
 	{
-		if (map[i] != '1' && map[i] != '0' && map[i] != 'P' && map[i] != 'C'
-			&& map[i] != 'E' && map[i] != '\0' && map[i] != '\n')
-			return (0);
-		if (map[i] == 'P')
-			p++;
-		if (map[i] == 'E')
-			e++;
-		if (p > 1 || e > 1)
-			return (0);
-		i++;
+		while (map[y][x])
+		{
+			if (map[y][x] == 'P')
+				p++;
+			if (map[y][x] == 'E')
+				e++;
+			if (e > 1 || p > 1)
+				return (0);
+			x++;
+		}
+		x = 0;
+		y++;
 	}
 	return (1);
+}
+
+int	ft_char_valid(char **map)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	x = 0;
+	while (map[y])
+	{
+		while (map[y][x])
+		{
+			if (ft_strichr("01PCE\0\n", map[y][x]) == -1)
+				return (0);
+			x++;
+		}
+		x = 0;
+		y++;
+	}
+	if (ft_unique_object(map))
+		return (1);
+	return (0);
 }

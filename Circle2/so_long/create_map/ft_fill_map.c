@@ -6,44 +6,56 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:31:29 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/05 12:43:34 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/05 18:32:17 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-char	**ft_fill_map(int fd, char **map)
+char	**ft_fill_map(int fd, ssize_t nb_line, char **map)
 {
-	int		x;
-	char	*line;
+	int		y;
 
-	x = 0;
-	while (x < 10)
+	y = 0;
+	map = malloc(sizeof(char *) * nb_line + 1);
+	if (!map)
+		return (free(map), NULL);
+	while (nb_line > 0)
 	{
-		line = get_next_line(fd);
-		map[x] = line;
-		x++;
+		map[y] = get_next_line(fd);
+		nb_line--;
+		y++;
 	}
 	return (map);
 }
 
-char	*ft_create_bigline(int fd)
+int	ft_number_lines(int fd)
 {
-	char	*line;
+	int		count;
+	char	c;
 
-	line = NULL;
-	while (read(fd, NULL, BUFFER_SIZE) != 0)
-		line = ft_strjoin(line, (get_next_line(fd)));
-	return (line);
+	while (read(fd, &c, 1) > 0)
+	{
+		if (c == '\n')
+			count++;
+	}
+	close(fd);
+	return (count);
 }
 
-char	**ft_create_map(int fd)
+char	**ft_create_map(void)
 {
-	char	*map_line;
-	char	**map;
+	int			fd;
+	ssize_t		nb_lines;
+	char		**map;
 
-	map_line = ft_create_bigline(fd);
-	printf("Les objets sont valides ? %d\n", ft_char_valid(map_line));
-	map = ft_split(map_line, '\n');
+	map = NULL;
+	fd = open("maps/test.ber", O_RDONLY);
+	nb_lines = ft_number_lines(fd);
+	close(fd);
+	fd = open("maps/test.ber", O_RDONLY);
+	map = ft_fill_map(fd, nb_lines, map);
+	close(fd);
+	printf("Les objets sont valides ? %d\n", ft_char_valid(map));
 	return (map);
 }
