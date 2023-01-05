@@ -6,11 +6,11 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 14:57:16 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/04 10:34:22 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/04 20:22:20 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "./headers/so_long.h"
 
 void	ft_new_save(char *buff, char *tmp, size_t start)
 {
@@ -43,10 +43,8 @@ int	ft_malloc_size(char *tmp)
 char	*ft_return_line(char *tmp, char *buff)
 {
 	ssize_t	idx;
-	size_t	len;
 	char	*r_line;
 
-	len = 0;
 	if (tmp[0] == '\0')
 		return (free(tmp), NULL);
 	r_line = malloc(sizeof(char) * ft_malloc_size(tmp));

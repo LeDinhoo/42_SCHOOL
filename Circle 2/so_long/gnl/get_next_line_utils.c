@@ -6,11 +6,11 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:08:37 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/03 15:44:12 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/04 20:22:14 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "./headers/so_long.h"
 
 size_t	ft_strlen(char *s)
 {
