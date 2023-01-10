@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:16:52 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/05 18:28:06 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/10 11:43:19 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	main(void)
 	map = ft_create_map();
 	close (fd);
 	ft_is_valid(map);
+	ft_display_init();
 	ft_free(map);
 	return (1);
 }

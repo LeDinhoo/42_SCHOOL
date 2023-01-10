@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:31:29 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/05 18:32:17 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/10 10:35:28 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	ft_number_lines(int fd)
 	int		count;
 	char	c;
 
+	count = 0;
 	while (read(fd, &c, 1) > 0)
 	{
 		if (c == '\n')

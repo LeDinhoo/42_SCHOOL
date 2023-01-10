@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:24:38 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/05 12:57:43 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/10 15:44:57 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	ft_down_valid(char **map, int size)
 		if (map[size - 1][i] != '1' && map[size - 1][i] != '\0')
 			return (0);
 	}
-
 	return (1);
 }
 

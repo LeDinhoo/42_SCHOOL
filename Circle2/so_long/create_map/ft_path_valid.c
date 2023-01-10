@@ -6,29 +6,31 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 13:24:08 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/05 14:27:31 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/10 17:34:17 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-int	ft_path_test(char **map, int y, int x)
+int	ft_path_test(char **map, int y, int x, int c, int cpt)
 {
-	if (map[y][x] == 'E')
+	int	found;
+
+	if (c + 1 == cpt)
 		return (1);
-	if (map[y][x] != '1')
+	if (map[y][x] == 'E' || map[y][x] == 'C')
 	{
-		map[y][x] = '1';
-		if (ft_path_test(map, y, x + 1))
-			return (1);
-		if (ft_path_test(map, y + 1, x))
-			return (1);
-		if (ft_path_test(map, y, x - 1))
-			return (1);
-		if (ft_path_test(map, y - 1, x))
-			return (1);
+		cpt++;
+		printf("%d\n", c);
 	}
-	return (0);
+	if (map[y][x] == '1' || map[y][x] == 'V')
+		return (0);
+	map[y][x] = 'V';
+	found = ft_path_test(map, y, x + 1, c, cpt);
+	found = ft_path_test(map, y, x - 1, c, cpt);
+	found = ft_path_test(map, y + 1, x, c, cpt);
+	found = ft_path_test(map, y - 1, x, c, cpt);
+	return (found);
 }
 
 int	ft_map_start_y(char **map)
@@ -75,7 +77,9 @@ int	ft_path_valid(char **map)
 
 	y = ft_map_start_y(map);
 	x = ft_map_start_x(map[y]);
-	if (ft_path_test(map, y, x))
+	int c = 6;
+	int cpt = 0;
+	if (ft_path_test(map, y, x, c, cpt))
 	{
 		printf("Le chemin est valide !");
 		return (1);

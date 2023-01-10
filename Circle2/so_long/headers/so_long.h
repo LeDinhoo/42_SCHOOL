@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/05 18:32:46 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/10 13:35:29 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include "../libft/libft.h"
+# include "../mlx/mlx.h"
 
 char		*get_next_line(int fd);
 int			ft_is_valid(char **map);
@@ -34,5 +35,6 @@ int			ft_right_valid(char **map);
 int			ft_char_valid(char **map);
 int			ft_path_valid(char **map);
 int			ft_number_lines(int fd);
+int			ft_display_init(void);
 
 #endif
