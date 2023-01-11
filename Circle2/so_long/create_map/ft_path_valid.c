@@ -6,30 +6,32 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 13:24:08 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/10 17:34:17 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/11 17:50:38 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-int	ft_path_test(char **map, int y, int x, int c, int cpt)
+int	ft_end_test(char **map, int y, int x, int found)
 {
-	int	found;
-
-	if (c + 1 == cpt)
+	if (found == 1)
 		return (1);
-	if (map[y][x] == 'E' || map[y][x] == 'C')
-	{
-		cpt++;
-		printf("%d\n", c);
-	}
-	if (map[y][x] == '1' || map[y][x] == 'V')
+	if (map[y][x] == 'E')
+		return (1);
+	if (map[y][x] == 'V')
 		return (0);
-	map[y][x] = 'V';
-	found = ft_path_test(map, y, x + 1, c, cpt);
-	found = ft_path_test(map, y, x - 1, c, cpt);
-	found = ft_path_test(map, y + 1, x, c, cpt);
-	found = ft_path_test(map, y - 1, x, c, cpt);
+	if (map[y][x] != 1 || map[y][x] != 'E')
+	{
+		map[y][x] = 'V';
+		if (map[y][x + 1] != '1')
+			found = ft_end_test(map, y, x + 1, found);
+		if (map[y][x - 1] != '1')
+			found = ft_end_test(map, y, x - 1, found);
+		if (map[y - 1][x] != '1')
+			found = ft_end_test(map, y - 1, x, found);
+		if (map[y + 1][x] != '1')
+			found = ft_end_test(map, y + 1, x, found);
+	}
 	return (found);
 }
 
@@ -74,17 +76,15 @@ int	ft_path_valid(char **map)
 {
 	int	x;
 	int	y;
+	int	found;
+	int	obj;
+	int	b_obj;
 
 	y = ft_map_start_y(map);
 	x = ft_map_start_x(map[y]);
-	int c = 6;
-	int cpt = 0;
-	if (ft_path_test(map, y, x, c, cpt))
-	{
-		printf("Le chemin est valide !");
-		return (1);
-	}
-	else
-		printf("Le chemin n'est pas valide !");
+	found = 0;
+	obj = 0;
+	b_obj = 6;
+	found = ft_end_test(map, y, x, found);
 	return (0);
 }

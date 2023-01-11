@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:30:06 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/05 18:52:27 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/11 17:04:38 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ int	ft_unique_object(char **map)
 				p++;
 			if (map[y][x] == 'E')
 				e++;
-			if (e > 1 || p > 1)
-				return (0);
 			x++;
 		}
 		x = 0;
 		y++;
 	}
+	if (e != 1 || p != 1)
+		return (0);
 	return (1);
 }
 
