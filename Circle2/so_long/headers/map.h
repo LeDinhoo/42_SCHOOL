@@ -1,41 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/04 20:16:52 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/12 11:03:22 by hdupuy           ###   ########.fr       */
+/*   Created: 2023/01/12 09:45:54 by hdupuy            #+#    #+#             */
+/*   Updated: 2023/01/12 09:51:37 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/so_long.h"
+#ifndef MAP_H
+# define MAP_H
 
-void	*ft_free(char **map)
+typedef struct s_map
 {
-	ssize_t	idx;
+	char	**map;
+	int		start_y;
+	int		start_x;
+	int		end_y;
+	int		end_x;
+	int		height;
+	int		width;
+	int		objs;
+}	t_map;
 
-	idx = 0;
-	while (map[idx])
-		idx++;
-	while (idx > 0)
-	{
-		idx--;
-		free(map[idx]);
-	}
-	free(map);
-	return (NULL);
-}
-
-int	main(void)
-{
-	t_map	map;
-
-	ft_create_map(&map);
-	ft_is_valid(&map);
-	// ft_display_init();
-	printf("%d, %d, %d, %d, %d\n", map.start_y, map.start_x, map.height, map.width, map.objs);
-	// ft_free(map);
-	return (1);
-}
+#endif

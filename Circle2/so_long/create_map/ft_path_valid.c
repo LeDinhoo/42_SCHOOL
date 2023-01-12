@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 13:24:08 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/11 17:50:38 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/12 11:10:31 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,42 @@ int	ft_map_start_x(char *s)
 	return (0);
 }
 
-int	ft_path_valid(char **map)
+int	ft_count_objs(char **map)
 {
-	int	x;
-	int	y;
-	int	found;
-	int	obj;
-	int	b_obj;
+	int		y;
+	int		x;
+	int		count;
+	char	c;
 
-	y = ft_map_start_y(map);
-	x = ft_map_start_x(map[y]);
+
+	y = 0;
+	x = 0;
+	count = 0;
+	c = 'C';
+	while (map[y])
+	{
+		while (map[y][x])
+		{
+			if (map[y][x] == 'C')
+				count++;
+			x++;
+		}
+		x = 0;
+		y++;
+	}
+	return (count);
+}
+
+int	ft_path_valid(t_map *map)
+{
+	int	found;
+
+	map->start_y = ft_map_start_y(map->map);
+	map->start_x = ft_map_start_x(map->map[map->start_y]);
+	map->objs = ft_count_objs(map->map);
 	found = 0;
-	obj = 0;
-	b_obj = 6;
-	found = ft_end_test(map, y, x, found);
+	found = ft_end_test(map->map, map->start_y, map->start_x, found);
+	if (found == 1)
+		printf("OK\n");
 	return (0);
 }
