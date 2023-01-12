@@ -1,99 +1,96 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_objects_valid.c                                 :+:      :+:    :+:   */
+/*   ft_map_info.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/05 12:30:06 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/12 13:11:36 by hdupuy           ###   ########.fr       */
+/*   Created: 2023/01/12 12:19:42 by hdupuy            #+#    #+#             */
+/*   Updated: 2023/01/12 12:54:06 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-int	ft_unique_object(char **map)
+int	ft_map_start_y(char **map)
 {
-	int	y;
 	int	x;
-	int	e;
-	int	p;
+	int	y;
 
-	y = 0;
 	x = 0;
-	e = 0;
-	p = 0;
+	y = 0;
+	if (!map)
+		return (0);
 	while (map[y])
 	{
 		while (map[y][x])
 		{
 			if (map[y][x] == 'P')
-				p++;
-			if (map[y][x] == 'E')
-				e++;
+				return (y);
 			x++;
 		}
 		x = 0;
 		y++;
 	}
-	if (e != 1 || p != 1)
-		return (0);
-	return (1);
-}
-
-int	ft_count_objs(char **map)
-{
-	int		y;
-	int		x;
-	int		count;
-	char	c;
-
-
-	y = 0;
-	x = 0;
-	count = 0;
-	c = 'C';
-	while (map[y])
-	{
-		while (map[y][x])
-		{
-			if (map[y][x] == 'C')
-				count++;
-			x++;
-		}
-		x = 0;
-		y++;
-	}
-	return (count);
-}
-
-int	ft_char_valid(char **map)
-{
-	int	y;
-	int	x;
-
-	y = 0;
-	x = 0;
-	while (map[y])
-	{
-		while (map[y][x])
-		{
-			if (ft_strichr("01PCE\0\n", map[y][x]) == -1)
-				return (0);
-			x++;
-		}
-		x = 0;
-		y++;
-	}
-	if (ft_unique_object(map))
-		return (1);
 	return (0);
 }
 
-int	ft_objects_valid(t_map *map)
+int	ft_map_end_y(char **map)
 {
-	map->objs = ft_count_objs(map->map);
-	if (ft_char_valid(map->map))
-		return (1);
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	if (!map)
+		return (0);
+	while (map[y])
+	{
+		while (map[y][x])
+		{
+			if (map[y][x] == 'E')
+				return (y);
+			x++;
+		}
+		x = 0;
+		y++;
+	}
+	return (0);
+}
+
+int	ft_map_start_x(char *s)
+{
+	int	x;
+
+	x = 0;
+	while (s[x])
+	{
+		if (s[x] == 'P')
+			return (x);
+		x++;
+	}
+	return (0);
+}
+
+int	ft_map_end_x(char *s)
+{
+	int	x;
+
+	x = 0;
+	while (s[x])
+	{
+		if (s[x] == 'E')
+			return (x);
+		x++;
+	}
+	return (0);
+}
+
+int	ft_map_info(t_map *map)
+{
+	map->start_y = ft_map_start_y(map->map);
+	map->end_y = ft_map_end_y(map->map);
+	map->start_x = ft_map_start_x(map->map[map->start_y]);
+	map->end_x = ft_map_end_x(map->map[map->end_y]);
 	return (0);
 }

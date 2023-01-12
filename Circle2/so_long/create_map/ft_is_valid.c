@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:21:56 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/12 10:16:13 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/12 13:12:44 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,24 +38,13 @@ int	ft_map_height(char **map)
 	return (len);
 }
 
-int	ft_wall_valid(char **map, int size)
-{
-	if (!map)
-		return (0);
-	if (ft_up_valid(map))
-		if (ft_down_valid(map, size))
-			if (ft_left_valid(map))
-				if (ft_right_valid(map))
-					return (1);
-	return (0);
-}
-
 int	ft_is_valid(t_map *map)
 {
 	map->width = ft_strlen(map->map[0]);
 	printf("Hauteur : %d Largeur: %d\n", map->height, map->width);
 	printf("C'est un rectangle ? %d\n", ft_is_square(map->map));
 	printf("Les murs sont valides ? %d\n", ft_wall_valid(map->map, map->height));
+	printf("Les objets sont valides ? %d\n", ft_objects_valid(map));
 	ft_path_valid(map);
 	return (1);
 }

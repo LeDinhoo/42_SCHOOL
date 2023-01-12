@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/12 10:08:53 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/12 13:09:07 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,9 @@ int			ft_char_valid(char **map);
 int			ft_path_valid(t_map *map);
 int			ft_number_lines(int fd);
 int			ft_display_init(void);
+int			ft_map_info(t_map *map);
+int			ft_wall_valid(char **map, int size);
+int			ft_count_objs(char **map);
+int			ft_objects_valid(t_map *map);
 
 #endif

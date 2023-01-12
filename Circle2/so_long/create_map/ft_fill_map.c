@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:31:29 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/12 10:14:47 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/12 13:06:21 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,5 @@ char	**ft_create_map(t_map *map)
 	fd = open("maps/test.ber", O_RDONLY);
 	map->map = ft_fill_map(fd, map->height, map->map);
 	close(fd);
-	printf("Les objets sont valides ? %d\n", ft_char_valid(map->map));
 	return (map->map);
 }
