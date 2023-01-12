@@ -4,8 +4,16 @@ NAME = so_long
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -g3
-MLXFLAGS = -framework OpenGL -framework AppKit -Lmlx -lmlx -lm
+ifeq ($(shell uname),Linux)
+   # Linux-specific commands
+	MLXFLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o
+	CFLAGS = -Wextra -Werror -g3
+else
+   # Mac OS X-specific commands
+	CFLAGS = -Wall -Wextra -Werror -g3
+	MLXFLAGS = -framework OpenGL -framework AppKit -Lmlx -lmlx -lm
+endif
+
 
 SRC_DIR = .
 OBJ_DIR = .obj
