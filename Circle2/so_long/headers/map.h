@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 09:45:54 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/12 13:00:48 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/12 15:07:19 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 typedef struct s_map
 {
+	char	*file;
 	char	**map;
 	int		start_y;
 	int		start_x;

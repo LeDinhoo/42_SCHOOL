@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:21:56 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/12 13:12:44 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/12 14:09:09 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ int	ft_is_valid(t_map *map)
 	printf("C'est un rectangle ? %d\n", ft_is_square(map->map));
 	printf("Les murs sont valides ? %d\n", ft_wall_valid(map->map, map->height));
 	printf("Les objets sont valides ? %d\n", ft_objects_valid(map));
-	ft_path_valid(map);
+	printf("Le chemin est valide ? %d\n", ft_path_valid(map));
 	return (1);
 }

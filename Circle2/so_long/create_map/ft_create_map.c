@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fill_map.c                                      :+:      :+:    :+:   */
+/*   ft_create_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:31:29 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/12 13:06:21 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/12 15:11:29 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ char	**ft_create_map(t_map *map)
 {
 	int			fd;
 
-	fd = open("maps/test.ber", O_RDONLY);
+	fd = open(map->file, O_RDONLY);
 	map->height = ft_number_lines(fd);
 	close(fd);
-	fd = open("maps/test.ber", O_RDONLY);
+	fd = open(map->file, O_RDONLY);
 	map->map = ft_fill_map(fd, map->height, map->map);
 	close(fd);
-	return (map->map);
+	return (0);
 }

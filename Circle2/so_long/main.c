@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:16:52 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/12 13:14:24 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/12 15:07:34 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,19 @@ void	*ft_free(char **map)
 	return (NULL);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_map	map;
 
-	ft_create_map(&map);
-	ft_map_info(&map);
-	ft_is_valid(&map);
-	// ft_display_init();
-	printf("%d, %d, %d, %d, %d, %d, %d\n", map.start_y, map.start_x, map.end_y, map.end_x, map.height, map.width, map.objs);
+	if (argc != 2)
+	{
+		write (1, "Erreur de map !", 16);
+		return (0);
+	}
+	map.file = argv[1];
+	ft_map_init(&map);
+	printf("\n");
+	ft_display_init();
 	ft_free(map.map);
 	return (1);
 }

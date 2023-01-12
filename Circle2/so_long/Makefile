@@ -20,7 +20,8 @@ MLX			= $(addprefix $(MLX_DIR), $(MLX_A))
 
 SRC = $(SRC_DIR)/main.c \
       $(SRC_DIR)/display_game/ft_game_init.c \
-      $(SRC_DIR)/create_map/ft_fill_map.c \
+      $(SRC_DIR)/create_map/ft_create_map.c \
+      $(SRC_DIR)/create_map/ft_map_init.c \
       $(SRC_DIR)/create_map/ft_is_valid.c \
       $(SRC_DIR)/create_map/ft_map_info.c \
 	  $(SRC_DIR)/create_map/ft_wall_valid.c \
