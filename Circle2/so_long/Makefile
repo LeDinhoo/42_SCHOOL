@@ -7,7 +7,7 @@ CC = gcc
 ifeq ($(shell uname),Linux)
    # Linux-specific commands
 	MLXFLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o
-	CFLAGS = -Wextra -Werror -g3
+	CFLAGS = -Wextra -Werror -ggdb
 else
    # Mac OS X-specific commands
 	CFLAGS = -Wall -Wextra -Werror -g3
@@ -43,7 +43,7 @@ OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) $(MLXFLAGS) $(OBJ) $(LIBFT) $(MLX) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLXFLAGS) $(MLX) -o $(NAME)
 	@echo "\033[1;34mCompilation terminée avec succès ! ✔️\033[0m"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
