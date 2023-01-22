@@ -27,8 +27,11 @@ MLX_DIR 	= mlx/
 MLX			= $(addprefix $(MLX_DIR), $(MLX_A))
 
 SRC = $(SRC_DIR)/main.c \
-      $(SRC_DIR)/display_game/ft_game_init.c \
-      $(SRC_DIR)/display_game/ft_window.c \
+      $(SRC_DIR)/game/ft_game_init.c \
+      $(SRC_DIR)/game/ft_window.c \
+	  $(SRC_DIR)/game/ft_open_imgs.c \
+	  $(SRC_DIR)/game/ft_render.c \
+	  $(SRC_DIR)/game/ft_move.c \
       $(SRC_DIR)/create_map/ft_create_map.c \
       $(SRC_DIR)/create_map/ft_map_init.c \
       $(SRC_DIR)/create_map/ft_is_valid.c \
@@ -47,7 +50,7 @@ $(NAME): $(OBJ)
 	@echo "\033[1;34mCompilation terminée avec succès ! ✔️\033[0m"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(OBJ_DIR)/create_map $(OBJ_DIR)/gnl $(OBJ_DIR)/display_game
+	@mkdir -p $(OBJ_DIR)/create_map $(OBJ_DIR)/gnl $(OBJ_DIR)/game
 	@$(CC) $(CFLAGS) -I mlx -c $< -o $@
 
 clean:

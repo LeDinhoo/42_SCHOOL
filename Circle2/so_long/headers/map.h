@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 09:45:54 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/19 18:24:08 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/20 17:03:38 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,18 @@ typedef struct s_map
 	int		width;
 	int		objs;
 }	t_map;
+
+typedef struct s_walls
+{
+	char	a;
+	char	b;
+	char	c;
+	char	d;
+	char	e;
+	char	f;
+	char	g;
+	char	h;
+}	t_walls;
 
 typedef struct s_vector
 {
@@ -63,10 +75,21 @@ typedef struct s_player
 typedef struct s_sprite
 {
 	t_image		wall;
-	t_image		wall_u;
-	t_image		wall_r;
-	t_image		wall_d;
-	t_image		wall_l;
+	t_image		wall_01;
+	t_image		wall_02;
+	t_image		wall_03;
+	t_image		wall_04;
+	t_image		wall_05;
+	t_image		wall_06;
+	t_image		wall_07;
+	t_image		wall_08;
+	t_image		wall_09;
+	t_image		wall_10;
+	t_image		wall_11;
+	t_image		wall_12;
+	t_image		wall_13;
+	t_image		wall_14;
+	t_image		wall_15;
 	t_image		floor;
 	t_image		p_floor;
 }	t_sprite;
