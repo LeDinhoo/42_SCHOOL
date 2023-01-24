@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 12:03:15 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/20 17:03:54 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/24 13:26:32 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	ft_all_sprite(t_sprite *sprite, t_program *prog, t_player *p)
 	sprite->wall_13 = ft_new_sprite(prog->mlx, "./sprite/Tile_13.xpm");
 	sprite->wall_14 = ft_new_sprite(prog->mlx, "./sprite/Tile_14.xpm");
 	sprite->wall_15 = ft_new_sprite(prog->mlx, "./sprite/Tile_15.xpm");
+	sprite->coin_01 = ft_new_sprite(prog->mlx, "./sprite/coin_01.xpm");
 	sprite->floor = ft_new_sprite(prog->mlx, "./sprite/floor.xpm");
 	sprite->p_floor = ft_new_sprite(prog->mlx, "./sprite/p_floor.xpm");
 	p->py = ft_new_sprite(prog->mlx, "./sprite/player.xpm");

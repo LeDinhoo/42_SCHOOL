@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 09:45:54 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/20 17:03:38 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/24 15:05:22 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_player
 
 typedef struct s_sprite
 {
+	t_image		coin_01;
 	t_image		wall;
 	t_image		wall_01;
 	t_image		wall_02;
@@ -98,6 +99,7 @@ typedef struct s_program
 {
 	void		*mlx;
 	char		**map;
+	char		**w_map;
 	t_window	window;
 	t_vector	sprite_position;
 	t_sprite	sprite;

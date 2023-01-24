@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 12:06:10 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/20 17:23:38 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/24 17:34:05 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,26 @@
 int	move_sprite_and_redraw(void *param)
 {
 	t_program	*p;
-	int			old_x;
-	int			old_y;
 
 	p = (t_program *)param;
-	old_x = p->player.pos.x;
-	old_y = p->player.pos.y;
-	p->player.pos.x += (p->player.x_dir * p->move_speed);
-	p->player.pos.y += (p->player.y_dir * p->move_speed);
+	if (!ft_check_right(p))
+		p->player.x_dir = 0;
+	else if (!ft_check_left(p))
+		p->player.x_dir = 0;
+	else if (!ft_check_up(p))
+		p->player.y_dir = 0;
+	else if (!ft_check_down(p))
+		p->player.y_dir = 0;
+	else
+	{
+		p->player.pos.x += (p->player.x_dir * p->move_speed);
+		p->player.pos.y += (p->player.y_dir * p->move_speed);
+	}
 	if (p->player.x_dir != 0 || p->player.y_dir != 0)
 	{
-		mlx_put_image_to_window(p->mlx, p->window.ref,
-			p->sprite.p_floor.ref, old_x, old_y);
+		ft_sprite_map(&p->sprite, p, p->map);
 		mlx_put_image_to_window(p->mlx, p->window.ref, p->player.py.ref,
 			p->player.pos.x, p->player.pos.y);
-		p->player.x_dir = 0;
-		p->player.y_dir = 0;
 	}
 	return (0);
 }
@@ -40,10 +44,8 @@ int	ft_wich_wall(char **map, t_vector pos, t_walls *wall)
 	int	h;
 
 	h = 0;
-	printf("%d : %d\n", pos.y, pos.x);
 	while (map[h])
 		h++;
-	printf("h : %d\n", h);
 	if (pos.y > 0 && pos.x > 0)
 	{
 		wall->a = map[pos.y - 1][pos.x - 1];
@@ -75,6 +77,7 @@ int	ft_init_wall(t_walls *wall)
 	wall->f = '?';
 	wall->g = '?';
 	wall->h = '?';
+	return (0);
 }
 
 int	ft_put_wall(t_sprite *s, t_program *p, char **map, t_vector pos)
@@ -83,8 +86,6 @@ int	ft_put_wall(t_sprite *s, t_program *p, char **map, t_vector pos)
 
 	ft_init_wall(&wall);
 	ft_wich_wall(map, pos, &wall);
-	printf("%c | %c | %c\n%c | X | %c\n%c | %c | %c\n\n",
-		wall.a, wall.b, wall.c, wall.d, wall.e, wall.f, wall.g, wall.h);
 	if (wall.g == '0' && wall.d == '1' && wall.e == '1')
 	{
 		mlx_put_image_to_window(p->mlx, p->window.ref,
@@ -204,10 +205,16 @@ int	ft_sprite_map(t_sprite *s, t_program *p, char **map)
 				p->sprite_position.y = (pos.y * 40);
 			if (map[pos.y][pos.x] == '1')
 				ft_put_wall(s, p, map, pos);
-			else
+			if (map[pos.y][pos.x] != '1')
 			{
 				mlx_put_image_to_window(p->mlx, p->window.ref,
 					s->floor.ref, p->sprite_position.x,
+					p->sprite_position.y);
+			}
+			if (map[pos.y][pos.x] == 'C')
+			{
+				mlx_put_image_to_window(p->mlx, p->window.ref,
+					s->coin_01.ref, p->sprite_position.x,
 					p->sprite_position.y);
 			}
 			pos.x++;
