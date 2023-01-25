@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 12:09:44 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/24 17:26:30 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/25 14:02:42 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ int	ft_check_right(void *param)
 	i = 0;
 	while (i < 28)
 	{
-		if (p->map[(p->player.pos.y + i) / 40][(p->player.pos.x + 30) / 40]
+		if (p->map[(p->player.pos.y + i) / 64][(p->player.pos.x + 30) / 64]
 			== '1' && p->player.x_dir == 1)
 			return (0);
-		if (p->map[(p->player.pos.y + i) / 40]
-			[(p->player.pos.x + 15) / 40] == 'C')
+		if (p->map[(p->player.pos.y + i) / 64]
+			[(p->player.pos.x + 15) / 64] == 'C')
 		{
-			p->map[(p->player.pos.y + i) / 40]
-			[(p->player.pos.x + 15) / 40] = '0';
+			p->map[(p->player.pos.y + i) / 64]
+			[(p->player.pos.x + 15) / 64] = '0';
 			return (1);
 		}
 		i++;
@@ -45,14 +45,14 @@ int	ft_check_left(void *param)
 	i = 0;
 	while (i < 28)
 	{
-		if (p->map[(p->player.pos.y + i) / 40][(p->player.pos.x - 3) / 40]
+		if (p->map[(p->player.pos.y + i) / 64][(p->player.pos.x - 3) / 64]
 			== '1' && p->player.x_dir == -1)
 			return (0);
-		if (p->map[(p->player.pos.y + i) / 40]
-			[(p->player.pos.x + 15) / 40] == 'C')
+		if (p->map[(p->player.pos.y + i) / 64]
+			[(p->player.pos.x + 15) / 64] == 'C')
 		{
-			p->map[(p->player.pos.y + i) / 40]
-			[(p->player.pos.x + 15) / 40] = '0';
+			p->map[(p->player.pos.y + i) / 64]
+			[(p->player.pos.x + 15) / 64] = '0';
 			return (1);
 		}
 		i++;
@@ -69,14 +69,14 @@ int	ft_check_up(void *param)
 	i = 0;
 	while (i < 28)
 	{
-		if (p->map[(p->player.pos.y - 3) / 40][(p->player.pos.x + i) / 40]
+		if (p->map[(p->player.pos.y - 3) / 64][(p->player.pos.x + i) / 64]
 			== '1' && p->player.y_dir == -1)
 			return (0);
-		if (p->map[(p->player.pos.y + 15) / 40]
-			[(p->player.pos.x + i) / 40] == 'C')
+		if (p->map[(p->player.pos.y + 15) / 64]
+			[(p->player.pos.x + i) / 64] == 'C')
 		{
-			p->map[(p->player.pos.y + 15) / 40]
-			[(p->player.pos.x + i) / 40] = '0';
+			p->map[(p->player.pos.y + 15) / 64]
+			[(p->player.pos.x + i) / 64] = '0';
 			return (1);
 		}
 		i++;
@@ -93,14 +93,14 @@ int	ft_check_down(void *param)
 	i = 0;
 	while (i < 28)
 	{
-		if (p->map[(p->player.pos.y + 30) / 40][(p->player.pos.x + i) / 40]
+		if (p->map[(p->player.pos.y + 30) / 64][(p->player.pos.x + i) / 64]
 			== '1' && p->player.y_dir == 1)
 			return (0);
-		if (p->map[(p->player.pos.y + 15) / 40]
-			[(p->player.pos.x + i) / 40] == 'C')
+		if (p->map[(p->player.pos.y + 15) / 64]
+			[(p->player.pos.x + i) / 64] == 'C')
 		{
-			p->map[(p->player.pos.y + 15) / 40]
-			[(p->player.pos.x + i) / 40] = '0';
+			p->map[(p->player.pos.y + 15) / 64]
+			[(p->player.pos.x + i) / 64] = '0';
 			return (1);
 		}
 		i++;
@@ -113,14 +113,14 @@ int	key_press(int key, void *param)
 	t_program	*p;
 
 	p = (t_program *)param;
-	if (key == 2)
+	if (key == 100)
 			p->player.x_dir = 1;
-	if (key == 13)
+	if (key == 119)
 			p->player.y_dir = -1;
-	if (key == 1)
+	if (key == 115)
 			p->player.y_dir = 1;
-	if (key == 0)
+	if (key == 97)
 			p->player.x_dir = -1;
-	// printf("%d\n", key);
+	printf("%d\n", key);
 	return (0);
 }

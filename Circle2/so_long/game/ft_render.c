@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 12:06:10 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/25 13:04:55 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/25 13:59:00 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	move_sprite_and_redraw(void *param)
 	}
 	if (p->player.x_dir != 0 || p->player.y_dir != 0)
 	{
-		ft_sprite_map(&p->sprite, p, p->map);
+		ft_update_map(&p->sprite, p, p->map);
 		mlx_put_image_to_window(p->mlx, p->window.ref, p->player.py.ref,
 			p->player.pos.x, p->player.pos.y);
 	}
@@ -254,7 +254,7 @@ int	ft_put_floor(t_program *p, t_sprite *s)
 	return (0);
 }
 
-int	ft_sprite_map(t_sprite *s, t_program *p, char **map)
+int	ft_update_map(t_sprite *s, t_program *p, char **map)
 {
 	t_vector	pos;
 
@@ -266,16 +266,31 @@ int	ft_sprite_map(t_sprite *s, t_program *p, char **map)
 		{
 				p->sprite_position.x = (pos.x * 64);
 				p->sprite_position.y = (pos.y * 64);
-			if (map[pos.y][pos.x] == '1')
-				ft_put_wall(s, p, map, pos);
 			if (map[pos.y][pos.x] != '1')
 				ft_put_floor(p, s);
-			// if (map[pos.y][pos.x] == 'C')
-			// {
-			// 	mlx_put_image_to_window(p->mlx, p->window.ref,
-			// 		s->coin_01.ref, p->sprite_position.x,
-			// 		p->sprite_position.y);
-			// }
+			pos.x++;
+		}
+		pos.y++;
+	}
+	return (0);
+}
+
+int	ft_sprite_map(t_sprite *s, t_program *p, t_map *map)
+{
+	t_vector	pos;
+
+	pos.y = 0;
+	while (map->map[pos.y])
+	{
+		pos.x = 0;
+		while (map->map[pos.y][pos.x])
+		{
+				p->sprite_position.x = (pos.x * 64);
+				p->sprite_position.y = (pos.y * 64);
+			if (map->map[pos.y][pos.x] == '1')
+				ft_put_wall(s, p, map->map, pos);
+			if (map->map[pos.y][pos.x] != '1')
+				ft_put_floor(p, s);
 			pos.x++;
 		}
 		pos.y++;

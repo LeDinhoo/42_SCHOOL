@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:30:06 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/12 13:11:36 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/25 14:04:44 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	ft_count_objs(char **map)
 	int		x;
 	int		count;
 	char	c;
-
 
 	y = 0;
 	x = 0;
