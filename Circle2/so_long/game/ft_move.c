@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 12:09:44 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/25 14:37:05 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/25 15:27:12 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,13 +113,13 @@ int	key_press(int key, void *param)
 	t_program	*p;
 
 	p = (t_program *)param;
-	if (key == 100)
+	if (key == 2)
 			p->player.x_dir = 1;
-	if (key == 119)
+	if (key == 13)
 			p->player.y_dir = -1;
-	if (key == 115)
+	if (key == 1)
 			p->player.y_dir = 1;
-	if (key == 97)
+	if (key == 0)
 			p->player.x_dir = -1;
 	printf("%d\n", key);
 	return (0);

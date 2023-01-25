@@ -7,10 +7,10 @@ CC = gcc
 ifeq ($(shell uname),Linux)
    # Linux-specific commands
 	MLXFLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o
-	CFLAGS = -Wextra -Werror -ggdb
+	CFLAGS = -Wextra -Werror
 else
    # Mac OS X-specific commands
-	CFLAGS = -Wall -Wextra -Werror -g3
+	CFLAGS = -Wall -Wextra -Werror
 	MLXFLAGS = -framework OpenGL -framework AppKit -Lmlx -lmlx -lm
 endif
 

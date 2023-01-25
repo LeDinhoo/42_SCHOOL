@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/25 14:38:20 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/25 16:16:55 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ int			ft_check_down(void *param);
 int			ft_put_grass(t_program *p, t_sprite *s);
 int			ft_put_floor(t_program *p, t_sprite *s);
 int			ft_update_map(t_sprite *s, t_program *p, char **map);
+int			ft_put_spawn(t_program *p, t_sprite *s, t_vector pos_p);
 
 #endif
