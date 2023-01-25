@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 12:03:15 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/24 13:26:32 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/25 08:15:09 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,27 @@
 
 int	ft_all_sprite(t_sprite *sprite, t_program *prog, t_player *p)
 {
-	sprite->wall = ft_new_sprite(prog->mlx, "./sprite/ground.xpm");
-	sprite->wall_01 = ft_new_sprite(prog->mlx, "./sprite/Tile_01.xpm");
-	sprite->wall_02 = ft_new_sprite(prog->mlx, "./sprite/Tile_02.xpm");
-	sprite->wall_03 = ft_new_sprite(prog->mlx, "./sprite/Tile_03.xpm");
-	sprite->wall_04 = ft_new_sprite(prog->mlx, "./sprite/Tile_04.xpm");
-	sprite->wall_05 = ft_new_sprite(prog->mlx, "./sprite/Tile_05.xpm");
-	sprite->wall_06 = ft_new_sprite(prog->mlx, "./sprite/Tile_06.xpm");
-	sprite->wall_07 = ft_new_sprite(prog->mlx, "./sprite/Tile_07.xpm");
-	sprite->wall_08 = ft_new_sprite(prog->mlx, "./sprite/Tile_08.xpm");
-	sprite->wall_09 = ft_new_sprite(prog->mlx, "./sprite/Tile_09.xpm");
-	sprite->wall_10 = ft_new_sprite(prog->mlx, "./sprite/Tile_10.xpm");
-	sprite->wall_11 = ft_new_sprite(prog->mlx, "./sprite/Tile_11.xpm");
-	sprite->wall_12 = ft_new_sprite(prog->mlx, "./sprite/Tile_12.xpm");
-	sprite->wall_13 = ft_new_sprite(prog->mlx, "./sprite/Tile_13.xpm");
-	sprite->wall_14 = ft_new_sprite(prog->mlx, "./sprite/Tile_14.xpm");
-	sprite->wall_15 = ft_new_sprite(prog->mlx, "./sprite/Tile_15.xpm");
+	sprite->wall = ft_new_sprite(prog->mlx, "./sprite/floor.xpm");
+	sprite->wall_01 = ft_new_sprite(prog->mlx, "./sprite/Wall_05.xpm");
+	sprite->wall_02 = ft_new_sprite(prog->mlx, "./sprite/Wall_0.xpm");
+	sprite->wall_03 = ft_new_sprite(prog->mlx, "./sprite/Wall_09.xpm");
+	sprite->wall_04 = ft_new_sprite(prog->mlx, "./sprite/Wall_02.xpm");
+	sprite->wall_05 = ft_new_sprite(prog->mlx, "./sprite/Wall_03.xpm");
+	sprite->wall_06 = ft_new_sprite(prog->mlx, "./sprite/Wall_04.xpm");
+	sprite->wall_07 = ft_new_sprite(prog->mlx, "./sprite/Wall_06.xpm");
+	sprite->wall_08 = ft_new_sprite(prog->mlx, "./sprite/Wall_01.xpm");
+	sprite->wall_09 = ft_new_sprite(prog->mlx, "./sprite/Wall_13.xpm");
+	sprite->wall_10 = ft_new_sprite(prog->mlx, "./sprite/Wall_12.xpm");
+	sprite->wall_11 = ft_new_sprite(prog->mlx, "./sprite/Wall_07.xpm");
+	sprite->wall_12 = ft_new_sprite(prog->mlx, "./sprite/Wall_14.xpm");
+	sprite->wall_13 = ft_new_sprite(prog->mlx, "./sprite/Wall_08.xpm");
+	sprite->wall_14 = ft_new_sprite(prog->mlx, "./sprite/Wall_10.xpm");
+	sprite->wall_15 = ft_new_sprite(prog->mlx, "./sprite/Wall_11.xpm");
+	sprite->grass_01 = ft_new_sprite(prog->mlx, "./sprite/Grass_01.xpm");
+	sprite->grass_02 = ft_new_sprite(prog->mlx, "./sprite/Grass_02.xpm");
+	sprite->grass_03 = ft_new_sprite(prog->mlx, "./sprite/Grass_03.xpm");
+	sprite->grass_04 = ft_new_sprite(prog->mlx, "./sprite/Grass_04.xpm");
+	sprite->grass_05 = ft_new_sprite(prog->mlx, "./sprite/Grass_05.xpm");
 	sprite->coin_01 = ft_new_sprite(prog->mlx, "./sprite/coin_01.xpm");
 	sprite->floor = ft_new_sprite(prog->mlx, "./sprite/floor.xpm");
 	sprite->p_floor = ft_new_sprite(prog->mlx, "./sprite/p_floor.xpm");

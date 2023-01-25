@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 11:22:56 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/24 17:33:28 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/24 21:37:49 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	ft_game_init(t_map *map)
 	prog.player.y_dir = 0;
 	prog.map = map->map;
 	prog.mlx = mlx_init();
-	prog.window = ft_new_window(prog.mlx, (map->width * 40),
-			(map->height * 40), "Bonjour !");
+	prog.window = ft_new_window(prog.mlx, (map->width * 64),
+			(map->height * 64), "Bonjour !");
 	ft_all_sprite(&prog.sprite, &prog, &prog.player);
 	ft_sprite_map(&prog.sprite, &prog, map->map);
 	mlx_hook(prog.window.ref, 2, 1L << 0, *key_press, &prog);

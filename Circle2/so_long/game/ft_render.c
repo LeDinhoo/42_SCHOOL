@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 12:06:10 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/24 17:34:05 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/25 08:17:37 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,12 +184,45 @@ int	ft_put_wall(t_sprite *s, t_program *p, char **map, t_vector pos)
 	}
 	else
 	{
+		ft_put_grass(p, s);
+	}
+	return (0);
+}
+
+int	ft_put_grass(t_program *p, t_sprite *s)
+{
+	int	r_num;
+
+	r_num = rand() % 1000;
+	printf("%d\n", r_num);
+	if (r_num % 2 == 0)
+	{
 		mlx_put_image_to_window(p->mlx, p->window.ref,
-			s->wall.ref, p->sprite_position.x,
+			s->grass_02.ref, p->sprite_position.x,
+			p->sprite_position.y);
+	}
+	if (r_num % 3 == 0)
+	{
+		mlx_put_image_to_window(p->mlx, p->window.ref,
+			s->grass_05.ref, p->sprite_position.x,
+			p->sprite_position.y);
+	}
+	if (r_num / 18 == 0)
+	{
+		mlx_put_image_to_window(p->mlx, p->window.ref,
+			s->grass_04.ref, p->sprite_position.x,
+			p->sprite_position.y);
+	}
+	else
+	{
+		mlx_put_image_to_window(p->mlx, p->window.ref,
+			s->grass_01.ref, p->sprite_position.x,
 			p->sprite_position.y);
 	}
 	return (0);
 }
+
+
 
 int	ft_sprite_map(t_sprite *s, t_program *p, char **map)
 {
@@ -201,16 +234,12 @@ int	ft_sprite_map(t_sprite *s, t_program *p, char **map)
 		pos.x = 0;
 		while (map[pos.y][pos.x])
 		{
-				p->sprite_position.x = (pos.x * 40);
-				p->sprite_position.y = (pos.y * 40);
+				p->sprite_position.x = (pos.x * 64);
+				p->sprite_position.y = (pos.y * 64);
 			if (map[pos.y][pos.x] == '1')
 				ft_put_wall(s, p, map, pos);
 			if (map[pos.y][pos.x] != '1')
-			{
-				mlx_put_image_to_window(p->mlx, p->window.ref,
-					s->floor.ref, p->sprite_position.x,
-					p->sprite_position.y);
-			}
+				ft_put_grass(p, s);
 			if (map[pos.y][pos.x] == 'C')
 			{
 				mlx_put_image_to_window(p->mlx, p->window.ref,

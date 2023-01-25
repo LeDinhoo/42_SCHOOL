@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/24 17:19:02 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/25 08:08:53 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ int			ft_check_right(void *param);
 int			ft_check_up(void *param);
 int			ft_check_left(void *param);
 int			ft_check_down(void *param);
+int			ft_put_grass(t_program *p, t_sprite *s);
 
 #endif
