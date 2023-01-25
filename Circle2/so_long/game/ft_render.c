@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 12:06:10 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/25 08:17:37 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/25 08:22:48 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,17 @@ int	ft_put_wall(t_sprite *s, t_program *p, char **map, t_vector pos)
 
 int	ft_put_grass(t_program *p, t_sprite *s)
 {
+// 	r_num % 1 == 0 : 100% des nombres entiers
+// r_num % 2 == 0 : 50% des nombres entiers (tous les nombres pairs)
+// r_num % 3 == 0 : 33.3% des nombres entiers (tous les nombres divisibles par 3)
+// r_num % 4 == 0 : 25% des nombres entiers (tous les nombres divisibles par 4)
+// r_num % 5 == 0 : 20% des nombres entiers (tous les nombres divisibles par 5)
+// r_num % 6 == 0 : 16.6% des nombres entiers (tous les nombres divisibles par 6)
+// r_num % 7 == 0 : 14.2% des nombres entiers (tous les nombres divisibles par 7)
+// r_num % 8 == 0 : 12.5% des nombres entiers (tous les nombres divisibles par 8)
+// r_num % 9 == 0 : 11.1% des nombres entiers (tous les nombres divisibles par 9)
+// r_num % 10 == 0 : 10% des nombres entiers (tous les nombres divisibles par 10)
+
 	int	r_num;
 
 	r_num = rand() % 1000;
