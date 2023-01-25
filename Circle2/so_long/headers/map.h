@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 09:45:54 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/25 08:15:15 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/25 13:03:44 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,13 @@ typedef struct s_player
 typedef struct s_sprite
 {
 	t_image		coin_01;
+	t_image		grass_00;
 	t_image		grass_01;
 	t_image		grass_02;
 	t_image		grass_03;
 	t_image		grass_04;
 	t_image		grass_05;
+	t_image		grass_07;
 	t_image		wall;
 	t_image		wall_01;
 	t_image		wall_02;
@@ -96,7 +98,8 @@ typedef struct s_sprite
 	t_image		wall_13;
 	t_image		wall_14;
 	t_image		wall_15;
-	t_image		floor;
+	t_image		wall_16;
+	t_image		floor_00;
 	t_image		p_floor;
 }	t_sprite;
 

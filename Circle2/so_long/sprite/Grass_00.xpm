@@ -1,8 +1,8 @@
 /* XPM */
-static char *floor[] = {
+static char *Grass_00[] = {
 /* columns rows colors chars-per-pixel */
 "64 64 1 1 ",
-"  c #83D3C6",
+"  c #ACB028",
 /* pixels */
 "                                                                ",
 "                                                                ",

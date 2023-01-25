@@ -2,14 +2,14 @@
 static char *Grass_03[] = {
 /* columns rows colors chars-per-pixel */
 "64 64 8 1 ",
-"  c #636917",
-". c #656C17",
-"X c #72751B",
-"o c #787B21",
-"O c #7F8226",
-"+ c #A2814F",
-"@ c #9CA8AD",
-"# c #B3B0A9",
+"  c #959E22",
+". c #98A323",
+"X c #ACB028",
+"o c #B4B82F",
+"O c #BCC036",
+"+ c #DFCB82",
+"@ c #EAEFF1",
+"# c #F3F2F0",
 /* pixels */
 "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
 "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",

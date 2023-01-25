@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 12:06:10 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/25 08:22:48 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/25 13:04:55 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int	ft_put_wall(t_sprite *s, t_program *p, char **map, t_vector pos)
 			p->sprite_position.y);
 	}
 	else if (wall.d == '0' && wall.b == '1' && wall.g == '1' && wall.e == '1'
-		&& wall.h == '1')
+		&& wall.h == '1' && wall.a == '0')
 	{
 		mlx_put_image_to_window(p->mlx, p->window.ref,
 			s->wall_01.ref, p->sprite_position.x,
@@ -182,6 +182,13 @@ int	ft_put_wall(t_sprite *s, t_program *p, char **map, t_vector pos)
 			s->wall_15.ref, p->sprite_position.x,
 			p->sprite_position.y);
 	}
+	else if (wall.a == '1' && wall.b == '1' && wall.c == '1' && wall.d == '0'
+		&& wall.e == '1' && wall.f == '0' && wall.g == '1' && wall.h == '1')
+	{
+		mlx_put_image_to_window(p->mlx, p->window.ref,
+			s->wall_16.ref, p->sprite_position.x,
+			p->sprite_position.y);
+	}
 	else
 	{
 		ft_put_grass(p, s);
@@ -206,34 +213,46 @@ int	ft_put_grass(t_program *p, t_sprite *s)
 
 	r_num = rand() % 1000;
 	printf("%d\n", r_num);
+	if (r_num % 1 == 0)
+	{
+		mlx_put_image_to_window(p->mlx, p->window.ref,
+			s->grass_00.ref, p->sprite_position.x,
+			p->sprite_position.y);
+	}
 	if (r_num % 2 == 0)
-	{
-		mlx_put_image_to_window(p->mlx, p->window.ref,
-			s->grass_02.ref, p->sprite_position.x,
-			p->sprite_position.y);
-	}
-	if (r_num % 3 == 0)
-	{
-		mlx_put_image_to_window(p->mlx, p->window.ref,
-			s->grass_05.ref, p->sprite_position.x,
-			p->sprite_position.y);
-	}
-	if (r_num / 18 == 0)
-	{
-		mlx_put_image_to_window(p->mlx, p->window.ref,
-			s->grass_04.ref, p->sprite_position.x,
-			p->sprite_position.y);
-	}
-	else
 	{
 		mlx_put_image_to_window(p->mlx, p->window.ref,
 			s->grass_01.ref, p->sprite_position.x,
 			p->sprite_position.y);
 	}
+	if (r_num % 4 == 0)
+	{
+		mlx_put_image_to_window(p->mlx, p->window.ref,
+			s->grass_02.ref, p->sprite_position.x,
+			p->sprite_position.y);
+	}
+	if (r_num % 15 == 0)
+	{
+		mlx_put_image_to_window(p->mlx, p->window.ref,
+			s->grass_03.ref, p->sprite_position.x,
+			p->sprite_position.y);
+	}
+	if (r_num % 40 == 0)
+	{
+		mlx_put_image_to_window(p->mlx, p->window.ref,
+			s->grass_07.ref, p->sprite_position.x,
+			p->sprite_position.y);
+	}
 	return (0);
 }
 
-
+int	ft_put_floor(t_program *p, t_sprite *s)
+{
+	mlx_put_image_to_window(p->mlx, p->window.ref,
+		s->floor_00.ref, p->sprite_position.x,
+		p->sprite_position.y);
+	return (0);
+}
 
 int	ft_sprite_map(t_sprite *s, t_program *p, char **map)
 {
@@ -250,13 +269,13 @@ int	ft_sprite_map(t_sprite *s, t_program *p, char **map)
 			if (map[pos.y][pos.x] == '1')
 				ft_put_wall(s, p, map, pos);
 			if (map[pos.y][pos.x] != '1')
-				ft_put_grass(p, s);
-			if (map[pos.y][pos.x] == 'C')
-			{
-				mlx_put_image_to_window(p->mlx, p->window.ref,
-					s->coin_01.ref, p->sprite_position.x,
-					p->sprite_position.y);
-			}
+				ft_put_floor(p, s);
+			// if (map[pos.y][pos.x] == 'C')
+			// {
+			// 	mlx_put_image_to_window(p->mlx, p->window.ref,
+			// 		s->coin_01.ref, p->sprite_position.x,
+			// 		p->sprite_position.y);
+			// }
 			pos.x++;
 		}
 		pos.y++;
