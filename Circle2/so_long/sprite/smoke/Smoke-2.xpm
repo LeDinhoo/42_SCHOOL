@@ -1,0 +1,22 @@
+/* XPM */
+static char *Smoke_2[] = {
+/* columns rows colors chars-per-pixel */
+"30 13 3 1 ",
+"  c #B0A079",
+". c #DBC7A2",
+"X c None",
+/* pixels */
+"XXX    XXXXXX    XXXXXX    XXX",
+"X......   XX      XX   ......X",
+".......   XXXX  XXXX   .......",
+"......   XXXXXXXXXXXX   ......",
+".....   XXXXXXXXXXXXXX   .....",
+"X....   XXXXXXXXXXXXXX   ....X",
+"X  .   XXXXXXXXXXXXXXXX   .  X",
+"X .... XXXXXXXXXXXXXXXX .... X",
+"XX .... XXXXXXXXXXXXXX .... XX",
+"XXXX.....XXXXXXXXXXXX.....XXXX",
+"XXXXX ...   XXXXXX   ... XXXXX",
+"XXXXXXXXX            XXXXXXXXX",
+"XXXXXXXXXXXXX    XXXXXXXXXXXXX"
+};

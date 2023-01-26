@@ -6,27 +6,11 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 11:22:56 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/25 16:12:30 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/26 09:00:29 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
-
-int	ft_release(int key, void *param)
-{
-	t_program	*p;
-
-	p = (t_program *)param;
-	if (key == 2)
-		p->player.x_dir = 0;
-	if (key == 13)
-		p->player.y_dir = 0;
-	if (key == 1)
-		p->player.y_dir = 0;
-	if (key == 0)
-		p->player.x_dir = 0;
-	return (0);
-}
 
 int	ft_game_init(t_map *map)
 {

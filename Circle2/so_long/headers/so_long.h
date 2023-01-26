@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/25 16:16:55 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/26 10:22:59 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,18 @@ int			ft_put_grass(t_program *p, t_sprite *s);
 int			ft_put_floor(t_program *p, t_sprite *s);
 int			ft_update_map(t_sprite *s, t_program *p, char **map);
 int			ft_put_spawn(t_program *p, t_sprite *s, t_vector pos_p);
+int			ft_sprite_wall(t_sprite *sprite, t_program *prog, t_player *p);
+int			ft_sprite_grass(t_sprite *sprite, t_program *prog, t_player *p);
+int			ft_wich_wall(char **map, t_vector pos, t_walls *wall);
+int			ft_init_wall(t_walls *wall);
+int			ft_put_wall(t_sprite *s, t_program *p, char **map, t_vector pos);
+int			put_wall_1(t_sprite *s, t_program *p, char **map, t_vector pos);
+int			put_wall_2(t_sprite *s, t_program *p, char **map, t_vector pos);
+int			put_wall_3(t_sprite *s, t_program *p, char **map, t_vector pos);
+int			put_wall_4(t_sprite *s, t_program *p, char **map, t_vector pos);
+int			put_wall_5(t_sprite *s, t_program *p, char **map, t_vector pos);
+int			put_wall_6(t_sprite *s, t_program *p, char **map, t_vector pos);
+int			put_wall_7(t_sprite *s, t_program *p, char **map, t_vector pos);
+int			put_wall_8(t_sprite *s, t_program *p, char **map, t_vector pos);
 
 #endif

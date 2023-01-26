@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 12:03:15 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/25 13:19:24 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/26 09:44:23 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,30 @@
 int	ft_all_sprite(t_sprite *sprite, t_program *prog, t_player *p)
 {
 	sprite->spawn = ft_new_sprite(prog->mlx, "./sprite/Spawn.xpm");
-	sprite->wall = ft_new_sprite(prog->mlx, "./sprite/Grass_01.xpm");
+	sprite->spawn_01 = ft_new_sprite(prog->mlx, "./sprite/Spawn_01.xpm");
+	sprite->coin_01 = ft_new_sprite(prog->mlx, "./sprite/coin_01.xpm");
+	p->py = ft_new_sprite(prog->mlx, "./sprite/player.xpm");
+	ft_sprite_grass(sprite, prog, p);
+	ft_sprite_wall(sprite, prog, p);
+	return (0);
+}
+
+int	ft_sprite_grass(t_sprite *sprite, t_program *prog, t_player *p)
+{
+	sprite->floor_00 = ft_new_sprite(prog->mlx, "./sprite/Floor_00.xpm");
+	sprite->p_floor = ft_new_sprite(prog->mlx, "./sprite/Grass_01.xpm");
+	sprite->grass_00 = ft_new_sprite(prog->mlx, "./sprite/Grass_00.xpm");
+	sprite->grass_01 = ft_new_sprite(prog->mlx, "./sprite/Grass_01.xpm");
+	sprite->grass_02 = ft_new_sprite(prog->mlx, "./sprite/Grass_02.xpm");
+	sprite->grass_03 = ft_new_sprite(prog->mlx, "./sprite/Grass_03.xpm");
+	sprite->grass_04 = ft_new_sprite(prog->mlx, "./sprite/Grass_04.xpm");
+	sprite->grass_05 = ft_new_sprite(prog->mlx, "./sprite/Grass_05.xpm");
+	sprite->grass_07 = ft_new_sprite(prog->mlx, "./sprite/Grass_07.xpm");
+
+}
+
+int	ft_sprite_wall(t_sprite *sprite, t_program *prog, t_player *p)
+{
 	sprite->wall_01 = ft_new_sprite(prog->mlx, "./sprite/Wall_05.xpm");
 	sprite->wall_02 = ft_new_sprite(prog->mlx, "./sprite/Wall_0.xpm");
 	sprite->wall_03 = ft_new_sprite(prog->mlx, "./sprite/Wall_09.xpm");
@@ -32,18 +55,6 @@ int	ft_all_sprite(t_sprite *sprite, t_program *prog, t_player *p)
 	sprite->wall_14 = ft_new_sprite(prog->mlx, "./sprite/Wall_10.xpm");
 	sprite->wall_15 = ft_new_sprite(prog->mlx, "./sprite/Wall_11.xpm");
 	sprite->wall_16 = ft_new_sprite(prog->mlx, "./sprite/Wall_16.xpm");
-	sprite->grass_00 = ft_new_sprite(prog->mlx, "./sprite/Grass_00.xpm");
-	sprite->grass_01 = ft_new_sprite(prog->mlx, "./sprite/Grass_01.xpm");
-	sprite->grass_02 = ft_new_sprite(prog->mlx, "./sprite/Grass_02.xpm");
-	sprite->grass_03 = ft_new_sprite(prog->mlx, "./sprite/Grass_03.xpm");
-	sprite->grass_04 = ft_new_sprite(prog->mlx, "./sprite/Grass_04.xpm");
-	sprite->grass_05 = ft_new_sprite(prog->mlx, "./sprite/Grass_05.xpm");
-	sprite->grass_07 = ft_new_sprite(prog->mlx, "./sprite/Grass_07.xpm");
-	sprite->coin_01 = ft_new_sprite(prog->mlx, "./sprite/coin_01.xpm");
-	sprite->floor_00 = ft_new_sprite(prog->mlx, "./sprite/Floor_00.xpm");
-	sprite->p_floor = ft_new_sprite(prog->mlx, "./sprite/Grass_01.xpm");
-	p->py = ft_new_sprite(prog->mlx, "./sprite/player.xpm");
-	return (0);
 }
 
 t_image	ft_new_sprite(void *mlx, char *path)

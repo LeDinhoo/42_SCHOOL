@@ -30,8 +30,12 @@ SRC = $(SRC_DIR)/main.c \
       $(SRC_DIR)/game/ft_game_init.c \
       $(SRC_DIR)/game/ft_window.c \
 	  $(SRC_DIR)/game/ft_open_imgs.c \
-	  $(SRC_DIR)/game/ft_render.c \
+	  $(SRC_DIR)/game/ft_wall.c \
+	  $(SRC_DIR)/game/ft_wall_bis.c \
 	  $(SRC_DIR)/game/ft_move.c \
+	  $(SRC_DIR)/game/ft_update.c \
+	  $(SRC_DIR)/game/ft_move_sprite.c \
+	  $(SRC_DIR)/game/ft_wall_matrix.c \
       $(SRC_DIR)/create_map/ft_create_map.c \
       $(SRC_DIR)/create_map/ft_map_init.c \
       $(SRC_DIR)/create_map/ft_is_valid.c \
