@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:16:52 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/19 14:51:07 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/26 10:29:17 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,7 @@ int	main(int argc, char **argv)
 	}
 	map.file = argv[1];
 	ft_map_init(&map);
-	int b = 0;
-	while (map.map[b])
-		printf("%s\n", map.map[b++]);
 	ft_game_init(&map);
-	// ft_free(map.map);
+	ft_free(map.map);
 	return (0);
 }
