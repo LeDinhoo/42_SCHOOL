@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 09:02:03 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/30 10:08:30 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/02/06 14:29:28 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ int	key_press(int key, void *param)
 
 	p = (t_program *)param;
 	if (key == 100)
-			p->player.x_dir = 1;
+		p->player.x_dir = 1;
 	if (key == 119)
-			p->player.y_dir = -1;
+		p->player.y_dir = -1;
 	if (key == 115)
-			p->player.y_dir = 1;
+		p->player.y_dir = 1;
 	if (key == 97)
-			p->player.x_dir = -1;
+		p->player.x_dir = -1;
 	return (0);
 }
 

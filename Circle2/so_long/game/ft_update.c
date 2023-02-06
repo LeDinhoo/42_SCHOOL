@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 11:22:56 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/02/06 11:41:51 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/02/06 14:27:22 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,6 @@ int	ft_update_map(t_sprite *s, t_program *p, char **map)
 
 int	ft_sprite_map(t_sprite *s, t_program *p, t_map *map)
 {
-	int b = 0;
-	while (map->map[b])
-	{
-		printf("%s\n", map->map[b]);
-		b++;
-	}
 	t_vector	pos;
 	t_vector	pos_p;
 

@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 14:57:16 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/02/06 12:00:40 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/02/06 14:30:00 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ char	*get_line(int fd, char *line, char *buffer, int i)
 	}
 	while (read(fd, buffer + i, 1) > 0 && buffer[i] != '\n')
 		i++;
-	if (buffer[i] != '\n' && i > 0)
-		buffer[i++] = '\n';
 	line = malloc(sizeof(char) * i + 1);
 	if (!line)
 		return (NULL);
@@ -38,7 +36,7 @@ char	*get_line(int fd, char *line, char *buffer, int i)
 			j++;
 		}
 	}
-	line[j] = '\0';
+	line[i] = '\0';
 	return (line);
 }
 

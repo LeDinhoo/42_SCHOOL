@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/30 09:39:29 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/02/06 13:47:07 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include "../libft/libft.h"
-# include "../mlx/mlx.h"
+# include "../mlx_linux/mlx.h"
 # include "map.h"
 
 char			*get_next_line(int fd);

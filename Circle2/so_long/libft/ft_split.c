@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 17:35:07 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/05 14:39:01 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/02/06 13:59:17 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static char	**ft_fill_malloc(char *s, char c, char **tab, size_t count)
 		s += i;
 		i = 0;
 		while ((ft_char_sep(s[i++], c) == 0))
-		l_words = i;
+			l_words = i;
 		tab[j] = ft_substr(s, 0, l_words);
 		if (!tab[j])
 			return (ft_free(tab, j));

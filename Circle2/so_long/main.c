@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:16:52 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/26 10:29:17 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/02/06 15:24:41 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,19 @@ void	*ft_free(char **map)
 	return (NULL);
 }
 
+int	ft_ext_valid(char *str)
+{
+	int	i;
+	
+	i = ft_strlen(str);
+	if (!(str[i - 1] == 'r' && str[i - 2] == 'e' && str[i - 3] == 'b' && str[i - 4] == '.'))
+	{
+		write(1, "Invalid extension !", 20);
+		exit (0);
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_map	map;
@@ -38,6 +51,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	map.file = argv[1];
+	ft_ext_valid(map.file);
 	ft_map_init(&map);
 	ft_game_init(&map);
 	ft_free(map.map);
