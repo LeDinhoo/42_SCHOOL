@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:31:29 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/12 15:11:29 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/02/06 12:07:56 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	**ft_fill_map(int fd, ssize_t nb_line, char **map)
 	map = malloc(sizeof(char *) * nb_line + 1);
 	if (!map)
 		return (free(map), NULL);
-	while (nb_line > 0)
+	while (nb_line >= 0)
 	{
 		map[y] = get_next_line(fd);
 		nb_line--;
@@ -54,5 +54,11 @@ char	**ft_create_map(t_map *map)
 	fd = open(map->file, O_RDONLY);
 	map->map = ft_fill_map(fd, map->height, map->map);
 	close(fd);
+	// int b = 0;
+	// while (map->map[b])
+	// {
+	// 	printf("%s\n", map->map[b]);
+	// 	b++;
+	// }
 	return (0);
 }

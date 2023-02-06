@@ -6,31 +6,34 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 13:24:08 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/12 14:20:52 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/31 07:22:07 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-int	ft_end_test(char **map, int y, int x)
+int	ft_end_test(t_map *map, int y, int x)
 {
-	if (map[y][x] == '2')
+	int	columns;
+	int	rows;
+
+	columns = map->width;
+	rows = map->height;
+	if (y < 0 || y >= rows || x < 0 || x >= columns)
 		return (0);
-	if (map[y][x] == 'E' || map[y][x] == 'P' || map[y][x] == 'C')
-		map[y][x] = '2';
-	if (map[y][x] >= 53)
+	if (map->map[y][x] == '2')
 		return (0);
-	if (map[y][x] != '1')
+	if (map->map[y][x] == 'E' || map->map[y][x] == 'P' || map->map[y][x] == 'C')
+		map->map[y][x] = '2';
+	if (map->map[y][x] >= 53)
+		return (0);
+	if (map->map[y][x] != '1')
 	{
-		map[y][x] += 5;
-		if (map[y][x + 1] != '1')
-			ft_end_test(map, y, x + 1);
-		if (map[y][x - 1] != '1')
-			ft_end_test(map, y, x - 1);
-		if (map[y - 1][x] != '1')
-			ft_end_test(map, y - 1, x);
-		if (map[y + 1][x] != '1')
-			ft_end_test(map, y + 1, x);
+		map->map[y][x] += 5;
+		ft_end_test(map, y, x + 1);
+		ft_end_test(map, y, x - 1);
+		ft_end_test(map, y - 1, x);
+		ft_end_test(map, y + 1, x);
 	}
 	return (0);
 }
@@ -83,7 +86,7 @@ int	ft_map_reset(t_map *map)
 
 int	ft_path_valid(t_map *map)
 {
-	ft_end_test(map->map, map->start_y, map->start_x);
+	ft_end_test(map, map->start_y, map->start_x);
 	if (ft_path_check(map->map))
 	{
 		ft_map_reset(map);

@@ -6,22 +6,40 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:21:56 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/12 14:09:09 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/02/06 12:11:43 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
+// int	ft_is_square(char **map)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	if (!map)
+// 		return (0);
+// 	while (map[i + 1])
+// 	{
+// 		if ((ft_strlen(map[i]) != (ft_strlen(map[i + 1]))))
+// 			return (0);
+// 		i++;
+// 	}
+// 	return (1);
+// }
+
 int	ft_is_square(char **map)
 {
 	int	i;
+	int	width;
 
 	i = 0;
-	if (!map)
+	if (!map || !map[0])
 		return (0);
+	width = ft_strlen(map[0]);
 	while (map[i + 1])
 	{
-		if ((ft_strlen(map[i]) != (ft_strlen(map[i + 1]))))
+		if (ft_strlen(map[i + 1]) != width)
 			return (0);
 		i++;
 	}

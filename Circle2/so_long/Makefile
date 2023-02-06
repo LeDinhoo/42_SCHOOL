@@ -1,4 +1,4 @@
-.PHONY: 		clean fclean re
+.PHONY: 		clean fclean re norm
 
 NAME = so_long
 
@@ -7,7 +7,7 @@ CC = gcc
 ifeq ($(shell uname),Linux)
    # Linux-specific commands
 	MLXFLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o
-	CFLAGS = -Wextra -Werror
+	CFLAGS = -Wextra -Werror -ggdb
 else
    # Mac OS X-specific commands
 	CFLAGS = -Wall -Wextra -Werror
@@ -37,7 +37,8 @@ SRC = $(SRC_DIR)/main.c \
 	  $(SRC_DIR)/game/ft_move_sprite.c \
 	  $(SRC_DIR)/game/ft_wall_matrix.c \
 	  $(SRC_DIR)/game/ft_anim.c \
-	  $(SRC_DIR)/game/ft_pixel.c \
+	  $(SRC_DIR)/game/ft_put_sprite.c \
+	  $(SRC_DIR)/game/ft_sprite_obj.c \
       $(SRC_DIR)/create_map/ft_create_map.c \
       $(SRC_DIR)/create_map/ft_map_init.c \
       $(SRC_DIR)/create_map/ft_is_valid.c \
@@ -59,6 +60,13 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)/create_map $(OBJ_DIR)/gnl $(OBJ_DIR)/game
 	@$(CC) $(CFLAGS) -I mlx -c $< -o $@
 
+norm:
+	@if ! norminette ./game ./create_map ./gnl ./libft | grep -v "OK" > /dev/null; then \
+		echo "\033[1;32mNorminette valide ! ✔️\033[0m"; \
+	else \
+		norminette ./game ./create_map ./gnl ./libft | grep -v "OK" | grep --color=always "Error"; \
+	fi
+
 clean:
 	@echo "\033[1;33mSuppression des fichiers objets... \033[0m🗑"
 		@rm -rf $(OBJ_DIR)
@@ -67,4 +75,4 @@ fclean: clean
 	@echo "\033[1;33mSuppression du programme final... \033[0m🗑"
 	@rm -f $(NAME)
 
-re: fclean all
+re: fclean norm all

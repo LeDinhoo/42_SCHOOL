@@ -6,15 +6,15 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 09:45:54 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/27 14:04:43 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/30 09:50:37 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAP_H
 # define MAP_H
 
-# ifndef ANIMATION_FRAMES
-#  define ANIMATION_FRAMES 10
+# ifndef FRAMES
+#  define FRAMES 7000000
 # endif
 
 typedef struct s_map

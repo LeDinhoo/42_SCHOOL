@@ -6,88 +6,33 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:24:38 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/12 12:56:30 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/31 08:08:49 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-int	ft_up_valid(char **map)
-{
-	int	i;
-
-	i = 0;
-	if (!map)
-		return (0);
-	while (map[0][i])
-	{
-		i++;
-		if (map[0][i] != '1' && map[0][i] != '\0')
-			return (0);
-	}
-	return (i);
-}
-
-int	ft_down_valid(char **map, int size)
-{
-	int	i;
-
-	i = 0;
-	if (!map)
-		return (0);
-	while (map[size - 1][i])
-	{
-		i++;
-		if (map[size - 1][i] != '1' && map[size - 1][i] != '\0')
-			return (0);
-	}
-	return (1);
-}
-
-int	ft_left_valid(char **map)
-{
-	int	i;
-
-	i = 0;
-	if (!map)
-		return (0);
-	while (map[i])
-	{
-		if (map[i][0] != '1')
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	ft_right_valid(char **map)
+int	ft_wall_valid(char **map, int size)
 {
 	int	i;
 	int	len;
 
-	i = 0;
 	len = 0;
-	if (!map)
-		return (0);
+	i = 0;
 	while (map[0][len])
 		len++;
-	while (map[i])
+	while (i < size)
 	{
-		if (map[i][len - 1] != '1')
+		if (map[i][0] != '1' || map[i][len - 1] != '1')
+			return (0);
+		i++;
+	}
+	i = 0;
+	while (i < len)
+	{
+		if (map[0][i] != '1' || map[size - 1][i] != '1')
 			return (0);
 		i++;
 	}
 	return (1);
-}
-
-int	ft_wall_valid(char **map, int size)
-{
-	if (!map)
-		return (0);
-	if (ft_up_valid(map))
-		if (ft_down_valid(map, size))
-			if (ft_left_valid(map))
-				if (ft_right_valid(map))
-					return (1);
-	return (0);
 }

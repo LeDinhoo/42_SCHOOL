@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/27 13:25:38 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/01/30 09:39:29 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,14 @@ unsigned int	ft_take_color(t_image *data, int i, int y);
 void			ft_read_player_by_pix(t_program *p, t_image player);
 int				ft_put_object(t_sprite *s, t_program *p, char **map);
 int				ft_sprite_obj(t_program *p, t_sprite *s);
+int			ft_wall_floor(t_program *p, t_sprite *s, char **map, t_vector pos);
+int				ft_check_all(t_program *p);
+int				ft_sprite_obj2(t_program *p, t_sprite *s, int frame);
+int				ft_sprite_obj3(t_program *p, t_sprite *s, int frame);
+int				ft_smoke_anim1(t_program *p, int y, int x, int frame);
+int				ft_smoke_anim2(t_program *p, int y, int x, int frame);
+int				ft_smoke_anim3(t_program *p, int y, int x, int frame);
+int				ft_smoke_anim4(t_program *p, int y, int x, int frame);
+int				ft_smoke_anim5(t_program *p, int y, int x, int frame);
 
 #endif
