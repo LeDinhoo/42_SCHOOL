@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 09:02:03 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/02/06 14:29:28 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/02/06 16:48:51 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	move_sprite_and_redraw(void *param)
 	if (frame % 1000 == 0)
 	{
 		ft_check_all(p);
+		ft_finish(p);
 		frame = 0;
 	}
 	return (0);
@@ -30,6 +31,8 @@ int	move_sprite_and_redraw(void *param)
 
 int	ft_check_all(t_program *p)
 {
+	static int	i;
+
 	if (!ft_check_right(p))
 		p->player.x_dir = 0;
 	else if (!ft_check_left(p))
@@ -45,6 +48,8 @@ int	ft_check_all(t_program *p)
 	}
 	if (p->player.x_dir != 0 || p->player.y_dir != 0)
 	{
+		i++;
+		printf("%d\n", i);
 		ft_update_map(&p->sprite, p, p->map);
 		mlx_put_image_to_window(p->mlx, p->window.ref, p->player.py.ref,
 			p->player.pos.x, p->player.pos.y);

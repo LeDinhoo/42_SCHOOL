@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 11:22:56 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/02/06 14:27:22 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/02/06 16:10:05 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,35 @@ int	ft_update_map(t_sprite *s, t_program *p, char **map)
 		pos.y++;
 	}
 	ft_put_spawn(p, s, pos_p);
+	ft_put_exit(p, s, map);
+	return (0);
+}
+
+int	ft_put_exit(t_program *p, t_sprite *s, char **map)
+{
+	t_vector	pos;
+	t_vector	pos_p;
+
+	pos.y = 0;
+	while (map[pos.y])
+	{
+		pos.x = 0;
+		while (map[pos.y][pos.x])
+		{
+			if (map[pos.y][pos.x] == 'E')
+			{
+				pos_p.y = pos.y;
+				pos_p.x = pos.x;
+			}
+			pos.x++;
+		}
+		pos.y++;
+	}
+	p->sprite_position.x = ((pos_p.x * 64) - 32);
+	p->sprite_position.y = ((pos_p.y * 64) - 32);
+	mlx_put_image_to_window(p->mlx, p->window.ref,
+		s->spawn.ref, p->sprite_position.x,
+		p->sprite_position.y);
 	return (0);
 }
 
@@ -61,6 +90,7 @@ int	ft_sprite_map(t_sprite *s, t_program *p, t_map *map)
 		pos.y++;
 	}
 	ft_put_spawn(p, s, pos_p);
+	ft_put_exit(p, s, map->map);
 	ft_put_object(s, p, map->map);
 	return (0);
 }

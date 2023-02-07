@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/02/06 13:47:07 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/02/06 16:19:23 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,7 @@ int				ft_smoke_anim2(t_program *p, int y, int x, int frame);
 int				ft_smoke_anim3(t_program *p, int y, int x, int frame);
 int				ft_smoke_anim4(t_program *p, int y, int x, int frame);
 int				ft_smoke_anim5(t_program *p, int y, int x, int frame);
+int				ft_put_exit(t_program *p, t_sprite *s, char **map);
+int				ft_finish(t_program *p);
 
 #endif

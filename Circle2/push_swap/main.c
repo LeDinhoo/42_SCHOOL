@@ -6,34 +6,34 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 05:16:09 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/02/07 06:11:36 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/02/07 12:27:54 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers/push_swap.h"
 
+int	ft_sort_sa(t_stack *lst)
+{
+	t_stack	
+}
+
 int	main(int argc, char **argv)
 {
-	t_list	*tmp;
-	t_list	*new;
+	t_stack	*new;
 	int		i;
-	int		*num;
 
-	i = argc - 1;
-	tmp = NULL;
-	while (i > 0)
+	if (argc == 1)
+		return (0);
+	i = 1;
+	while (i < argc)
 	{
-		new = (t_list *)malloc(sizeof(t_list));
+		new = (t_stack *)malloc(sizeof(t_stack));
 		if (!new)
 			return (0);
-		num = (int *)malloc(sizeof(int));
-		if (!num)
-			return (0);
-		*num = atoi(argv[i]);
-		new->content = num;
-		new->next = tmp;
-		tmp = new;
-		i--;
+		new->content = ft_atoi(argv[i]);
+		new->next = NULL;
+		new = new->next;
+		i++;
 	}
 	return (0);
 }

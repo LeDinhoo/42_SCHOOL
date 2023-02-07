@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/02/07 05:37:42 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/02/07 11:23:19 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,11 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include "../libft/libft.h"
+
+typedef struct s_stack
+{
+	int				content;
+	struct s_stack	*next;
+}	t_stack;
 
 #endif
