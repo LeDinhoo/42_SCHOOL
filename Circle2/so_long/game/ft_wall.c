@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 12:06:10 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/26 10:26:50 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/02/07 04:19:08 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	put_wall_6(t_sprite *s, t_program *p, char **map, t_vector pos)
 		return (1);
 	}
 	else if (wall.g == '1' && wall.a == '0' && wall.b == '0' && wall.c == '0'
-		&& wall.d == '0' && wall.e == '0' && wall.f == '0' && wall.h == '0')
+		&& wall.d == '0' && wall.e == '0')
 	{
 		mlx_put_image_to_window(p->mlx, p->window.ref,
 			s->wall_12.ref, p->sprite_position.x,

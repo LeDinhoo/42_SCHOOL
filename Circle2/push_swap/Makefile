@@ -22,7 +22,15 @@ LIBFT_A		= libft.a
 LIBF_DIR 	= libft/
 LIBFT		= $(addprefix $(LIBF_DIR), $(LIBFT_A))
 
-SRC = $(SRC_DIR)/main.c \
+SRC =	$(SRC_DIR)/main.c 					\
+		$(SRC_DIR)/move/ft_swap.c 			\
+		$(SRC_DIR)/move/ft_rotate.c 		\
+		$(SRC_DIR)/move/ft_rev_rotate.c		\
+		$(SRC_DIR)/utils/ft_add.c 			\
+		$(SRC_DIR)/utils/ft_push.c 			\
+		$(SRC_DIR)/utils/ft_print_list.c 	\
+		$(SRC_DIR)/utils/ft_create_list.c 	\
+
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
@@ -33,14 +41,14 @@ $(NAME): $(OBJ)
 	@echo "\033[1;34mCompilation terminée avec succès ! ✔️\033[0m"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(OBJ_DIR)/create_map $(OBJ_DIR)/gnl $(OBJ_DIR)/game
-	@$(CC) $(CFLAGS) -I mlx -c $< -o $@
+	@mkdir -p $(OBJ_DIR)/move $(OBJ_DIR)/utils
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 norm:
-	@if ! norminette main.c ./libft | grep -v "OK" > /dev/null; then \
+	@if ! norminette main.c ./libft ./move ./utils | grep -v "OK" > /dev/null; then \
 		echo "\033[1;32mNorminette valide ! ✔️\033[0m"; \
 	else \
-		norminette main.c ./libft | grep -v "OK" | grep --color=always "Error"; \
+		norminette main.c ./libft ./move ./utils | grep -v "OK" | grep --color=always "Error"; \
 	fi
 
 clean:

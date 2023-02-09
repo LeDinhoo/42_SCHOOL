@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 10:24:58 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/26 10:27:04 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/02/07 04:09:43 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ int	put_wall_3(t_sprite *s, t_program *p, char **map, t_vector pos)
 
 	ft_init_wall(&wall);
 	ft_wich_wall(map, pos, &wall);
-	if (wall.e == '0' && wall.b == '1' && wall.g == '1' && wall.d == '1'
-		&& wall.a == '1')
+	if (wall.e == '0' && wall.b == '1' && wall.g == '1' && wall.d != '0'
+		&& wall.a != '0')
 	{
 		mlx_put_image_to_window(p->mlx, p->window.ref,
 			s->wall_02.ref, p->sprite_position.x,
