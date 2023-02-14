@@ -22,6 +22,10 @@ LIBFT_A		= libft.a
 LIBF_DIR 	= libft/
 LIBFT		= $(addprefix $(LIBF_DIR), $(LIBFT_A))
 
+PRINT_A		= libftprintf.a
+PRINT_DIR 	= ft_printf/
+PRINT		= $(addprefix $(PRINT_DIR), $(PRINT_A))
+
 SRC =	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/move/ft_swap.c 			\
 		$(SRC_DIR)/move/ft_rotate.c 		\
@@ -30,6 +34,7 @@ SRC =	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/utils/ft_push.c 			\
 		$(SRC_DIR)/utils/ft_print_list.c 	\
 		$(SRC_DIR)/utils/ft_create_list.c 	\
+		$(SRC_DIR)/utils/ft_sort.c 	\
 
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
@@ -37,7 +42,7 @@ OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(PRINT) -o $(NAME)
 	@echo "\033[1;34mCompilation terminée avec succès ! ✔️\033[0m"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
@@ -45,10 +50,10 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 norm:
-	@if ! norminette main.c ./libft ./move ./utils | grep -v "OK" > /dev/null; then \
+	@if ! norminette main.c ./libft ./move ./utils ./ft_printf | grep -v "OK" > /dev/null; then \
 		echo "\033[1;32mNorminette valide ! ✔️\033[0m"; \
 	else \
-		norminette main.c ./libft ./move ./utils | grep -v "OK" | grep --color=always "Error"; \
+		norminette main.c ./libft ./move ./utils ./ft_printf | grep -v "OK" | grep --color=always "Error"; \
 	fi
 
 clean:

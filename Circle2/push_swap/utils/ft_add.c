@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 08:33:48 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/02/09 08:35:26 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/02/10 06:31:35 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ int	ft_num_add(t_top *num, int nb)
 	if (!num || !nb)
 		return (0);
 	new = malloc(sizeof(t_num));
+	if (!new)
+	{
+		free(new);
+		return (0);
+	}
 	new->content = nb;
 	new->next = num->first;
 	num->first = new;
@@ -33,6 +38,11 @@ int	ft_num_addback(t_top *num, int nb)
 	if (!num || !nb)
 		return (0);
 	new = malloc(sizeof(t_num));
+	if (!new)
+	{
+		free(new);
+		return (0);
+	}
 	new->content = nb;
 	new->next = NULL;
 	if (num->first == NULL)

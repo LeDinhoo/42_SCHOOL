@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:06:41 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/30 10:32:53 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/02/14 11:26:32 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static int	ft_overflow(int sign)
 	return (-1);
 }
 
-int	ft_atoi(char *str)
+long long int	ft_atoi(char *str)
 {
-	long int	result;
-	int			countsign;
+	long long int	result;
+	int				countsign;
 
 	result = 0;
 	countsign = 1;

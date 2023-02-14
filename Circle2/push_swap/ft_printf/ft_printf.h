@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_list.c                                    :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/09 08:44:19 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/02/10 06:55:55 by hdupuy           ###   ########.fr       */
+/*   Created: 2022/11/25 14:20:10 by hdupuy            #+#    #+#             */
+/*   Updated: 2022/12/01 14:21:13 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/push_swap.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	ft_print_list(t_top *top)
-{
-	t_num	*new;
+# include <stdlib.h>
+# include <stdarg.h>
+# include <unistd.h>
 
-	new = top->first;
-	while (new)
-	{
-		ft_printf("%d\n", new->content);
-		new = new->next;
-	}
-	return (0);
-}
+int			ft_printf(const char *s, ...);
+int			ft_wich_type(char type, va_list s_arg);
+int			ft_putstr(char *s);
+int			ft_putnbr(int nb);
+int			ft_putchar(char c);
+int			ft_hex(unsigned long long nb, char *base);
+int			ft_putunbr(unsigned int nb);
+
+#endif

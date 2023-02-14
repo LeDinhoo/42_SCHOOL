@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 08:36:39 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/02/09 08:37:15 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/02/10 07:00:03 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	ft_sort_rb(t_top *top)
 		free(del);
 	}
 	ft_num_addback(top, num);
+	ft_printf("rb\n");
 	return (0);
 }
 
@@ -47,6 +48,7 @@ int	ft_sort_ra(t_top *top)
 		free(del);
 	}
 	ft_num_addback(top, num);
+	ft_printf("ra\n");
 	return (0);
 }
 
@@ -56,5 +58,6 @@ int	ft_sort_rr(t_top *top_a, t_top *top_b)
 		return (0);
 	ft_sort_ra(top_a);
 	ft_sort_rb(top_b);
+	ft_printf("rr\n");
 	return (0);
 }
