@@ -26,6 +26,10 @@ MLX_A		= libmlx.a
 MLX_DIR 	= mlx/
 MLX			= $(addprefix $(MLX_DIR), $(MLX_A))
 
+PRINT_A		= libftprintf.a
+PRINT_DIR 	= ft_printf/
+PRINT		= $(addprefix $(PRINT_DIR), $(PRINT_A))
+
 SRC = $(SRC_DIR)/main.c \
       $(SRC_DIR)/game/ft_game_init.c \
       $(SRC_DIR)/game/ft_window.c \
@@ -53,7 +57,7 @@ OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLXFLAGS) $(MLX) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(PRINT) $(MLXFLAGS) $(MLX) -o $(NAME)
 	@echo "\033[1;34mCompilation terminée avec succès ! ✔️\033[0m"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
@@ -61,10 +65,10 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(CC) $(CFLAGS) -I mlx -c $< -o $@
 
 norm:
-	@if ! norminette ./game ./create_map ./gnl ./libft | grep -v "OK" > /dev/null; then \
+	@if ! norminette ./game ./create_map ./gnl ./libft ./ft_printf | grep -v "OK" > /dev/null; then \
 		echo "\033[1;32mNorminette valide ! ✔️\033[0m"; \
 	else \
-		norminette ./game ./create_map ./gnl ./libft | grep -v "OK" | grep --color=always "Error"; \
+		norminette ./game ./create_map ./gnl ./libft ./ft_printf | grep -v "OK" | grep --color=always "Error"; \
 	fi
 
 clean:

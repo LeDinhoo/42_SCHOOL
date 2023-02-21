@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 09:45:54 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/30 09:50:37 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/02/21 14:48:13 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ typedef struct s_sprite
 typedef struct s_program
 {
 	void		*mlx;
-	char		**map;
+	t_map		map;
 	t_image		img;
 	t_window	window;
 	t_vector	sprite_position;

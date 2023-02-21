@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 09:02:03 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/02/06 16:48:51 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/02/21 15:29:01 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	move_sprite_and_redraw(void *param)
 
 	p = (t_program *)param;
 	frame++;
-	ft_put_object(&p->sprite, p, p->map);
+	ft_put_object(&p->sprite, p, p->map.map);
 	if (frame % 1000 == 0)
 	{
 		ft_check_all(p);
@@ -49,8 +49,8 @@ int	ft_check_all(t_program *p)
 	if (p->player.x_dir != 0 || p->player.y_dir != 0)
 	{
 		i++;
-		printf("%d\n", i);
-		ft_update_map(&p->sprite, p, p->map);
+		ft_printf("%d\n", i);
+		ft_update_map(&p->sprite, p, p->map.map);
 		mlx_put_image_to_window(p->mlx, p->window.ref, p->player.py.ref,
 			p->player.pos.x, p->player.pos.y);
 	}
@@ -62,6 +62,12 @@ int	key_press(int key, void *param)
 	t_program	*p;
 
 	p = (t_program *)param;
+	if (key == 65307)
+	{
+		mlx_destroy_window(p->mlx, p->window.ref);
+		ft_free(p->map.map);
+		exit(0);
+	}
 	if (key == 100)
 		p->player.x_dir = 1;
 	if (key == 119)
