@@ -34,7 +34,8 @@ SRC =	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/utils/ft_push.c 			\
 		$(SRC_DIR)/utils/ft_print_list.c 	\
 		$(SRC_DIR)/utils/ft_create_list.c 	\
-		$(SRC_DIR)/utils/ft_sort.c 	\
+		$(SRC_DIR)/utils/ft_sort.c 			\
+		$(SRC_DIR)/utils/ft_short_sort.c 	\
 
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

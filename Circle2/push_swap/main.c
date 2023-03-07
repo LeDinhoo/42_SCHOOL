@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 05:16:09 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/02/14 11:48:13 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/03/07 14:27:17 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,8 @@ int	main(int argc, char **argv)
 	a = malloc(sizeof(t_num));
 	ft_create_list(size, argv, top_a, a);
 	ft_put_index(top_a);
+	if (argc <= 5)
+		ft_short_sort(top_a, top_b, argc);
 	ft_sort_radix(top_a, top_b);
 	ft_free_list(top_a);
 	ft_free_list(top_b);
