@@ -1,0 +1,136 @@
+Date : 2023-03-07 14:55:03
+Directory : /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long
+Total : 97 files,  4857 codes, 1051 comments, 869 blanks, all 6777 lines
+
+Languages
++--------------+------------+------------+------------+------------+------------+
+| language     | files      | code       | comment    | blank      | total      |
++--------------+------------+------------+------------+------------+------------+
+| C            |         82 |      4,118 |        874 |        648 |      5,640 |
+| C++          |          6 |        394 |        127 |         87 |        608 |
+| Makefile     |          6 |        216 |         29 |         94 |        339 |
+| Shell Script |          1 |         72 |          8 |         15 |         95 |
+| Markdown     |          1 |         39 |          0 |         17 |         56 |
+| Perl         |          1 |         18 |         13 |          8 |         39 |
++--------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                         | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                            |         97 |      4,857 |      1,051 |        869 |      6,777 |
+| . (Files)                                                                                    |          2 |        105 |         13 |         26 |        144 |
+| create_map                                                                                   |          7 |        351 |         77 |         51 |        479 |
+| ft_printf                                                                                    |          4 |        131 |         35 |         41 |        207 |
+| game                                                                                         |         12 |        911 |        132 |         98 |      1,141 |
+| gnl                                                                                          |          1 |         35 |         11 |          6 |         52 |
+| headers                                                                                      |          2 |        205 |         22 |         19 |        246 |
+| libft                                                                                        |         26 |        599 |        277 |        131 |      1,007 |
+| mlx_linux                                                                                    |         43 |      2,520 |        484 |        497 |      3,501 |
+| mlx_linux (Files)                                                                            |         39 |      2,152 |        473 |        415 |      3,040 |
+| mlx_linux/test                                                                               |          4 |        368 |         11 |         82 |        461 |
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------+--------------+------------+------------+------------+------------+
+| filename                                                                                     | language     | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------+--------------+------------+------------+------------+------------+
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/Makefile                               | Makefile     |         63 |          2 |         18 |         83 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/create_map/ft_create_map.c             | C            |         40 |         11 |          8 |         59 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/create_map/ft_is_valid.c               | C            |         49 |         11 |          7 |         67 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/create_map/ft_map_info.c               | C            |         75 |         11 |         11 |         97 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/create_map/ft_map_init.c               | C            |          7 |         11 |          3 |         21 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/create_map/ft_objects_valid.c          | C            |         79 |         11 |          9 |         99 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/create_map/ft_path_valid.c             | C            |         77 |         11 |          9 |         97 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/create_map/ft_wall_valid.c             | C            |         24 |         11 |          4 |         39 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/ft_printf/Makefile                     | Makefile     |         29 |          2 |         22 |         53 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/ft_printf/ft_printf.c                  | C            |         49 |         11 |          6 |         66 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/ft_printf/ft_printf.h                  | C++          |         13 |         11 |          5 |         29 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/ft_printf/ft_printf_utils.c            | C            |         40 |         11 |          8 |         59 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/game/ft_anim.c                         | C            |        121 |         11 |          7 |        139 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/game/ft_game_init.c                    | C            |         59 |         11 |          7 |         77 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/game/ft_move.c                         | C            |         89 |         11 |         10 |        110 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/game/ft_move_sprite.c                  | C            |         76 |         11 |         10 |         97 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/game/ft_open_imgs.c                    | C            |         80 |         11 |          8 |         99 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/game/ft_put_sprite.c                   | C            |         51 |         11 |          7 |         69 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/game/ft_sprite_obj.c                   | C            |         83 |         11 |          8 |        102 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/game/ft_update.c                       | C            |        101 |         11 |         10 |        122 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/game/ft_wall.c                         | C            |         90 |         11 |         10 |        111 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/game/ft_wall_bis.c                     | C            |        108 |         11 |         11 |        130 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/game/ft_wall_matrix.c                  | C            |         39 |         11 |          5 |         55 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/game/ft_window.c                       | C            |         14 |         11 |          5 |         30 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/gnl/get_next_line.c                    | C            |         35 |         11 |          6 |         52 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/headers/map.h                          | C++          |        126 |         11 |         13 |        150 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/headers/so_long.h                      | C++          |         79 |         11 |          6 |         96 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/Makefile                         | Makefile     |         46 |          2 |         19 |         67 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_atoi.c                        | C            |         30 |         11 |          5 |         46 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_bzero.c                       | C            |          6 |         11 |          3 |         20 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_calloc.c                      | C            |         14 |         11 |          4 |         29 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_itoa.c                        | C            |         61 |         11 |          8 |         80 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_memchr.c                      | C            |         16 |         11 |          4 |         31 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_memcmp.c                      | C            |         18 |         11 |          4 |         33 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_memcpy.c                      | C            |         17 |         11 |          4 |         32 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_memmove.c                     | C            |         16 |         11 |          4 |         31 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_memset.c                      | C            |         15 |         11 |          4 |         30 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_split.c                       | C            |         75 |         11 |         10 |         96 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_strchr.c                      | C            |         17 |         11 |          4 |         32 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_strdup.c                      | C            |         19 |         11 |          4 |         34 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_strichr.c                     | C            |         10 |         11 |          4 |         25 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_striteri.c                    | C            |         13 |         11 |          4 |         28 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_strjoin.c                     | C            |         26 |         11 |          4 |         41 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_strlcat.c                     | C            |         21 |         11 |          4 |         36 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_strlcpy.c                     | C            |         24 |         11 |          4 |         39 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_strlen.c                      | C            |         11 |         11 |          4 |         26 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_strmapi.c                     | C            |         21 |         11 |          4 |         36 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_strncmp.c                     | C            |         15 |         11 |          4 |         30 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_strnstr.c                     | C            |         20 |         11 |          4 |         35 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_strrchr.c                     | C            |         13 |         11 |          4 |         28 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_strtrim.c                     | C            |         15 |         11 |          4 |         30 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/ft_substr.c                      | C            |         25 |         11 |          4 |         40 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/libft/libft.h                          | C++          |         35 |         11 |          6 |         52 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/main.c                                 | C            |         42 |         11 |          8 |         61 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/Makefile                     | Makefile     |          6 |         10 |          7 |         23 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/Makefile.mk                  | Makefile     |         42 |         10 |         15 |         67 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/README.md                    | Markdown     |         39 |          0 |         17 |         56 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx.h                        | C++          |         39 |         70 |         31 |        140 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_clear_window.c           | C            |          7 |          9 |          6 |         22 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_destroy_display.c        | C            |          5 |         11 |          3 |         19 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_destroy_image.c          | C            |         17 |         10 |          5 |         32 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_destroy_window.c         | C            |         24 |          9 |          6 |         39 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_expose_hook.c            | C            |          7 |          9 |          7 |         23 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_ext_randr.c              | C            |         85 |          2 |         18 |        105 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_flush_event.c            | C            |          9 |          9 |          8 |         26 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_get_color_value.c        | C            |         18 |          9 |          7 |         34 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_get_data_addr.c          | C            |          9 |          9 |          6 |         24 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_hook.c                   | C            |         20 |          9 |         12 |         41 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_init.c                   | C            |         70 |         17 |         13 |        100 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_int.h                    | C++          |        102 |         13 |         26 |        141 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_int_anti_resize_win.c    | C            |         15 |          9 |          5 |         29 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_int_do_nothing.c         | C            |          3 |          9 |          5 |         17 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_int_get_visual.c         | C            |         19 |         12 |          9 |         40 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_int_param_event.c        | C            |         80 |          9 |         12 |        101 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_int_set_win_event_mask.c | C            |         18 |          9 |          8 |         35 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_int_str_to_wordtab.c     | C            |         92 |          9 |         13 |        114 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_int_wait_first_expose.c  | C            |          7 |          9 |          8 |         24 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_key_hook.c               | C            |          7 |          9 |          7 |         23 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_lib_xpm.c                | C            |         73 |          9 |         15 |         97 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_loop.c                   | C            |         45 |          9 |         10 |         64 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_loop_hook.c              | C            |          6 |          9 |          7 |         22 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_mouse.c                  | C            |         34 |          7 |          8 |         49 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_mouse_hook.c             | C            |          7 |          9 |          7 |         23 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_new_image.c              | C            |        122 |         15 |         23 |        160 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_new_window.c             | C            |         31 |         25 |          7 |         63 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_pixel_put.c              | C            |         11 |          9 |          7 |         27 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_put_image_to_window.c    | C            |         22 |          9 |          7 |         38 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_rgb.c                    | C            |        758 |          4 |          3 |        765 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_screen_size.c            | C            |         11 |          0 |          3 |         14 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_set_font.c               | C            |          9 |         17 |          5 |         31 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_string_put.c             | C            |         11 |          9 |          7 |         27 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/mlx_xpm.c                    | C            |        254 |         48 |         44 |        346 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/rgb2c.pl                     | Perl         |         18 |         13 |          8 |         39 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/test/Makefile.mk             | Makefile     |         30 |          3 |         13 |         46 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/test/main.c                  | C            |        245 |          0 |         43 |        288 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/test/new_win.c               | C            |         21 |          0 |         11 |         32 |
+| /nfs/homes/hdupuy/Documents/42_SCHOOL/Circle2/so_long/mlx_linux/test/run_tests.sh            | Shell Script |         72 |          8 |         15 |         95 |
+| Total                                                                                        |              |      4,857 |      1,051 |        869 |      6,777 |
++----------------------------------------------------------------------------------------------+--------------+------------+------------+------------+------------+

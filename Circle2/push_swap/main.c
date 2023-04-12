@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 05:16:09 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/03/07 14:27:17 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/04/12 15:01:15 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ int	main(int argc, char **argv)
 		exit (0);
 	}
 	top_a = malloc(sizeof(t_top));
+	if (!top_a)
+		return (NULL);
 	top_b = malloc(sizeof(t_top));
 	a = malloc(sizeof(t_num));
 	ft_create_list(size, argv, top_a, a);
