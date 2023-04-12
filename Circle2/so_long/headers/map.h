@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 09:45:54 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/02/21 14:48:13 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/04/12 15:42:46 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MAP_H
 
 # ifndef FRAMES
-#  define FRAMES 7000000
+#  define FRAMES 70000
 # endif
 
 typedef struct s_map
@@ -144,6 +144,6 @@ typedef struct s_program
 }	t_program;
 
 t_window	ft_new_window(void *mlx, int widht, int height, char *name);
-t_image		ft_new_sprite(void *mlx, char *path);
+t_image		ft_new_sprite(void *mlx, char *path, t_program *p);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/02/21 15:29:43 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/04/12 15:41:34 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int				ft_count_objs(char **map);
 int				ft_objects_valid(t_map *map);
 void			ft_map_init(t_map *map);
 int				ft_all_sprite(t_sprite *sprite, t_program *prog, t_player *p);
-t_image			ft_new_sprite(void *mlx, char *path);
+t_image			ft_new_sprite(void *mlx, char *path, t_program *p);
 int				move_sprite_and_redraw(void *param);
 int				ft_sprite_map(t_sprite *s, t_program *p, t_map *map);
 int				key_press(int key, void *param);
@@ -56,9 +56,9 @@ int				ft_put_grass(t_program *p, t_sprite *s);
 int				ft_put_floor(t_program *p, t_sprite *s);
 int				ft_update_map(t_sprite *s, t_program *p, char **map);
 int				ft_put_spawn(t_program *p, t_sprite *s, t_vector pos_p);
-int				ft_sprite_wall(t_sprite *sprite, t_program *prog, t_player *p);
-int				ft_sprite_grass(t_sprite *sprite, t_program *prog, t_player *p);
-int				ft_sprite_smoke(t_sprite *sprite, t_program *prog, t_player *p);
+int				ft_sprite_wall(t_sprite *sprite, t_program *prog);
+int				ft_sprite_grass(t_sprite *sprite, t_program *prog);
+int				ft_sprite_smoke(t_sprite *sprite, t_program *prog);
 int				ft_wich_wall(char **map, t_vector pos, t_walls *wall);
 int				ft_init_wall(t_walls *wall);
 int				ft_put_wall(t_sprite *s, t_program *p,
@@ -90,6 +90,7 @@ int				ft_smoke_anim4(t_program *p, int y, int x, int frame);
 int				ft_smoke_anim5(t_program *p, int y, int x, int frame);
 int				ft_put_exit(t_program *p, t_sprite *s, char **map);
 int				ft_finish(t_program *p);
-void			*ft_free(char **map);
+void			*ft_free(t_program *p);
+int				ft_end(t_program *p);
 
 #endif

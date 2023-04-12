@@ -4,16 +4,27 @@ NAME = so_long
 
 CC = gcc
 
-ifeq ($(shell uname),Linux)
+# ifeq ($(shell uname),Linux)
    # Linux-specific commands
 	MLXFLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o
-	CFLAGS = -Wextra -Werror -ggdb
-else
-   # Mac OS X-specific commands
-	CFLAGS = -Wall -Wextra -Werror
-	MLXFLAGS = -framework OpenGL -framework AppKit -Lmlx -lmlx -lm
-endif
+	CFLAGS = -Wall -Wextra -Werror -ggdb
+	MAKEFLAGS	+= --no-print-directory -s
+# else
+#    # Mac OS X-specific commands
+# 	CFLAGS = -Wall -Wextra -Werror
+# 	MLXFLAGS = -framework OpenGL -framework AppKit -Lmlx -lmlx -lm
+# endif
 
+DISPLAY = @printf
+
+# COLORS
+RED			= \033[1;31m
+GREEN		= \033[1;32m
+YELLOW		= \033[1;33m
+BLUE		= \033[1;34m
+CYAN		= \033[1;36m
+DEFAULT		= \033[0m
+SUPPR		= \r\033[2K
 
 SRC_DIR = .
 OBJ_DIR = .obj
@@ -54,15 +65,19 @@ SRC = $(SRC_DIR)/main.c \
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
+
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): lib $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(PRINT) $(MLXFLAGS) $(MLX) -o $(NAME)
 	@echo "\033[1;34mCompilation terminée avec succès ! ✔️\033[0m"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)/create_map $(OBJ_DIR)/gnl $(OBJ_DIR)/game
 	@$(CC) $(CFLAGS) -I mlx -c $< -o $@
+
+lib:
+	@make -C ./libft
 
 norm:
 	@if ! norminette ./game ./create_map ./gnl ./libft ./ft_printf | grep -v "OK" > /dev/null; then \

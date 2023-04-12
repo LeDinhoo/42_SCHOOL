@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 09:02:03 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/02/21 15:29:01 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/03/10 12:07:00 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	move_sprite_and_redraw(void *param)
 	p = (t_program *)param;
 	frame++;
 	ft_put_object(&p->sprite, p, p->map.map);
-	if (frame % 1000 == 0)
+	if (frame % 100 == 0)
 	{
 		ft_check_all(p);
 		ft_finish(p);
@@ -57,17 +57,20 @@ int	ft_check_all(t_program *p)
 	return (0);
 }
 
+int	ft_stop(t_program *p)
+{
+	ft_free(p);
+	ft_end(p);
+	exit(0);
+}
+
 int	key_press(int key, void *param)
 {
 	t_program	*p;
 
 	p = (t_program *)param;
 	if (key == 65307)
-	{
-		mlx_destroy_window(p->mlx, p->window.ref);
-		ft_free(p->map.map);
-		exit(0);
-	}
+		ft_stop(p);
 	if (key == 100)
 		p->player.x_dir = 1;
 	if (key == 119)

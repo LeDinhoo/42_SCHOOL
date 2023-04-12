@@ -6,26 +6,27 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:16:52 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/02/21 14:55:18 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/03/10 12:16:54 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers/so_long.h"
 
-void	*ft_free(char **map)
+void	*ft_free(t_program *p)
 {
-	ssize_t	idx;
+	int		i;
 
-	idx = 0;
-	while (map[idx])
-		idx++;
-	while (idx > 0)
+	i = 0;
+	if (p->map.map != NULL)
 	{
-		idx--;
-		free(map[idx]);
+		while (p->map.map[i] != NULL)
+		{
+			free(p->map.map[i]);
+			i++;
+		}
+		free(p->map.map);
 	}
-	free(map);
-	return (NULL);
+	return (0);
 }
 
 int	ft_ext_valid(char *str)
@@ -55,6 +56,6 @@ int	main(int argc, char **argv)
 	ft_ext_valid(prog.map.file);
 	ft_map_init(&prog.map);
 	ft_game_init(&prog);
-	ft_free(prog.map.map);
+	ft_free(&prog);
 	exit(0);
 }
