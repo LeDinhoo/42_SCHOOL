@@ -6,28 +6,11 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 20:16:52 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/03/10 12:16:54 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/04/14 11:48:03 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headers/so_long.h"
-
-void	*ft_free(t_program *p)
-{
-	int		i;
-
-	i = 0;
-	if (p->map.map != NULL)
-	{
-		while (p->map.map[i] != NULL)
-		{
-			free(p->map.map[i]);
-			i++;
-		}
-		free(p->map.map);
-	}
-	return (0);
-}
 
 int	ft_ext_valid(char *str)
 {

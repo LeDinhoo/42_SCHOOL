@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/04/12 15:41:34 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/04/14 11:24:31 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int				ft_count_objs(char **map);
 int				ft_objects_valid(t_map *map);
 void			ft_map_init(t_map *map);
 int				ft_all_sprite(t_sprite *sprite, t_program *prog, t_player *p);
-t_image			ft_new_sprite(void *mlx, char *path, t_program *p);
+t_image			ft_new_sprite(void *mlx, char *path, t_program *t_program);
 int				move_sprite_and_redraw(void *param);
 int				ft_sprite_map(t_sprite *s, t_program *p, t_map *map);
 int				key_press(int key, void *param);
@@ -92,5 +92,6 @@ int				ft_put_exit(t_program *p, t_sprite *s, char **map);
 int				ft_finish(t_program *p);
 void			*ft_free(t_program *p);
 int				ft_end(t_program *p);
+void			ft_free_images(t_program *p);
 
 #endif

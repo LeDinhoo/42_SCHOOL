@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 09:45:54 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/04/12 15:42:46 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/04/14 11:57:57 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,19 +131,25 @@ typedef struct s_sprite
 	t_image		p_floor;
 }	t_sprite;
 
+typedef struct s_image_node
+{
+	t_image				image;
+	struct s_image_node	*next;
+}	t_image_node;
+
 typedef struct s_program
 {
-	void		*mlx;
-	t_map		map;
-	t_image		img;
-	t_window	window;
-	t_vector	sprite_position;
-	t_sprite	sprite;
-	t_player	player;
-	int			move_speed;
+	void			*mlx;
+	t_map			map;
+	t_image			img;
+	t_window		window;
+	t_vector		sprite_position;
+	t_sprite		sprite;
+	t_player		player;
+	int				move_speed;
+	t_image_node	*g_image_list;
 }	t_program;
 
 t_window	ft_new_window(void *mlx, int widht, int height, char *name);
-t_image		ft_new_sprite(void *mlx, char *path, t_program *p);
 
 #endif

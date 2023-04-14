@@ -54,6 +54,7 @@ SRC = $(SRC_DIR)/main.c \
 	  $(SRC_DIR)/game/ft_anim.c \
 	  $(SRC_DIR)/game/ft_put_sprite.c \
 	  $(SRC_DIR)/game/ft_sprite_obj.c \
+	  $(SRC_DIR)/game/ft_ending.c \
       $(SRC_DIR)/create_map/ft_create_map.c \
       $(SRC_DIR)/create_map/ft_map_init.c \
       $(SRC_DIR)/create_map/ft_is_valid.c \
