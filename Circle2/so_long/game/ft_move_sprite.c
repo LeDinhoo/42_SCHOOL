@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 09:02:03 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/03/10 12:07:00 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/04/18 10:22:36 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	move_sprite_and_redraw(void *param)
 	p = (t_program *)param;
 	frame++;
 	ft_put_object(&p->sprite, p, p->map.map);
-	if (frame % 100 == 0)
+	if (frame % 1000 == 0)
 	{
 		ft_check_all(p);
 		ft_finish(p);
@@ -59,7 +59,6 @@ int	ft_check_all(t_program *p)
 
 int	ft_stop(t_program *p)
 {
-	ft_free(p);
 	ft_end(p);
 	exit(0);
 }
