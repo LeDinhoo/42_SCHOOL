@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 05:16:09 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/04/12 15:01:15 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/04/27 11:16:48 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,22 @@
 
 void	ft_free_list(t_top *top)
 {
-	t_num	*prev;
+	t_num	*node;
+	t_num	*temp;
 
 	if (!top->first)
 	{
 		free(top);
 		return ;
 	}
-	while (top->first->next)
+	node = top->first;
+	while (node != NULL)
 	{
-		prev = top->first;
-		top->first = top->first->next;
-		free(prev);
+		temp = node;
+		node = node->next;
+		free(temp);
 	}
-	free(top->first);
-	free(top);
+	top->first = NULL;
 }
 
 int	ft_isnum(char *num)
@@ -112,14 +113,18 @@ int	main(int argc, char **argv)
 	}
 	top_a = malloc(sizeof(t_top));
 	if (!top_a)
-		return (NULL);
+		return (0);
 	top_b = malloc(sizeof(t_top));
+	if (!top_b)
+		return (0);
 	a = malloc(sizeof(t_num));
 	ft_create_list(size, argv, top_a, a);
 	ft_put_index(top_a);
 	if (argc <= 5)
 		ft_short_sort(top_a, top_b, argc);
-	ft_sort_radix(top_a, top_b);
+	if (argc > 5)
+		ft_sort_radix(top_a, top_b);
+	// system("leaks push_swap");
 	ft_free_list(top_a);
 	ft_free_list(top_b);
 	return (0);

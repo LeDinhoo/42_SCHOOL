@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:24:42 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/03/07 14:36:06 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/04/18 15:14:42 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,5 @@ int	ft_short_sort(t_top *top_a, t_top *top_b, int argc)
 		ft_sort_three(top_a);
 	if (argc == 5)
 		ft_sort_four(top_a, top_b);
-	exit (0);
+	return (0);
 }
