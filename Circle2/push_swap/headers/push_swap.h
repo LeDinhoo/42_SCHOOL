@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/03 13:44:13 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/03 14:03:30 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,8 @@ int		ft_check_sort(t_top *top);
 int		ft_sort_two(t_top *top_a);
 int		ft_short_sort(t_top *top_a, t_top *top_b, int argc);
 t_num	*ft_index_min(t_top *top);
+int		ft_isnum(char *num);
+int		ft_check_double(char **argv);
+int		ft_check_arg(char **argv);
 
 #endif

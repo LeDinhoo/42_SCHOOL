@@ -36,13 +36,14 @@ SRC =	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/utils/ft_create_list.c 	\
 		$(SRC_DIR)/utils/ft_sort.c 			\
 		$(SRC_DIR)/utils/ft_short_sort.c 	\
+		$(SRC_DIR)/utils/ft_check.c 		\
 
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) norm
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(PRINT) -o $(NAME)
 	@echo "\033[1;34mCompilation terminée avec succès ! ✔️\033[0m"
 
