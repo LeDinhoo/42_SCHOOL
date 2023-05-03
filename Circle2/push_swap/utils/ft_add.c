@@ -6,13 +6,13 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 08:33:48 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/04/18 15:26:49 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/03 13:45:18 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
 
-int	ft_num_add(t_top *num, int nb)
+int	ft_num_add(t_top *num, int nb, int index)
 {
 	t_num	*new;
 
@@ -25,12 +25,13 @@ int	ft_num_add(t_top *num, int nb)
 		return (0);
 	}
 	new->content = nb;
+	new->index = index;
 	new->next = num->first;
 	num->first = new;
 	return (0);
 }
 
-int	ft_num_addback(t_top *num, int nb)
+int	ft_num_addback(t_top *num, int nb, int index)
 {
 	t_num	*new;
 	t_num	*last;
@@ -44,6 +45,7 @@ int	ft_num_addback(t_top *num, int nb)
 		return (0);
 	}
 	new->content = nb;
+	new->index = index;
 	new->next = NULL;
 	if (num->first == NULL)
 	{

@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 08:40:55 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/02/10 07:00:47 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/03 13:42:21 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	ft_sort_pb(t_top *top_a, t_top *top_b)
 {
 	int		num;
+	int		index;
 	t_num	*del;
 
 	num = 0;
@@ -24,10 +25,11 @@ int	ft_sort_pb(t_top *top_a, t_top *top_b)
 	if (top_a != NULL && top_a->first != NULL)
 	{
 		num = del->content;
+		index = del->index;
 		top_a->first = del->next;
 		free(del);
 	}
-	ft_num_add(top_b, num);
+	ft_num_add(top_b, num, index);
 	ft_printf("pb\n");
 	return (0);
 }
@@ -35,19 +37,23 @@ int	ft_sort_pb(t_top *top_a, t_top *top_b)
 int	ft_sort_pa(t_top *top_a, t_top *top_b)
 {
 	int		num;
+	int		index;
 	t_num	*del;
 
 	num = 0;
-	if (!top_b->first)
+	if (!top_b || !top_b->first)
+	{
 		return (0);
+	}
 	del = top_b->first;
 	if (top_b != NULL && top_b->first != NULL)
 	{
 		num = del->content;
+		index = del->index;
 		top_b->first = del->next;
 		free(del);
 	}
-	ft_num_add(top_a, num);
+	ft_num_add(top_a, num, index);
 	ft_printf("pa\n");
 	return (0);
 }

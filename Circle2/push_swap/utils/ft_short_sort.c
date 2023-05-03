@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:24:42 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/04/18 15:14:42 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/03 11:08:13 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	ft_sort_two(t_top *top_a)
 {
-	if ((ft_check_sort(top_a) == 1))
-		return (0);
 	ft_sort_ra(top_a);
 	return (0);
 }
@@ -26,13 +24,28 @@ int	ft_sort_three(t_top *top_a)
 
 	new = top_a->first;
 	if (new->index == 2)
+	{
+		if (new->next->index == 0)
+			ft_sort_ra(top_a);
+		else
+		{
+			ft_sort_sa(top_a);
+			ft_sort_rra(top_a);
+		}
+	}
+	else if (new->index == 1)
+	{
+		if (new->next->index == 2)
+			ft_sort_rra(top_a);
+		else
+			ft_sort_sa(top_a);
+	}
+	else
+	{
 		ft_sort_ra(top_a);
-	if ((ft_check_sort(top_a) == 1))
-		return (0);
-	while (new->next)
-		new = new->next;
-	if (new->index == 2)
 		ft_sort_sa(top_a);
+		ft_sort_rra(top_a);
+	}
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 17:20:50 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/02/14 10:50:10 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/03 13:48:03 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	ft_sort_radix(t_top *top_a, t_top *top_b)
 	i = 0;
 	j = 0;
 	size = ft_size_list(top_a);
+	top_b->first = NULL;
 	while (ft_check_sort(top_a) == 0)
 	{
 		while (j++ <= size)

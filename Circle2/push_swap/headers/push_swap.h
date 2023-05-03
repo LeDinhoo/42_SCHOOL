@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/04/12 14:55:55 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/03 13:44:13 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int		ft_sort_rr(t_top *top_a, t_top *top_b);
 int		ft_sort_sa(t_top *top);
 int		ft_sort_sb(t_top *top);
 int		ft_sort_ss(t_top *top_a, t_top *top_b);
-int		ft_num_add(t_top *num, int nb);
-int		ft_num_addback(t_top *num, int nb);
+int		ft_num_add(t_top *num, int nb, int index);
+int		ft_num_addback(t_top *num, int nb, int index);
 int		ft_print_list(t_top *top);
 int		ft_create_list(int size, char **argv, t_top *top, t_num *new);
 int		ft_size_list(t_top *top);

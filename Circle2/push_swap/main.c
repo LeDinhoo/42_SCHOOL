@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 05:16:09 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/04/27 11:16:48 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/03 13:47:42 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	ft_free_list(t_top *top)
 		free(temp);
 	}
 	top->first = NULL;
+	free(top);
 }
 
 int	ft_isnum(char *num)
@@ -120,12 +121,16 @@ int	main(int argc, char **argv)
 	a = malloc(sizeof(t_num));
 	ft_create_list(size, argv, top_a, a);
 	ft_put_index(top_a);
-	if (argc <= 5)
-		ft_short_sort(top_a, top_b, argc);
-	if (argc > 5)
-		ft_sort_radix(top_a, top_b);
-	// system("leaks push_swap");
+	if (ft_check_sort(top_a) == 0)
+	{
+		if (argc <= 5)
+			ft_short_sort(top_a, top_b, argc);
+		if (argc > 5)
+			ft_sort_radix(top_a, top_b);
+	}
 	ft_free_list(top_a);
+	if (argc < 6)
+		top_b->first = NULL;
 	ft_free_list(top_b);
 	return (0);
 }

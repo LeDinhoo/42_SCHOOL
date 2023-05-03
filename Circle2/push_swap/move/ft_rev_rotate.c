@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 08:39:06 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/02/10 06:59:24 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/03 13:41:41 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	ft_sort_rrb(t_top *top)
 {
 	int		num;
+	int		index;
 	t_num	*del;
 	t_num	*prev;
 
@@ -30,10 +31,11 @@ int	ft_sort_rrb(t_top *top)
 			del = del->next;
 		}
 		num = del->content;
+		index = del->index;
 		prev->next = NULL;
 		free(del);
 	}
-	ft_num_add(top, num);
+	ft_num_add(top, num, index);
 	ft_printf("rrb\n");
 	return (0);
 }
@@ -41,6 +43,7 @@ int	ft_sort_rrb(t_top *top)
 int	ft_sort_rra(t_top *top)
 {
 	int		num;
+	int		index;
 	t_num	*del;
 	t_num	*prev;
 
@@ -56,10 +59,11 @@ int	ft_sort_rra(t_top *top)
 			del = del->next;
 		}
 		num = del->content;
+		index = del->index;
 		prev->next = NULL;
 		free(del);
 	}
-	ft_num_add(top, num);
+	ft_num_add(top, num, index);
 	ft_printf("rra\n");
 	return (0);
 }
