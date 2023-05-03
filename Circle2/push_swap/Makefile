@@ -36,6 +36,7 @@ SRC =	$(SRC_DIR)/main.c 					\
 		$(SRC_DIR)/utils/ft_create_list.c 	\
 		$(SRC_DIR)/utils/ft_sort.c 			\
 		$(SRC_DIR)/utils/ft_short_sort.c 	\
+		$(SRC_DIR)/utils/ft_short_sort2.c 	\
 		$(SRC_DIR)/utils/ft_check.c 		\
 
 

@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:24:42 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/03 11:08:13 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/03 15:46:03 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 int	ft_sort_two(t_top *top_a)
 {
 	ft_sort_ra(top_a);
+	return (0);
+}
+
+int	ft_simple_three(t_top *top_a)
+{
+	ft_sort_ra(top_a);
+	ft_sort_sa(top_a);
+	ft_sort_rra(top_a);
 	return (0);
 }
 
@@ -41,43 +49,7 @@ int	ft_sort_three(t_top *top_a)
 			ft_sort_sa(top_a);
 	}
 	else
-	{
-		ft_sort_ra(top_a);
-		ft_sort_sa(top_a);
-		ft_sort_rra(top_a);
-	}
-	return (0);
-}
-
-int	ft_sort_fourthree(t_top *top_a)
-{
-	t_num	*new;
-
-	new = top_a->first;
-	if (new->index == 3)
-		ft_sort_ra(top_a);
-	if ((ft_check_sort(top_a) == 1))
-		return (0);
-	while (new->next)
-		new = new->next;
-	if (new->index == 3)
-		ft_sort_sa(top_a);
-	return (0);
-}
-
-int	ft_sort_four(t_top *top_a, t_top *top_b)
-{
-	t_num	*new;
-
-	new = top_a->first;
-	while (new->index != 0)
-	{
-		ft_sort_ra(top_a);
-		new = top_a->first;
-	}
-	ft_sort_pb(top_a, top_b);
-	ft_sort_fourthree(top_a);
-	ft_sort_pa(top_a, top_b);
+		ft_simple_three(top_a);
 	return (0);
 }
 
@@ -89,5 +61,7 @@ int	ft_short_sort(t_top *top_a, t_top *top_b, int argc)
 		ft_sort_three(top_a);
 	if (argc == 5)
 		ft_sort_four(top_a, top_b);
+	if (argc == 6)
+		ft_sort_five(top_a, top_b);
 	return (0);
 }

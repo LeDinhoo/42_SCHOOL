@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 05:16:09 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/03 14:01:41 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/03 15:40:52 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	ft_choose_sort(t_top *top_a, t_top *top_b, int argc)
 {
 	if (ft_check_sort(top_a) == 0)
 	{
-		if (argc <= 5)
+		if (argc <= 6)
 			ft_short_sort(top_a, top_b, argc);
-		if (argc > 5)
+		if (argc > 6)
 			ft_sort_radix(top_a, top_b);
 	}
 	return (0);
@@ -70,8 +70,9 @@ int	main(int argc, char **argv)
 	a = malloc(sizeof(t_num));
 	ft_create_list(size, argv, top_a, a);
 	ft_put_index(top_a);
+	ft_choose_sort(top_a, top_b, argc);
 	ft_free_list(top_a);
-	if (argc < 6)
+	if (argc <= 6)
 		top_b->first = NULL;
 	ft_free_list(top_b);
 	return (0);
