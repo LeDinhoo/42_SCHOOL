@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 08:44:19 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/02/10 06:55:55 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/11 16:47:13 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_print_list(t_top *top)
 	new = top->first;
 	while (new)
 	{
-		ft_printf("%d\n", new->content);
+		ft_printf("%d index : %d\n", new->content, new->index);
 		new = new->next;
 	}
 	return (0);

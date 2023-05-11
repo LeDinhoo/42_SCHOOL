@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 05:16:09 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/11 15:11:22 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/11 17:05:14 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ int	ft_error(void)
 	exit (0);
 }
 
-int	ft_choose_sort(t_top *top_a, t_top *top_b, int argc)
+int	ft_choose_sort(t_top *top_a, t_top *top_b)
 {
 	if (ft_check_sort(top_a) == 0)
 	{
-		if (argc <= 6)
-			ft_short_sort(top_a, top_b, argc);
-		if (argc > 6)
+		if (ft_size_list(top_a) <= 4)
+			ft_short_sort(top_a, top_b);
+		if (ft_size_list(top_a) > 4)
 			ft_sort_radix(top_a, top_b);
 	}
 	return (0);
@@ -53,24 +53,21 @@ int	ft_choose_sort(t_top *top_a, t_top *top_b, int argc)
 
 int	main(int argc, char **argv)
 {
-	int		size;
 	t_top	*top_a;
 	t_top	*top_b;
 	t_num	*a;
 
-	size = argc - 1;
-	if (argc == 1)
+	if (argc < 2)
 		return (0);
-	if (ft_check_arg(argv) == 0)
-		ft_error();
+	ft_check_arg(argv, argc);
 	top_a = malloc(sizeof(t_top));
 	top_b = malloc(sizeof(t_top));
 	if (!top_a || !top_b)
 		return (0);
 	a = malloc(sizeof(t_num));
-	ft_create_list(size, argv, top_a, a);
+	ft_create_list(argc, argv, top_a, a);
 	ft_put_index(top_a);
-	ft_choose_sort(top_a, top_b, argc);
+	ft_choose_sort(top_a, top_b);
 	ft_free_list(top_a);
 	if (argc <= 6)
 		top_b->first = NULL;

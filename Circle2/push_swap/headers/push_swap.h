@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/11 14:19:45 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/11 17:44:52 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int		ft_sort_rr(t_top *top_a, t_top *top_b);
 int		ft_sort_sa(t_top *top);
 int		ft_sort_sb(t_top *top);
 int		ft_sort_ss(t_top *top_a, t_top *top_b);
+
 int		ft_num_add(t_top *num, int nb, int index);
 int		ft_num_addback(t_top *num, int nb, int index);
 int		ft_print_list(t_top *top);
@@ -51,15 +52,17 @@ int		ft_put_index(t_top *top);
 int		ft_sort_radix(t_top *top_a, t_top *top_b);
 int		ft_check_sort(t_top *top);
 int		ft_sort_two(t_top *top_a);
-int		ft_short_sort(t_top *top_a, t_top *top_b, int argc);
+int		ft_short_sort(t_top *top_a, t_top *top_b);
 t_num	*ft_index_min(t_top *top);
 int		ft_isnum(char *num);
 int		ft_check_double(char **argv);
-int		ft_check_arg(char **argv);
+void	ft_check_arg(char **argv, int argc);
 void	ft_sort_five(t_top *top_a, t_top *top_b);
 int		ft_sort_four(t_top *top_a, t_top *top_b);
 int		ft_sort_three(t_top *top_a);
 int		ft_index_max(t_top *top);
 int		ft_find_min(t_top *top);
+void	ft_free(char **str);
+void	error_msg(char *msg);
 
 #endif

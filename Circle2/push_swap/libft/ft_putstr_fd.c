@@ -1,41 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 15:06:41 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/11 16:55:47 by hdupuy           ###   ########.fr       */
+/*   Created: 2023/05/11 16:10:05 by hdupuy            #+#    #+#             */
+/*   Updated: 2023/05/11 16:56:00 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char	*str)
+void	ft_putstr_fd(char *s, int fd)
 {
-	int	negatif;
-	int	resultat;
+	int	i;
 
-	negatif = 0;
-	resultat = 0;
-	while ((*str > 8 && *str < 14) || *str == ' ')
-		str++;
-	if (*str == '-' || *str == '+')
+	i = 0;
+	while (s[i])
 	{
-		if (*str == '-')
-		{
-			negatif++;
-		}
-		str++;
+		write(fd, &s[i], 1);
+		i++;
 	}
-	while (*str >= '0' && *str <= '9')
-	{
-		resultat = resultat * 10 + (*str - '0');
-		str++;
-	}
-	if ((negatif % 2) == 1)
-		return (-resultat);
-	else
-		return (resultat);
 }

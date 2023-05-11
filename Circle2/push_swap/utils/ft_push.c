@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 08:40:55 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/11 13:07:54 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/11 15:48:20 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,8 @@ int	ft_sort_pa(t_top *top_a, t_top *top_b)
 	t_num	*del;
 
 	num = 0;
-	if (!top_b || !top_b->first)
-	{
+	if (!top_b)
 		return (0);
-	}
 	del = top_b->first;
 	if (top_b != NULL && top_b->first != NULL)
 	{

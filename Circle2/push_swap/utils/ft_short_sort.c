@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:24:42 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/11 15:10:41 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/11 17:43:45 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,15 @@ int	ft_sort_three(t_top *top_a)
 	return (0);
 }
 
-int	ft_short_sort(t_top *top_a, t_top *top_b, int argc)
+int	ft_short_sort(t_top *top_a, t_top *top_b)
 {
-	if (argc == 3)
+	if (ft_size_list(top_a) == 1)
 		ft_sort_two(top_a);
-	if (argc == 4)
+	if (ft_size_list(top_a) == 2)
 		ft_sort_three(top_a);
-	if (argc == 5)
+	if (ft_size_list(top_a) == 3)
 		ft_sort_four(top_a, top_b);
-	if (argc == 6)
+	if (ft_size_list(top_a) == 4)
 		ft_sort_five(top_a, top_b);
 	return (0);
 }

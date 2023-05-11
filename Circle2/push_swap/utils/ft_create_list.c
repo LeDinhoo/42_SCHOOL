@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 08:46:11 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/04/18 12:44:44 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/11 17:45:53 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,18 @@ int	ft_create_list(int size, char **argv, t_top *top, t_num *new)
 {
 	int		i;
 
-	i = 1;
+	i = 0;
+	if (size == 2)
+		argv = ft_split(argv[1], ' ');
+	else
+		i = 1;
 	if (!top || !new)
 		return (0);
 	new->content = ft_atoi(argv[i]);
 	new->index = -1;
 	top->first = new;
 	i++;
-	while (i <= size)
+	while (argv[i])
 	{
 		new->next = malloc(sizeof(t_num));
 		if (!new->next)

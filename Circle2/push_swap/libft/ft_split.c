@@ -6,90 +6,72 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 17:35:07 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/02/06 13:59:17 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/11 15:58:26 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_char_sep(char c, char charset)
+static size_t	split_len(char *src, char c)
 {
-	if (charset == c)
-		return (1);
-	if (c == '\0')
-		return (1);
-	return (0);
-}
-
-static int	ft_nbr_words(char *str, char c)
-{
-	int	i;
-	int	j;
-	int	count;
+	size_t	i;
 
 	i = 0;
-	j = 1;
-	count = 0;
-	while (str[i])
+	while (src[i] && src[i] != c)
 	{
-		if (((ft_char_sep(str[i], c) == 0))
-			&& ((ft_char_sep(str[j], c) == 1)))
-			count++;
-		if (str[j] == '\0')
-			break ;
 		i++;
-		j++;
 	}
-	return (count);
+	return (i);
 }
 
-static void	*ft_free(char **tab, size_t idx)
-{
-	while (idx > 0)
-	{
-		idx--;
-		free(tab[idx]);
-	}
-	free(tab);
-	return (NULL);
-}
-
-static char	**ft_fill_malloc(char *s, char c, char **tab, size_t count)
+static size_t	ft_getsize(char *src, char c)
 {
 	size_t	i;
 	size_t	j;
-	size_t	l_words;
+	size_t	total;
 
 	i = 0;
 	j = 0;
-	while (j < count)
+	total = 0;
+	while (src[i])
 	{
-		while (s[i] && (ft_char_sep(s[i], c) == 1))
-			i++;
-		s += i;
-		i = 0;
-		while ((ft_char_sep(s[i++], c) == 0))
-			l_words = i;
-		tab[j] = ft_substr(s, 0, l_words);
-		if (!tab[j])
-			return (ft_free(tab, j));
-		j++;
+		j = split_len(src + i, c);
+		if (j > 0)
+		{
+			total++;
+			i--;
+		}
+		i += j;
+		i++;
 	}
-	tab[j] = NULL;
-	return (free(s), tab);
+	return (total);
 }
 
-char	**ft_split(char *s, char c)
+char	**ft_split(const char *s, char c)
 {
-	size_t		count;
-	char		**tab;
+	size_t		i;
+	size_t		j;
+	size_t		size;
+	char		**splittab;
 
-	if (!s)
+	i = 0;
+	j = 0;
+	size = ft_getsize((char *)s, c);
+	splittab = malloc((size + 1) * sizeof(char *));
+	if (!splittab)
 		return (NULL);
-	count = ft_nbr_words(s, c);
-	tab = malloc(sizeof(char *) * (count + 1));
-	if (!(tab))
-		return (NULL);
-	tab = ft_fill_malloc(s, c, tab, count);
-	return (tab);
+	while (((char *)s)[i])
+	{
+		size = split_len((char *)s + i, c);
+		if (size > 0)
+		{
+			splittab[j] = ft_substr(s, i, size);
+			j++;
+			i--;
+		}
+		i += size;
+		i++;
+	}
+	splittab[j] = 0;
+	return (splittab);
 }
