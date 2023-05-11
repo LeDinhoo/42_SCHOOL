@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 08:39:06 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/03 13:41:41 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/11 13:25:28 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_sort_rra(t_top *top)
 	num = 0;
 	if (!top->first)
 		return (0);
-	if (!top && !top->first && !top->first->next)
+	if (top && top->first && top->first->next)
 	{
 		del = top->first;
 		while (del->next)
