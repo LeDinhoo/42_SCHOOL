@@ -6,12 +6,11 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:01:13 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/11 18:13:24 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/12 08:11:32 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
-
 
 int	ft_isnum(char *num)
 {
