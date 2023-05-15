@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:44:46 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/11 15:11:37 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/15 15:18:49 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,22 @@ int	ft_sort_four(t_top *top_a, t_top *top_b)
 	return (0);
 }
 
+void	ft_sort_five_bis(t_top *top_a)
+{
+	t_num	*new;
+
+	new = top_a->first;
+	if (new->next->next->next->index == 0)
+	{
+		ft_sort_rra(top_a);
+		ft_sort_rra(top_a);
+	}
+	else if (new->next->next->next->next->index == 0)
+	{
+		ft_sort_rra(top_a);
+	}
+}
+
 void	ft_sort_five(t_top *top_a, t_top *top_b)
 {
 	t_num	*new;
@@ -76,11 +92,7 @@ void	ft_sort_five(t_top *top_a, t_top *top_b)
 		ft_sort_ra(top_a);
 		ft_sort_ra(top_a);
 	}
-	while (new->index != 0)
-	{
-		ft_sort_rra(top_a);
-		new = top_a->first;
-	}
+	ft_sort_five_bis(top_a);
 	if (ft_check_sort(top_a) == 1)
 		return ;
 	ft_sort_pb(top_a, top_b);

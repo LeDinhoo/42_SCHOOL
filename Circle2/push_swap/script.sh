@@ -24,7 +24,7 @@ done < "test_cases4.txt"
 
 while read -r arg; do
     # Exécuter le programme push_swap avec l'argument courant
-    result=$(./push_swap $arg | ./checker $arg)
+    result=$(./push_swap $arg | wc -l)
 
     	echo "Argument: $arg"
         echo "$result"

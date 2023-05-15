@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:01:13 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/12 08:11:32 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/15 15:43:10 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,16 @@ static int	ft_is_repeat(int num, char **argv, int i)
 	return (0);
 }
 
-void	error_msg(char *msg)
+void	error_msg2(char *msg)
 {
 	ft_putendl_fd(msg, 2);
+	exit(0);
+}
+
+void	error_msg(char *msg, char **argv)
+{
+	ft_putendl_fd(msg, 2);
+	ft_free(argv);
 	exit(0);
 }
 
@@ -58,7 +65,7 @@ void	ft_check_arg(char **argv, int argc)
 	{
 		argv = ft_split(argv[1], ' ');
 		if (!*argv)
-			error_msg("Error");
+			error_msg("Error", argv);
 	}
 	else
 		i = 1;
@@ -66,10 +73,10 @@ void	ft_check_arg(char **argv, int argc)
 	{
 		tmp = ft_atoi(argv[i]);
 		if (!ft_isnum(argv[i]) || ft_is_repeat(tmp, argv, i))
-			error_msg("Error");
+			error_msg2("Error");
 		tmp = ft_atol(argv[i]);
 		if (tmp < -2147483648 || tmp > 2147483647)
-			error_msg("Error");
+			error_msg("Error", argv);
 		i++;
 	}
 	if (argc == 2)

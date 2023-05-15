@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 08:46:11 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/11 17:45:53 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/15 15:36:21 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,15 @@ int	ft_put_index(t_top *top)
 	return (0);
 }
 
+t_num	*ft_add_node(t_num *new, char **argv, int i)
+{
+	new = new->next;
+	new->content = ft_atoi(argv[i]);
+	new->index = -1;
+	new->next = NULL;
+	return (new);
+}
+
 int	ft_create_list(int size, char **argv, t_top *top, t_num *new)
 {
 	int		i;
@@ -92,11 +101,10 @@ int	ft_create_list(int size, char **argv, t_top *top, t_num *new)
 			free(new->next);
 			return (0);
 		}
-		new = new->next;
-		new->content = ft_atoi(argv[i]);
-		new->index = -1;
-		new->next = NULL;
+		new = ft_add_node(new, argv, i);
 		i++;
 	}
+	if (size == 2)
+		ft_free(argv);
 	return (0);
 }
