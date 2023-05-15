@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:31:29 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/02/06 14:47:38 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/15 15:56:42 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ char	**ft_fill_map(int fd, ssize_t nb_line, char **map)
 	while (nb_line > 0)
 	{
 		nb_line--;
+		map[y] = NULL;
 		map[y] = get_next_line(fd);
 		y++;
 	}
@@ -48,6 +49,7 @@ char	**ft_create_map(t_map *map)
 {
 	int			fd;
 
+	map->map = NULL;
 	fd = open(map->file, O_RDONLY);
 	map->height = ft_number_lines(fd) + 1;
 	close(fd);

@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 09:45:54 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/04/18 10:14:48 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/12 14:44:20 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MAP_H
 
 # ifndef FRAMES
-#  define FRAMES 7000000
+#  define FRAMES 70000
 # endif
 
 typedef struct s_map
