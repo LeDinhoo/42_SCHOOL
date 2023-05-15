@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:01:13 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/15 15:43:10 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/15 16:41:24 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void	error_msg2(char *msg)
 void	error_msg(char *msg, char **argv)
 {
 	ft_putendl_fd(msg, 2);
-	ft_free(argv);
+	if (argv != NULL)
+		ft_free(argv);
 	exit(0);
 }
 
@@ -73,7 +74,7 @@ void	ft_check_arg(char **argv, int argc)
 	{
 		tmp = ft_atoi(argv[i]);
 		if (!ft_isnum(argv[i]) || ft_is_repeat(tmp, argv, i))
-			error_msg2("Error");
+			error_msg("Error", argv);
 		tmp = ft_atol(argv[i]);
 		if (tmp < -2147483648 || tmp > 2147483647)
 			error_msg("Error", argv);

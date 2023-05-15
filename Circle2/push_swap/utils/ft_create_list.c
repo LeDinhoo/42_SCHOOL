@@ -6,7 +6,7 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 08:46:11 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/15 15:36:21 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/15 16:08:28 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,7 @@ int	ft_create_list(int size, char **argv, t_top *top, t_num *new)
 		i = 1;
 	if (!top || !new)
 		return (0);
-	new->content = ft_atoi(argv[i]);
-	new->index = -1;
-	top->first = new;
+	ft_init_node(new, argv, i, top);
 	i++;
 	while (argv[i])
 	{

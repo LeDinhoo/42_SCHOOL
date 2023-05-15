@@ -6,17 +6,26 @@
 /*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 08:33:48 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/11 16:13:42 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/15 16:35:54 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/push_swap.h"
+
+void	ft_init_node(t_num *new, char **argv, int i, t_top *top)
+{
+	new->content = ft_atoi(argv[i]);
+	new->index = -1;
+	top->first = new;
+}
 
 void	ft_free(char **str)
 {
 	int	i;
 
 	i = 0;
+	if (str == NULL)
+		return ;
 	while (str[i])
 	{
 		free(str[i]);
