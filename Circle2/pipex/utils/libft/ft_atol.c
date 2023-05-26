@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: dupuy <dupuy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 15:06:41 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/11 16:55:47 by hdupuy           ###   ########.fr       */
+/*   Created: 2023/05/11 16:55:30 by hdupuy            #+#    #+#             */
+/*   Updated: 2023/05/17 15:19:14 by dupuy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char	*str)
+long long	ft_atol(const char *str)
 {
-	int	negatif;
-	int	resultat;
+	long long	negatif;
+	long long	resultat;
 
 	negatif = 0;
 	resultat = 0;

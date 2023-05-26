@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: dupuy <dupuy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:31:29 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/15 15:56:42 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/26 13:38:54 by dupuy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	**ft_fill_map(int fd, ssize_t nb_line, char **map)
 {
-	int		y;
+	int	y;
 
 	y = 0;
-	map = malloc(sizeof(char *) * nb_line + 1);
+	map = ft_calloc(nb_line + 1, sizeof(char *));
 	if (!map)
 		return (free(map), NULL);
 	while (nb_line > 0)
@@ -47,7 +47,7 @@ int	ft_number_lines(int fd)
 
 char	**ft_create_map(t_map *map)
 {
-	int			fd;
+	int	fd;
 
 	map->map = NULL;
 	fd = open(map->file, O_RDONLY);

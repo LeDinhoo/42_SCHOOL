@@ -19,14 +19,15 @@ SRC_DIR = .
 OBJ_DIR = .obj
 
 LIBFT_A		= libft.a
-LIBF_DIR 	= libft/
+LIBF_DIR 	= utils/libft/
 LIBFT		= $(addprefix $(LIBF_DIR), $(LIBFT_A))
 
 PRINT_A		= libftprintf.a
-PRINT_DIR 	= ft_printf/
+PRINT_DIR 	= utils/ft_printf/
 PRINT		= $(addprefix $(PRINT_DIR), $(PRINT_A))
 
 SRC =	$(SRC_DIR)/main.c 					\
+		$(SRC_DIR)/utils/get_env.c 					\
 
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
@@ -35,25 +36,25 @@ all: $(NAME)
 
 $(NAME): $(OBJ) norm
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(PRINT) -o $(NAME)
-	@echo "\033[1;34mCompilation terminée avec succès ! ✔️\033[0m"
+	@echo "\033[1;95mCompilation terminée avec succès ! ✔️\033[0m"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)/move $(OBJ_DIR)/utils
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 norm:
-	@if ! norminette main.c ./libft ./ft_printf | grep -v "OK" > /dev/null; then \
-		echo "\033[1;32mNorminette valide ! ✔️\033[0m"; \
+	@if ! norminette main.c ./utils/libft ./utils/ft_printf | grep -v "OK" > /dev/null; then \
+		echo "\033[1;92mNorminette valide ! ✔️\033[0m"; \
 	else \
 		norminette main.c ./libft ./ft_printf | grep -v "OK" | grep --color=always "Error"; \
 	fi
 
 clean:
-	@echo "\033[1;33mSuppression des fichiers objets... \033[0m🗑"
+	@echo "\033[1;93mSuppression des fichiers objets... \033[0m🗑"
 		@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@echo "\033[1;33mSuppression du programme final... \033[0m🗑"
+	@echo "\033[1;93mSuppression du programme final... \033[0m🗑"
 	@rm -f $(NAME)
 
 re: fclean norm all

@@ -3,21 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <hdupuy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dupuy <dupuy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/16 11:29:16 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/17 16:12:15 by dupuy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# include <unistd.h>
-# include <stdlib.h>
+# include "../utils/ft_printf/ft_printf.h"
+# include "../utils/libft/libft.h"
 # include <fcntl.h>
-# include "../libft/libft.h"
-# include "../ft_printf/ft_printf.h"
+# include <stdlib.h>
+# include <unistd.h>
 
+typedef struct s_pip
+{
+	char	**path;
+}			t_pip;
+
+int			search_substring(const char *string, const char *substring);
+void		split_path(char *path, t_pip *pipex);
+void		get_path(char **env, t_pip *pipex);
 
 #endif

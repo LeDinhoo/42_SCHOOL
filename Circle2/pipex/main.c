@@ -3,34 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <hdupuy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dupuy <dupuy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 10:55:54 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/16 11:52:19 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/17 16:18:43 by dupuy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headers/pipex.h"
-
-char	**path_arg(char **env)
-{
-	int	i;
-
-	i = -1;
-	while (env[++i])
-		ft_printf("%s\n", env[i]);
-	return (env);
-}
+#include "include/pipex.h"
 
 int	main(int argc, char **argv, char **envp)
 {
-	int	i;
+	int		i;
+	t_pip	pipex;
 
-	i = 0;
-	if (argc != 2)
+	i = -1;
+	if (argc != 5)
 		return (1);
-	path_arg(envp);
-	while (argv[i])
-		i++;
+	get_path(envp, &pipex);
+	while (pipex.path[++i])
+		ft_printf("%s\n", pipex.path[i]);
+	argv[i] = NULL;
 	return (0);
 }
