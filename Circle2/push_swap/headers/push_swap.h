@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: dupuy <dupuy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/15 16:08:16 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/26 14:05:05 by dupuy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int		ft_sort_three(t_top *top_a);
 int		ft_index_max(t_top *top);
 int		ft_find_min(t_top *top);
 void	ft_free(char **str);
-void	error_msg(char *msg, char **argv);
+void	error_msg(char *msg, char **argv, int is_modified);
 void	ft_init_node(t_num *new, char **argv, int i, t_top *top);
 
 #endif

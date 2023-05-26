@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_add.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: dupuy <dupuy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 08:33:48 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/15 16:35:54 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/26 13:57:58 by dupuy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,15 @@ void	ft_free(char **str)
 		return ;
 	while (str[i])
 	{
-		free(str[i]);
+		if (str[i])
+		{
+			free(str[i]);
+			str[i] = NULL;
+		}
 		i++;
 	}
 	free(str);
+	str = NULL;
 }
 
 int	ft_num_add(t_top *num, int nb, int index)

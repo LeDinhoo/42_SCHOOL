@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: dupuy <dupuy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:01:13 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/15 16:41:24 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/26 14:04:28 by dupuy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,10 @@ static int	ft_is_repeat(int num, char **argv, int i)
 	return (0);
 }
 
-void	error_msg2(char *msg)
+void	error_msg(char *msg, char **argv, int is_modified)
 {
 	ft_putendl_fd(msg, 2);
-	exit(0);
-}
-
-void	error_msg(char *msg, char **argv)
-{
-	ft_putendl_fd(msg, 2);
-	if (argv != NULL)
+	if (is_modified && argv != NULL)
 		ft_free(argv);
 	exit(0);
 }
@@ -60,13 +54,16 @@ void	ft_check_arg(char **argv, int argc)
 {
 	int		i;
 	long	tmp;
+	int		is_modified;
 
+	is_modified = 0;
 	i = 0;
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
 		if (!*argv)
-			error_msg("Error", argv);
+			error_msg("Error", argv, is_modified);
+		is_modified = 1;
 	}
 	else
 		i = 1;
@@ -74,12 +71,10 @@ void	ft_check_arg(char **argv, int argc)
 	{
 		tmp = ft_atoi(argv[i]);
 		if (!ft_isnum(argv[i]) || ft_is_repeat(tmp, argv, i))
-			error_msg("Error", argv);
+			error_msg("Error", argv, is_modified);
 		tmp = ft_atol(argv[i]);
 		if (tmp < -2147483648 || tmp > 2147483647)
-			error_msg("Error", argv);
+			error_msg("Error", argv, is_modified);
 		i++;
 	}
-	if (argc == 2)
-		ft_free(argv);
 }
