@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rev_rotate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: dupuy <dupuy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 08:39:06 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/11 13:25:28 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/29 12:04:26 by dupuy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,28 +42,24 @@ int	ft_sort_rrb(t_top *top)
 
 int	ft_sort_rra(t_top *top)
 {
-	int		num;
-	int		index;
-	t_num	*del;
+	t_num	*last;
 	t_num	*prev;
 
-	num = 0;
-	if (!top->first)
+	if (!top->first || !top->first->next)
 		return (0);
-	if (top && top->first && top->first->next)
+	last = top->first;
+	prev = NULL;
+	while (last->next)
 	{
-		del = top->first;
-		while (del->next)
-		{
-			prev = del;
-			del = del->next;
-		}
-		num = del->content;
-		index = del->index;
-		prev->next = NULL;
-		free(del);
+		prev = last;
+		last = last->next;
 	}
-	ft_num_add(top, num, index);
+	if (prev)
+	{
+		prev->next = NULL;
+	}
+	last->next = top->first;
+	top->first = last;
 	ft_printf("rra\n");
 	return (0);
 }
