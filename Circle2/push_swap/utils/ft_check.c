@@ -6,7 +6,7 @@
 /*   By: dupuy <dupuy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:01:13 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/26 14:04:28 by dupuy            ###   ########.fr       */
+/*   Updated: 2023/05/29 10:08:08 by dupuy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ void	ft_check_arg(char **argv, int argc)
 	i = 0;
 	if (argc == 2)
 	{
+		is_modified = 1;
 		argv = ft_split(argv[1], ' ');
 		if (!*argv)
 			error_msg("Error", argv, is_modified);
-		is_modified = 1;
 	}
 	else
 		i = 1;
@@ -77,4 +77,6 @@ void	ft_check_arg(char **argv, int argc)
 			error_msg("Error", argv, is_modified);
 		i++;
 	}
+	if (argc == 2)
+		ft_free(argv);
 }
