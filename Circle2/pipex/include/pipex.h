@@ -6,7 +6,7 @@
 /*   By: dupuy <dupuy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/17 16:12:15 by dupuy            ###   ########.fr       */
+/*   Updated: 2023/05/29 12:30:10 by dupuy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@
 # include "../utils/ft_printf/ft_printf.h"
 # include "../utils/libft/libft.h"
 # include <fcntl.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
 typedef struct s_pip
 {
 	char	**path;
+	char	*cmd1;
+	char	*cmd2;
 }			t_pip;
 
 int			search_substring(const char *string, const char *substring);

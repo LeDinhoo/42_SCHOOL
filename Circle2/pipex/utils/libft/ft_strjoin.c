@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: dupuy <dupuy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 10:29:00 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/05 15:22:15 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/05/29 13:26:42 by dupuy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	len = ft_strlen(s1) + ft_strlen(s2);
 	result = malloc(sizeof(char) * (len + 1));
 	if (!result)
-		return (free(result), free(s1), NULL);
+		return (NULL);
 	index = 0;
 	while (s1 && s1[index])
 	{
@@ -35,6 +35,5 @@ char	*ft_strjoin(char *s1, char *s2)
 		len++;
 	}
 	result[index + len] = '\0';
-	free(s2);
-	return (free(s1), result);
+	return (result);
 }
