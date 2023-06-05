@@ -36,6 +36,7 @@ int	ft_game_init(t_program *prog)
 	ft_smoke_anim(prog);
 	mlx_hook(prog->window.ref, 2, 1L << 0, *key_press, prog);
 	mlx_hook(prog->window.ref, 3, 1L << 1, *ft_release, prog);
+	mlx_hook(prog->window.ref, 17, 0, *ft_end, prog);
 	mlx_loop_hook(prog->mlx, move_sprite_and_redraw, prog);
 	mlx_loop(prog->mlx);
 	return (0);

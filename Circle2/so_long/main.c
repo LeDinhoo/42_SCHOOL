@@ -21,7 +21,7 @@ int	ft_ext_valid(char *str)
 			&& str[i - 3] == 'b' && str[i - 4] == '.'))
 	{
 		write(1, "Invalid extension !", 20);
-		exit (0);
+		exit(0);
 	}
 	return (1);
 }
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		write (1, "Erreur de map !", 16);
+		write(1, "Erreur de map !", 16);
 		return (0);
 	}
 	prog.map.file = argv[1];

@@ -43,9 +43,9 @@ int	ft_unique_object(char **map)
 
 int	ft_count_objs(char **map)
 {
-	int		y;
-	int		x;
-	int		count;
+	int	y;
+	int	x;
+	int	count;
 
 	y = 0;
 	x = 0;
@@ -90,6 +90,11 @@ int	ft_char_valid(char **map)
 int	ft_objects_valid(t_map *map)
 {
 	map->objs = ft_count_objs(map->map);
+	if (map->objs == 0)
+	{
+		write(1, "Invalid Objects !", 18);
+		exit(0);
+	}
 	if (ft_char_valid(map->map))
 		return (1);
 	return (0);
