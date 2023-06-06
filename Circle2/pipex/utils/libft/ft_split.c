@@ -72,6 +72,6 @@ char	**ft_split(const char *s, char c)
 		i += size;
 		i++;
 	}
-	splittab[j] = 0;
+	splittab[j] = NULL;
 	return (splittab);
 }

@@ -1,65 +1,77 @@
-.PHONY: 		clean fclean re norm
+.PHONY: all clean fclean re
 
 NAME = pipex
-
 CC = gcc
-
-ifeq ($(shell uname),Linux)
-   # Linux-specific commands
-	MLXFLAGS =
-	CFLAGS = -Wall -Wextra -Werror -ggdb
-else
-   # Mac OS X-specific commands
-	CFLAGS = -Wall -Wextra -Werror
-	MLXFLAGS = -framework OpenGL -framework AppKit -Lmlx -lmlx -lm
-endif
+CFLAGS = -Wall -Wextra -Werror
+INCLUDE_DIR = include
+INCLUDES = -I$(INCLUDE_DIR)
 
 SRC_DIR = .
 OBJ_DIR = .obj
 
-LIBF_A		= libft.a
-LIBF_DIR 	= utils/libft/
-LIBF		= $(addprefix $(LIBF_DIR), $(LIBF_A))
+LIBFT_A = libft.a
+LIBFT_DIR = utils/libft/
+LIBFT = $(addprefix $(LIBFT_DIR), $(LIBFT_A))
 
-PRINT_A		= libftprintf.a
-PRINT_DIR 	= utils/ft_printf/
-PRINT		= $(addprefix $(PRINT_DIR), $(PRINT_A))
+PRINTF_A = libftprintf.a
+PRINTF_DIR = utils/ft_printf/
+PRINTF = $(addprefix $(PRINTF_DIR), $(PRINTF_A))
 
-SRC =	$(SRC_DIR)/main.c 					\
-		$(SRC_DIR)/utils/get_env.c 					\
+SRC = $(SRC_DIR)/main.c \
+	$(SRC_DIR)/utils/get_env.c
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-all: $(NAME) $(LIBF)
+LIBFT_SRC = $(wildcard $(LIBFT_DIR)*.c)
+LIBFT_OBJ = $(LIBFT_SRC:$(LIBFT_DIR)%.c=$(LIBFT_DIR).objs/%.o)
+LIBFT_DEPS = $(LIBFT_OBJ:.o=.d)
 
-$(NAME): $(OBJ) norm
-	@$(CC) $(CFLAGS) $(OBJ) $(LIBF) $(PRINT) -o $(NAME)
-	@echo "\033[1;95mCompilation terminée avec succès ! ✔️\033[0m"
+PRINTF_SRC = $(wildcard $(PRINTF_DIR)*.c)
+PRINTF_OBJ = $(PRINTF_SRC:$(PRINTF_DIR)%.c=$(PRINTF_DIR).objs/%.o)
+PRINTF_DEPS = $(PRINTF_OBJ:.o=.d)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(OBJ_DIR)/move $(OBJ_DIR)/utils
-	@$(CC) $(CFLAGS) -c $< -o $@
+all: $(NAME)
 
-$(LIBF): $(LIBF_OBJ)/%.o
-	$(CC) $(CFLAGS) $(LIBF_OBJ) $(LIBF) $(PRINT) -o $(LIBF_TARGET)
-	@echo "\033[1;92mLibft recompilé avec succès ! ✔️\033[0m"
+$(NAME): $(OBJ) $(LIBFT) $(PRINTF)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(LIBFT) $(PRINTF) -o $@
+	@echo "Compilation terminée avec succès ! ✔️"
 
-$(LIBF_OBJ): $(LIBF_DIR)/%.o
-	$(CC) $(CFLAGS) $< -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	@$(CC) $(CFLAGS) $(INCLUDES) -MMD -c $< -o $@
 
-norm:
-	@if ! norminette main.c ./utils/libft ./utils/ft_printf | grep -v "OK" > /dev/null; then \
-		echo "\033[1;92mNorminette valide ! ✔️\033[0m" \
-	else \
-		norminette main.c ./libft ./ft_printf | grep -v "OK" | grep --color=always "Error"; \
-	fi
+$(LIBFT): $(LIBFT_OBJ)
+	@$(MAKE) -C $(LIBFT_DIR) -s
+	@echo "Compilation de libft terminée ! ✔️"
+
+$(PRINTF): $(PRINTF_OBJ)
+	@$(MAKE) -C $(PRINTF_DIR) -s
+	@echo "Compilation de ft_printf terminée ! ✔️"
+
+$(LIBFT_DIR).objs/%.o: $(LIBFT_DIR)%.c
+	@$(CC) $(CFLAGS) $(INCLUDES) -MMD -c $< -o $@
+
+$(PRINTF_DIR).objs/%.o: $(PRINTF_DIR)%.c
+	@$(CC) $(CFLAGS) $(INCLUDES) -MMD -c $< -o $@
+
+force: ;
 
 clean:
-	@echo "\033[1;93mSuppression des fichiers objets... \033[0m����"
+	@echo "Suppression des fichiers objets... 🗑️"
 	@rm -rf $(OBJ_DIR)
+	@$(MAKE) -C $(LIBFT_DIR) clean -s
+	@$(MAKE) -C $(PRINTF_DIR) clean -s
 
 fclean: clean
-	@echo "\033[1;93mSuppression du programme final... \033[0m����"
+	@echo "Suppression du programme final... 🗑️"
 	@rm -f $(NAME)
+	@$(MAKE) -C $(LIBFT_DIR) fclean -s
+	@$(MAKE) -C $(PRINTF_DIR) fclean -s
 
-re: fclean norm all
+re: fclean all
+
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)/utils
+	@mkdir -p $(LIBFT_DIR).objs
+	@mkdir -p $(PRINTF_DIR).objs
+
+-include $(LIBFT_DEPS) $(PRINTF_DEPS)
