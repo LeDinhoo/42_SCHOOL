@@ -14,44 +14,32 @@
 
 int	ft_sort_pb(t_top *top_a, t_top *top_b)
 {
-	int		num;
-	int		index;
-	t_num	*del;
+	t_num	*temp;
 
-	num = 0;
 	if (!top_a->first)
-		return (0);
-	del = top_a->first;
-	if (top_a != NULL && top_a->first != NULL)
 	{
-		num = del->content;
-		index = del->index;
-		top_a->first = del->next;
-		free(del);
+		return (0);
 	}
-	ft_num_add(top_b, num, index);
+	temp = top_a->first;
+	top_a->first = top_a->first->next;
+	temp->next = top_b->first;
+	top_b->first = temp;
 	ft_printf("pb\n");
 	return (0);
 }
 
 int	ft_sort_pa(t_top *top_a, t_top *top_b)
 {
-	int		num;
-	int		index;
-	t_num	*del;
+	t_num	*temp;
 
-	num = 0;
-	if (!top_b)
-		return (0);
-	del = top_b->first;
-	if (top_b != NULL && top_b->first != NULL)
+	if (!top_b->first)
 	{
-		num = del->content;
-		index = del->index;
-		top_b->first = del->next;
-		free(del);
+		return (0);
 	}
-	ft_num_add(top_a, num, index);
+	temp = top_b->first;
+	top_b->first = top_b->first->next;
+	temp->next = top_a->first;
+	top_a->first = temp;
 	ft_printf("pa\n");
 	return (0);
 }

@@ -42,41 +42,77 @@ static int	ft_is_repeat(int num, char **argv, int i)
 	return (0);
 }
 
-void	error_msg(char *msg, char **argv, int is_modified)
+void	process_arguments(char ***argv, int *argc, int *is_modified)
 {
-	ft_putendl_fd(msg, 2);
-	if (is_modified && argv != NULL)
-		ft_free(argv);
-	exit(0);
+	if (*argc == 2)
+	{
+		*is_modified = 1;
+		*argv = ft_split((*argv)[1], ' ');
+		if (!**argv)
+			error_msg("Error", *argv, *is_modified);
+	}
+	else
+		*is_modified = 0;
+}
+
+void	validate_argument(char **argv, int i, int is_modified)
+{
+	long	tmp;
+
+	tmp = ft_atoi(argv[i]);
+	if (!ft_isnum(argv[i]) || ft_is_repeat(tmp, argv, i))
+		error_msg("Error", argv, is_modified);
+	tmp = ft_atol(argv[i]);
+	if (tmp < -2147483648 || tmp > 2147483647)
+		error_msg("Error", argv, is_modified);
 }
 
 void	ft_check_arg(char **argv, int argc)
 {
-	int		i;
-	long	tmp;
-	int		is_modified;
+	int	i;
+	int	is_modified;
 
-	is_modified = 0;
-	i = 0;
-	if (argc == 2)
-	{
-		is_modified = 1;
-		argv = ft_split(argv[1], ' ');
-		if (!*argv)
-			error_msg("Error", argv, is_modified);
-	}
+	process_arguments(&argv, &argc, &is_modified);
+	if (is_modified)
+		i = 0;
 	else
 		i = 1;
 	while (argv[i])
 	{
-		tmp = ft_atoi(argv[i]);
-		if (!ft_isnum(argv[i]) || ft_is_repeat(tmp, argv, i))
-			error_msg("Error", argv, is_modified);
-		tmp = ft_atol(argv[i]);
-		if (tmp < -2147483648 || tmp > 2147483647)
-			error_msg("Error", argv, is_modified);
+		validate_argument(argv, i, is_modified);
 		i++;
 	}
-	if (argc == 2)
+	if (is_modified)
 		ft_free(argv);
 }
+
+// void	ft_check_arg(char **argv, int argc)
+// {
+// 	int		i;
+// 	long	tmp;
+// 	int		is_modified;
+
+// 	is_modified = 0;
+// 	i = 0;
+// 	if (argc == 2)
+// 	{
+// 		is_modified = 1;
+// 		argv = ft_split(argv[1], ' ');
+// 		if (!*argv)
+// 			error_msg("Error", argv, is_modified);
+// 	}
+// 	else
+// 		i = 1;
+// 	while (argv[i])
+// 	{
+// 		tmp = ft_atoi(argv[i]);
+// 		if (!ft_isnum(argv[i]) || ft_is_repeat(tmp, argv, i))
+// 			error_msg("Error", argv, is_modified);
+// 		tmp = ft_atol(argv[i]);
+// 		if (tmp < -2147483648 || tmp > 2147483647)
+// 			error_msg("Error", argv, is_modified);
+// 		i++;
+// 	}
+// 	if (argc == 2)
+// 		ft_free(argv);
+// }

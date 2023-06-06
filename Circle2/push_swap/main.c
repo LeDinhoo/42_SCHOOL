@@ -35,8 +35,8 @@ void	ft_free_list(t_top *top)
 
 int	ft_error(void)
 {
-	write (2, "Error\n", 7);
-	exit (0);
+	write(2, "Error\n", 7);
+	exit(0);
 }
 
 int	ft_choose_sort(t_top *top_a, t_top *top_b)

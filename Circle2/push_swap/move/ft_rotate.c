@@ -36,22 +36,22 @@ int	ft_sort_rb(t_top *top)
 
 int	ft_sort_ra(t_top *top)
 {
-	int		num;
-	int		index;
-	t_num	*del;
+	t_num	*temp;
+	t_num	*last;
 
-	num = 0;
-	if (!top->first)
-		return (0);
-	del = top->first;
-	if (top != NULL && top->first != NULL)
+	if (!top->first || !top->first->next)
 	{
-		num = del->content;
-		index = del->index;
-		top->first = del->next;
-		free(del);
+		return (0);
 	}
-	ft_num_addback(top, num, index);
+	temp = top->first;
+	top->first = top->first->next;
+	temp->next = NULL;
+	last = top->first;
+	while (last->next)
+	{
+		last = last->next;
+	}
+	last->next = temp;
 	ft_printf("ra\n");
 	return (0);
 }

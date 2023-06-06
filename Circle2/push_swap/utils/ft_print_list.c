@@ -24,3 +24,11 @@ int	ft_print_list(t_top *top)
 	}
 	return (0);
 }
+
+void	error_msg(char *msg, char **argv, int is_modified)
+{
+	ft_putendl_fd(msg, 2);
+	if (is_modified && argv != NULL)
+		ft_free(argv);
+	exit(0);
+}
