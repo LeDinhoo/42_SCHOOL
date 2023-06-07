@@ -4,27 +4,8 @@ NAME = so_long
 
 CC = gcc
 
-# ifeq ($(shell uname),Linux)
-   # Linux-specific commands
-	MLXFLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o
-	CFLAGS = -Wall -Wextra -Werror -ggdb
-	MAKEFLAGS	+= --no-print-directory -s
-# else
-#    # Mac OS X-specific commands
-# 	CFLAGS = -Wall -Wextra -Werror
-# 	MLXFLAGS = -framework OpenGL -framework AppKit -Lmlx -lmlx -lm
-# endif
-
-DISPLAY = @printf
-
-# COLORS
-RED			= \033[1;31m
-GREEN		= \033[1;32m
-YELLOW		= \033[1;33m
-BLUE		= \033[1;34m
-CYAN		= \033[1;36m
-DEFAULT		= \033[0m
-SUPPR		= \r\033[2K
+MLXFLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o
+CFLAGS = -Wall -Wextra -Werror -ggdb
 
 SRC_DIR = .
 OBJ_DIR = .obj
@@ -74,7 +55,7 @@ all: $(NAME)
 
 $(NAME): lib $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(PRINT) $(MLXFLAGS) $(MLX) -o $(NAME)
-	@echo "\033[1;34mCompilation terminée avec succès ! ✔️\033[0m"
+	@echo "Compilation terminée avec succès ! ✔️"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS)
 	@mkdir -p $(OBJ_DIR)/create_map $(OBJ_DIR)/gnl $(OBJ_DIR)/game
@@ -82,20 +63,21 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS)
 
 lib:
 	@make -C ./libft
+	@make -C ./ft_printf
 
 norm:
 	@if ! norminette ./game ./create_map ./gnl ./libft ./ft_printf | grep -v "OK" > /dev/null; then \
-		echo "\033[1;32mNorminette valide ! ✔️\033[0m"; \
+		echo "Norminette valide ! ✔️"; \
 	else \
 		norminette ./game ./create_map ./gnl ./libft ./ft_printf | grep -v "OK" | grep --color=always "Error"; \
 	fi
 
 clean:
-	@echo "\033[1;33mSuppression des fichiers objets... \033[0m🗑"
+	@echo "Suppression des fichiers objets..."
 		@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@echo "\033[1;33mSuppression du programme final... \033[0m🗑"
+	@echo "Suppression du programme final..."
 	@rm -f $(NAME)
 
 re: fclean norm all

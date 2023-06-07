@@ -12,7 +12,24 @@
 
 #include "../headers/so_long.h"
 
-int	ft_is_square(char **map)
+void	*ft_free_error(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	if (map->map != NULL)
+	{
+		while (map->map[i] != NULL)
+		{
+			free(map->map[i]);
+			i++;
+		}
+		free(map->map);
+	}
+	exit(0);
+}
+
+bool	ft_is_square(char **map)
 {
 	int		i;
 	size_t	width;
@@ -26,11 +43,11 @@ int	ft_is_square(char **map)
 		if (ft_strlen(map[i + 1]) != width)
 		{
 			write(1, "Map is not rectangle !", 23);
-			exit (0);
+			return (false);
 		}
 		i++;
 	}
-	return (1);
+	return (true);
 }
 
 int	ft_map_height(char **map)
@@ -46,21 +63,22 @@ int	ft_map_height(char **map)
 int	ft_is_valid(t_map *map)
 {
 	map->width = ft_strlen(map->map[0]);
-	ft_is_square(map->map);
+	if (!ft_is_square(map->map))
+		ft_free_error(map);
 	if (!ft_wall_valid(map->map, map->height))
 	{
 		write(1, "Invalid Wall !", 15);
-		exit (0);
+		ft_free_error(map);
 	}
 	if (!ft_objects_valid(map))
 	{
 		write(1, "Invalid Objects !", 18);
-		exit (0);
+		ft_free_error(map);
 	}
 	if (!ft_path_valid(map))
 	{
 		write(1, "Invalid path !", 15);
-		exit (0);
+		ft_free_error(map);
 	}
 	return (1);
 }

@@ -93,7 +93,7 @@ int	ft_objects_valid(t_map *map)
 	if (map->objs == 0)
 	{
 		write(1, "Invalid Objects !", 18);
-		exit(0);
+		ft_free_error(map);
 	}
 	if (ft_char_valid(map->map))
 		return (1);
