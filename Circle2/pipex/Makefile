@@ -18,7 +18,10 @@ PRINTF_DIR = utils/ft_printf/
 PRINTF = $(addprefix $(PRINTF_DIR), $(PRINTF_A))
 
 SRC = $(SRC_DIR)/main.c \
-	$(SRC_DIR)/utils/get_env.c
+	$(SRC_DIR)/utils/env_utils.c \
+	$(SRC_DIR)/utils/cmd_utils.c \
+	$(SRC_DIR)/utils/fd_utils.c \
+	$(SRC_DIR)/utils/error_utils.c \
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

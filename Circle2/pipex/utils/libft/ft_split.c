@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 17:35:07 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/05/15 16:21:13 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/06/07 16:49:06 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ static size_t	ft_getsize(char *src, char c)
 
 char	**ft_split(const char *s, char c)
 {
-	size_t		i;
-	size_t		j;
-	size_t		size;
-	char		**splittab;
+	size_t	i;
+	size_t	j;
+	size_t	size;
+	char	**splittab;
 
 	i = 0;
 	j = 0;

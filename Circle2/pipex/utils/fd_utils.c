@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   fd_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 17:54:40 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/07 17:00:17 by hdupuy           ###   ########.fr       */
+/*   Created: 2023/06/07 14:23:40 by hdupuy            #+#    #+#             */
+/*   Updated: 2023/06/07 17:29:15 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pipex.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+bool	open_fd(char *infile, char *outfile, t_pip *pipex)
 {
-	char		*dest_ptr;
-	const char	*src_ptr;
-	size_t		i;
-
-	dest_ptr = (char *)dest;
-	src_ptr = (const char *)src;
-	i = 0;
-	while (i < n)
+	pipex->f1 = open(infile, O_RDONLY);
+	if (pipex->f1 == -1)
 	{
-		dest_ptr[i] = src_ptr[i];
-		i++;
+		perror("Error opening infile");
+		return (close(pipex->f1), false);
 	}
-	return (dest);
+	pipex->f2 = open(outfile, O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	if (pipex->f2 == -1)
+	{
+		perror("Error opening outfile");
+		return (close(pipex->f2), false);
+	}
+	return (true);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_env.c                                          :+:      :+:    :+:   */
+/*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dupuy <dupuy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 16:10:22 by dupuy             #+#    #+#             */
-/*   Updated: 2023/05/17 16:12:44 by dupuy            ###   ########.fr       */
+/*   Updated: 2023/06/07 17:34:32 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,31 @@ void	get_path(char **env, t_pip *pipex)
 			path = env[i];
 	split_path(path, pipex);
 	return ;
+}
+
+char	*join_path(char *s1, char *s2)
+{
+	size_t	index;
+	size_t	len;
+	char	*result;
+
+	len = ft_strlen(s1) + ft_strlen(s2);
+	result = malloc(sizeof(char) * (len + 1));
+	if (!result)
+		return (NULL);
+	index = 0;
+	while (s1 && s1[index])
+	{
+		result[index] = s1[index];
+		index++;
+	}
+	len = 0;
+	while (s2 && s2[len])
+	{
+		result[index + len] = s2[len];
+		len++;
+	}
+	result[index + len] = '\0';
+	free(s1);
+	return (result);
 }
