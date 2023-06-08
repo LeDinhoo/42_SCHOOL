@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strichr.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <hdupuy@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:00:41 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/01/05 10:48:25 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/06/08 14:58:06 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(char *s, int c)
+char	*ft_strchr(const char *str, int c)
 {
-	size_t			i;
-	size_t			len;
-	unsigned char	c2;
-
-	len = ft_strlen(s);
-	c2 = c;
-	i = 0;
-	while (i <= len)
+	while (*str != '\0')
 	{
-		if (c2 == s[i])
-			return ((char *)s + i);
-		i++;
+		if (*str == c)
+			return ((char *)str);
+		str++;
 	}
-	return (0);
+	if (*str == c)
+		return ((char *)str);
+	return (NULL);
 }

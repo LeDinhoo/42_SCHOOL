@@ -6,17 +6,11 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 14:21:41 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/07 17:35:21 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/06/08 16:09:43 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-void	split_command_arguments(char *cmd1, char *cmd2, t_pip *pipex)
-{
-	pipex->cmd1_args = ft_split(cmd1, ' ');
-	pipex->cmd2_args = ft_split(cmd2, ' ');
-}
 
 void	join_cmd(t_pip *pipex, char *cmd)
 {
@@ -44,13 +38,15 @@ bool	access_cmd(t_pip *pipex)
 	while (pipex->path[i])
 	{
 		if (access(pipex->path[i], F_OK | X_OK) == 0)
+		{
 			return (true);
+		}
 		i++;
 	}
 	return (false);
 }
 
-void	remove_cmd(t_pip *pipex)
+void	remove_cmd(t_pip *pipex, char *cmd)
 {
 	int	i;
 	int	len;
@@ -59,7 +55,7 @@ void	remove_cmd(t_pip *pipex)
 	i = 0;
 	while (pipex->path[i])
 	{
-		len = ft_strlen(pipex->cmd1);
+		len = ft_strlen(cmd) + 1;
 		len_path = ft_strlen(pipex->path[i]);
 		while (len >= 0)
 		{
@@ -73,12 +69,16 @@ void	remove_cmd(t_pip *pipex)
 
 bool	process_cmd(t_pip *pipex)
 {
-	join_cmd(pipex, pipex->cmd1);
-	if (!access_cmd(pipex))
-		return (false);
-	remove_cmd(pipex);
-	join_cmd(pipex, pipex->cmd2);
-	if (!access_cmd(pipex))
-		return (false);
-	return (remove_cmd(pipex), true);
+	int	i;
+
+	i = 0;
+	while (pipex->tab.cmd[i])
+	{
+		join_cmd(pipex, pipex->tab.cmd[i]);
+		if (!access_cmd(pipex))
+			return (false);
+		remove_cmd(pipex, pipex->tab.cmd[i]);
+		i++;
+	}
+	return (true);
 }

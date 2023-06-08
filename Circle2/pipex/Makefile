@@ -19,6 +19,7 @@ PRINTF = $(addprefix $(PRINTF_DIR), $(PRINTF_A))
 
 SRC = $(SRC_DIR)/main.c \
 	$(SRC_DIR)/utils/env_utils.c \
+	$(SRC_DIR)/utils/cmd_utils2.c \
 	$(SRC_DIR)/utils/cmd_utils.c \
 	$(SRC_DIR)/utils/fd_utils.c \
 	$(SRC_DIR)/utils/error_utils.c \

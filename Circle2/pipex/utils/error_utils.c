@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 17:29:44 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/07 17:32:49 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/06/08 14:23:05 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,23 @@
 
 void	free_structure(t_pip *pipex)
 {
-	free_arguments(pipex->cmd1_args);
-	free_arguments(pipex->cmd2_args);
+	int	i;
+
+	i = 0;
+	while (pipex->tab.cmd_args[i])
+	{
+		free_arguments(pipex->tab.cmd_args[i]);
+		i++;
+	}
+	free(pipex->tab.cmd_args);
 	free_path(pipex);
-	free(pipex->cmd1);
-	free(pipex->cmd2);
+	i = 0;
+	while (pipex->tab.cmd[i])
+	{
+		free(pipex->tab.cmd[i]);
+		i++;
+	}
+	free(pipex->tab.cmd);
 }
 
 void	handle_access_error(t_pip *pipex)
