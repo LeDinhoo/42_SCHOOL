@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 10:55:54 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/08 15:56:47 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/06/14 17:55:32 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	print_args(t_pip *pipex)
 		}
 		j = 0;
 		i++;
+		ft_printf("\n");
 	}
 }
 
@@ -56,7 +57,7 @@ int	check_empty(char **argv)
 	while (argv[i])
 	{
 		if (!argv[i][0])
-			return (ft_printf("Error args", 1));
+			return (ft_printf("Error empty arguments", 1));
 		i++;
 	}
 	return (0);
@@ -67,17 +68,22 @@ int	main(int argc, char **argv, char **envp)
 	t_pip	pipex;
 
 	if (argc < 5)
+	{
+		ft_printf("Not enough arguments");
 		return (1);
-	if (check_empty(argv))
-		return (1);
+	}
 	pipex.tab.cmd_args = malloc(sizeof(char **) * argc - 2);
 	pipex.tab.cmd = malloc(sizeof(char *) * argc - 2);
 	initialize_structure(argc, argv, envp, &pipex);
+	// process_cmd(&pipex);
+	// print_args(&pipex);
 	if (!process_cmd(&pipex))
+	{
+		print_args(&pipex);
 		handle_access_error(&pipex);
+	}
 	if (!open_fd(pipex.infile, pipex.outfile, &pipex))
 		handle_open_error(&pipex);
-	print_args(&pipex);
 	free_structure(&pipex);
 	return (0);
 }

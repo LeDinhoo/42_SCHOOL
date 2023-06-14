@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 14:21:41 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/08 16:09:43 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/06/14 17:42:25 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,14 @@ void	remove_cmd(t_pip *pipex, char *cmd)
 	}
 }
 
+void	false_cmd_free(t_pip *pipex, int i)
+{
+	free(pipex->tab.cmd_args[i][0]);
+	pipex->tab.cmd_args[i][0] = NULL;
+	ft_printf("%s", pipex->tab.cmd[i]);
+	ft_printf(": command not found");
+}
+
 bool	process_cmd(t_pip *pipex)
 {
 	int	i;
@@ -74,6 +82,17 @@ bool	process_cmd(t_pip *pipex)
 	i = 0;
 	while (pipex->tab.cmd[i])
 	{
+		if (pipex->tab.cmd[i][0] == '/' || (pipex->tab.cmd[i][0] == '.'
+				&& pipex->tab.cmd[i][1] == '/'))
+		{
+			if (access(pipex->tab.cmd[i], F_OK | X_OK) == 0)
+				return (true);
+			else
+			{
+				false_cmd_free(pipex, i);
+				return (false);
+			}
+		}
 		join_cmd(pipex, pipex->tab.cmd[i]);
 		if (!access_cmd(pipex))
 			return (false);

@@ -6,11 +6,12 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:05:03 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/07 16:56:59 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/06/14 16:21:59 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 char	*ft_strdup(const char *str)
 {
