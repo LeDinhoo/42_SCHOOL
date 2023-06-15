@@ -18,11 +18,16 @@ PRINTF_DIR = utils/ft_printf/
 PRINTF = $(addprefix $(PRINTF_DIR), $(PRINTF_A))
 
 SRC = $(SRC_DIR)/main.c \
-	$(SRC_DIR)/utils/env_utils.c \
-	$(SRC_DIR)/utils/cmd_utils2.c \
-	$(SRC_DIR)/utils/cmd_utils.c \
-	$(SRC_DIR)/utils/fd_utils.c \
-	$(SRC_DIR)/utils/error_utils.c \
+	$(SRC_DIR)/srcs/command_execution.c \
+	$(SRC_DIR)/srcs/command_handling.c \
+	$(SRC_DIR)/srcs/command_parsing.c \
+	$(SRC_DIR)/srcs/debugging.c \
+	$(SRC_DIR)/srcs/error_handling.c \
+	$(SRC_DIR)/srcs/file_handling.c \
+	$(SRC_DIR)/srcs/memory_management.c \
+	$(SRC_DIR)/srcs/path_handling.c \
+	$(SRC_DIR)/srcs/string_manipulation.c \
+	$(SRC_DIR)/srcs/utility.c \
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
@@ -74,7 +79,7 @@ fclean: clean
 re: fclean all
 
 $(OBJ_DIR):
-	@mkdir -p $(OBJ_DIR)/utils
+	@mkdir -p $(OBJ_DIR)/srcs
 	@mkdir -p $(LIBFT_DIR).objs
 	@mkdir -p $(PRINTF_DIR).objs
 

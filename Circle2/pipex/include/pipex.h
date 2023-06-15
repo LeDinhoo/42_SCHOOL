@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/08 16:05:40 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/06/15 18:27:01 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 typedef struct s_cmd_tab
 {
 	char		**cmd;
+	char		**cmd_path;
 	char		***cmd_args;
 }				t_cmd_tab;
 
@@ -37,23 +38,45 @@ typedef struct s_pip
 	int			f2;
 }				t_pip;
 
-bool			access_cmd(t_pip *pipex);
+// file_handling.c
 bool			open_fd(char *infile, char *outfile, t_pip *pipex);
-bool			process_cmd(t_pip *pipex);
-char			*join_path(char *s1, char *s2);
+
+// command_handling.c
+void			split_cmd_arguments(char **argv, int argc, t_pip *pipex);
+void			add_cmd_to_path(t_pip *pipex, char *full_path);
+
+// string_manipulation.c
+void			join_cmd(t_pip *pipex, char *cmd);
+void			remove_cmd(t_pip *pipex, char *cmd);
 int				search_substring(const char *string, const char *substring);
+
+// command_parsing.c
+bool			access_cmd(t_pip *pipex);
+void			access_cmd_full(char *command, t_pip *pipex, int index);
+
+// memory_management.c
 void			free_arguments(char **args);
 void			free_path(t_pip *pipex);
 void			free_structure(t_pip *pipex);
+void			free_false_cmd(t_pip *pipex, int i);
+
+// path_handling.c
+char			*join_path(char *s1, char *s2);
 void			get_path(char **env, t_pip *pipex);
+void			split_path(char *path, t_pip *pipex);
+
+// error_handling.c
 void			handle_access_error(t_pip *pipex);
 void			handle_open_error(t_pip *pipex);
-void			join_cmd(t_pip *pipex, char *cmd);
-void			remove_cmd(t_pip *pipex, char *cmd);
-void			split_command_arguments(char **argv, int argc, t_pip *pipex);
-void			split_path(char *path, t_pip *pipex);
-void			save_cmd_path(t_pip *pipex, char *path_cmd);
 
-void			check_command_access(char *command, t_pip *pipex, int index);
+// command_execution.c
+void			process_cmd(t_pip *pipex);
+
+// debugging.c
+void			print_args(t_pip *pipex);
+
+// utility.c
+int				check_empty(char **argv);
+bool			check_whitespace_only(const char *str);
 
 #endif
