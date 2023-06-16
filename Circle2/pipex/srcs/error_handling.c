@@ -6,22 +6,23 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 17:29:44 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/15 18:16:58 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/06/16 10:26:34 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	handle_access_error(t_pip *pipex)
+bool	handle_arguments_error(int argc, char **envp)
 {
-	free_structure(pipex);
-	perror("Access");
-	exit(0);
-}
-
-void	handle_open_error(t_pip *pipex)
-{
-	free_structure(pipex);
-	perror("Error");
-	exit(0);
+	if (argc < 5)
+	{
+		ft_printf("Error: Not enough arguments\n");
+		return (false);
+	}
+	if (!envp)
+	{
+		ft_printf("Error: Environment not available");
+		return (false);
+	}
+	return (true);
 }

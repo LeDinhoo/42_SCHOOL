@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:11:03 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/15 18:27:47 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/06/16 09:23:11 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	access_cmd_full(char *command, t_pip *pipex, int index)
 	{
 		pipex->tab.cmd_args[index] = ft_calloc(2, sizeof(char **));
 		pipex->tab.cmd_args[index][0] = ft_calloc(2, sizeof(char *));
-		ft_printf("%s", command);
-		ft_printf(": command not found\n");
 	}
 	else if (command[0] == '/' || (command[0] == '.' && command[1] == '/'))
 	{

@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 10:55:54 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/15 18:33:23 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/06/16 10:23:41 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,12 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_pip	pipex;
 
-	if (argc < 5)
-	{
-		ft_printf("Not enough arguments");
+	if (!handle_arguments_error(argc, envp))
 		return (1);
-	}
-	if (!envp)
-	{
-		ft_printf("Envp not available");
-		return (1);
-	}
 	initialize_structure(argc, argv, envp, &pipex);
+	open_fd(pipex.infile, pipex.outfile, &pipex);
 	process_cmd(&pipex);
-	if (!open_fd(pipex.infile, pipex.outfile, &pipex))
-		handle_open_error(&pipex);
-	print_args(&pipex);
+	// print_args(&pipex);
 	free_structure(&pipex);
 	return (0);
 }

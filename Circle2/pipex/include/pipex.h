@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/15 18:27:01 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/06/16 10:24:37 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_pip
 }				t_pip;
 
 // file_handling.c
-bool			open_fd(char *infile, char *outfile, t_pip *pipex);
+void			open_fd(char *infile, char *outfile, t_pip *pipex);
 
 // command_handling.c
 void			split_cmd_arguments(char **argv, int argc, t_pip *pipex);
@@ -66,8 +66,7 @@ void			get_path(char **env, t_pip *pipex);
 void			split_path(char *path, t_pip *pipex);
 
 // error_handling.c
-void			handle_access_error(t_pip *pipex);
-void			handle_open_error(t_pip *pipex);
+bool			handle_arguments_error(int argc, char **envp);
 
 // command_execution.c
 void			process_cmd(t_pip *pipex);
