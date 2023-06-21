@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:13:06 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/16 09:14:47 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/06/21 18:01:13 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,31 @@ void	free_path(t_pip *pipex)
 		while (pipex->path[++i])
 			free(pipex->path[i]);
 	free(pipex->path);
+}
+
+void	free_cmd_list(t_cmd_list *list)
+{
+	t_cmd_list	*current;
+	t_cmd_list	*next;
+	char		**arg;
+
+	current = list;
+	while (current != NULL)
+	{
+		next = current->next;
+		if (current->args != NULL)
+		{
+			arg = current->args;
+			while (*arg != NULL)
+			{
+				free(*arg);
+				arg++;
+			}
+			free(current->args);
+		}
+		free(current);
+		current = next;
+	}
 }
 
 void	free_structure(t_pip *pipex)

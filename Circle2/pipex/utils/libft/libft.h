@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 10:00:11 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/14 14:31:09 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/06/16 15:37:45 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ void				ft_putendl_fd(char *s, int fd);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 int					ft_isspace(int c);
+char				*ft_strcpy(char *destination, const char *source);
 
 #endif
