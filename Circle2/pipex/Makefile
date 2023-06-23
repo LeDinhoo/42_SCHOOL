@@ -30,6 +30,8 @@ SRC = $(SRC_DIR)/main.c \
 	$(SRC_DIR)/srcs/utility.c \
 	$(SRC_DIR)/srcs/pipex_utils.c \
 	$(SRC_DIR)/srcs/pipex_utils2.c \
+	$(SRC_DIR)/srcs/here_doc.c \
+	$(SRC_DIR)/utils/get_next_line.c \
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
@@ -82,6 +84,7 @@ re: fclean all
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)/srcs
+	@mkdir -p $(OBJ_DIR)/utils
 	@mkdir -p $(LIBFT_DIR).objs
 	@mkdir -p $(PRINTF_DIR).objs
 

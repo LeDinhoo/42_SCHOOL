@@ -6,23 +6,24 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/23 10:47:40 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/06/23 17:16:54 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+# endif
+
 # include "../utils/ft_printf/ft_printf.h"
 # include "../utils/libft/libft.h"
 # include <fcntl.h>
 # include <stdbool.h>
-# include <stdlib.h>
+# include <stdio.h>
 # include <sys/types.h>
 # include <sys/wait.h>
-# include <unistd.h>
-// A supprimer
-# include <stdio.h>
 
 typedef struct s_cmd_list
 {
@@ -52,6 +53,8 @@ typedef struct s_pip
 	int					input_fd;
 	int					pipe_fd[2];
 	int					nb_steps;
+	int					is_here_doc;
+	int					here_doc_fd;
 }						t_pip;
 
 // file_handling.c
@@ -103,6 +106,7 @@ void					print_cmd_args(t_pip *pip);
 // utility.c
 int						check_empty(char **argv);
 bool					check_whitespace_only(const char *str);
+char					*get_next_line(int fd);
 
 // pipex.utils.c
 int						cmd_numbers(t_cmd_list *cmd);
@@ -115,5 +119,8 @@ void					wait_for_children(t_pip *pip);
 void					handle_single_cmd_case(t_pip *pip);
 void					iterate_commands(t_pip *pip);
 void					pipex(t_pip *pip);
+
+char					*get_here_doc(char *limiter);
+void					here_doc(t_pip *pip, char *limiter);
 
 #endif

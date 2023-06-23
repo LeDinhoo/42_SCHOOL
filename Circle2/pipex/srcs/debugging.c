@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:20:20 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/21 17:43:16 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/06/23 16:32:43 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,16 @@ void	print_cmd_args(t_pip *pip)
 	current = pip->cmd_lst;
 	while (current != NULL)
 	{
-		printf("Command: %s\n", current->cmd);
-		printf("Command Path: %s\n", current->cmd_path);
-		printf("Arguments:\n");
+		ft_printf("Command: %s\n", current->cmd);
+		ft_printf("Command Path: %s\n", current->cmd_path);
+		ft_printf("Arguments:\n");
 		i = 0;
 		while (current->args[i])
 		{
-			printf("%s\n", current->args[i]);
+			ft_printf("%s\n", current->args[i]);
 			i++;
 		}
-		printf("\n");
+		ft_printf("\n");
 		current = current->next;
 	}
 }

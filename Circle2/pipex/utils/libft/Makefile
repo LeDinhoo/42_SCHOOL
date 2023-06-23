@@ -40,6 +40,7 @@ SRCS			=	ft_atoi.c			\
 					ft_substr.c			\
 					ft_isspace.c		\
 					ft_strcpy.c			\
+					ft_strcmp.c			\
 
 DIR_HEADERS 	= ./
 DIR_OBJS 		= .objs/

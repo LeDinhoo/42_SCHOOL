@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:02:33 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/23 10:47:12 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/06/23 17:36:07 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	split_cmd_arguments(char **argv, int argc, t_pip *pipex)
 	int	j;
 
 	i = 2;
+	if (pipex->is_here_doc == 1)
+		i = 3;
 	j = 0;
 	while (i < argc - 1)
 	{

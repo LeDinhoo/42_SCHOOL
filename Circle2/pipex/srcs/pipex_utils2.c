@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 10:36:41 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/23 10:36:52 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/06/23 15:32:37 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,12 @@ void	iterate_commands(t_pip *pip)
 
 	i = 0;
 	current = pip->cmd_lst;
-	while (current != NULL)
+	while (current)
 	{
-		while (current->cmd == NULL && current->next)
-			current = current->next;
+		// ft_printf("cmd: %s, is_last: %d, i: %d\n", current->cmd,
+		// current->is_last, i);
+		// while (current->cmd == NULL && current->next)
+		// 	current = current->next;
 		if (current->is_last == 0)
 			pipe(pipe_fd);
 		if (fork() == 0)
@@ -65,11 +67,11 @@ void	pipex(t_pip *pip)
 	if (is_only(pip) == 0)
 		return ;
 	set_last_cmd(pip);
-	if (is_only(pip) == 1)
-	{
-		handle_single_cmd_case(pip);
-		return ;
-	}
+	// if (is_only(pip) == 1)
+	// {
+	// 	handle_single_cmd_case(pip);
+	// 	return ;
+	// }
 	iterate_commands(pip);
 	wait_for_children(pip);
 }

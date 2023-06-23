@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 10:00:11 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/16 15:37:45 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/06/23 17:44:11 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char				*ft_substr(char const *s, unsigned int start, size_t len);
 int					ft_atoi(const char *str);
 int					ft_isdigit(int c);
 int					ft_memcmp(void *s1, void *s2, size_t n);
-int					ft_strncmp(char *s1, char *s2, size_t n);
+int					ft_strncmp(const char *s1, const char *s2, size_t n);
 long long			ft_atol(const char *str);
 size_t				ft_strlcat(char *dst, char *src, size_t dstsize);
 size_t				ft_strlcpy(char *dst, char *src, size_t dstsize);
@@ -57,5 +57,6 @@ void				ft_putstr_fd(char *s, int fd);
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 int					ft_isspace(int c);
 char				*ft_strcpy(char *destination, const char *source);
+int					ft_strcmp(const char *s1, const char *s2);
 
 #endif

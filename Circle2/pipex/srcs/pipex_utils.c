@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 10:34:04 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/23 10:36:39 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/06/23 15:38:26 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	set_last_cmd(t_pip *pip)
 	current = pip->cmd_lst;
 	while (current)
 	{
-		if (current->cmd)
-			last = current;
+		// if (current->cmd)
+		last = current;
 		current = current->next;
 	}
 	last->is_last = 1;
@@ -51,9 +51,9 @@ int	is_only(t_pip *pip)
 	current = pip->cmd_lst;
 	while (current)
 	{
-		if (current->cmd)
-			i++;
+		// if (current->cmd)
 		current = current->next;
+		i++;
 	}
 	return (i);
 }
@@ -91,4 +91,11 @@ void	execute_cmd(t_pip *pip, t_cmd_list *current, int pipe_fd[2], int i)
 	}
 	if (current->cmd)
 		execve(current->cmd_path, current->args, NULL);
+	else
+	{
+		perror("pipex");
+		free_structure(pip);
+		free_cmd_list(pip->cmd_lst);
+		exit(EXIT_FAILURE);
+	}
 }
