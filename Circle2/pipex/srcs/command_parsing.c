@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:11:03 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/16 09:23:11 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/06/23 10:47:18 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,54 @@ bool	access_cmd(t_pip *pipex)
 		i++;
 	}
 	return (false);
+}
+
+t_cmd_list	*create_new_command(t_pip *pipex, int *k, int i)
+{
+	t_cmd_list	*new_command;
+
+	new_command = ft_calloc(sizeof(t_cmd_list), 1);
+	if (new_command == NULL)
+		return (NULL);
+	if (pipex->tab.cmd_args[i][0])
+	{
+		init_new_command(pipex, new_command, *k, i);
+		(*k)++;
+	}
+	return (new_command);
+}
+
+void	append_command(t_cmd_list **head, t_cmd_list *new_command)
+{
+	t_cmd_list	*current;
+
+	if (*head == NULL)
+		*head = new_command;
+	else
+	{
+		current = *head;
+		while (current->next != NULL)
+		{
+			current = current->next;
+		}
+		current->next = new_command;
+	}
+}
+
+void	add_command(t_pip *pipex, t_cmd_list **head)
+{
+	int			i;
+	int			k;
+	t_cmd_list	*new_command;
+
+	i = 0;
+	k = 0;
+	while (pipex->tab.cmd_args[i])
+	{
+		new_command = create_new_command(pipex, &k, i);
+		if (new_command == NULL)
+			return ;
+		append_command(head, new_command);
+		i++;
+	}
 }

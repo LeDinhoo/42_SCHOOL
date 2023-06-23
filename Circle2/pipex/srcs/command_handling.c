@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:02:33 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/21 17:52:13 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/06/23 10:47:12 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,41 +75,6 @@ void	init_new_command(t_pip *pipex, t_cmd_list *new_command, int k, int i)
 	new_command->cmd = pipex->tab.cmd_args[i][0];
 	new_command->cmd_path = pipex->tab.cmd_path[k];
 	add_cmd_args(pipex, i, new_command);
+	new_command->is_last = 0;
 	new_command->next = NULL;
-}
-
-void	add_command(t_pip *pipex, t_cmd_list **head)
-{
-	int			i;
-	int			k;
-	t_cmd_list	*new_command;
-	t_cmd_list	*current;
-
-	i = 0;
-	k = 0;
-	new_command = NULL;
-	current = NULL;
-	while (pipex->tab.cmd_args[i])
-	{
-		new_command = malloc(sizeof(t_cmd_list));
-		if (new_command == NULL)
-			return ;
-		if (pipex->tab.cmd_args[i][0])
-		{
-			init_new_command(pipex, new_command, k, i);
-			k++;
-		}
-		if (*head == NULL)
-			*head = new_command;
-		else
-		{
-			current = *head;
-			while (current->next != NULL)
-			{
-				current = current->next;
-			}
-			current->next = new_command;
-		}
-		i++;
-	}
 }

@@ -28,6 +28,8 @@ SRC = $(SRC_DIR)/main.c \
 	$(SRC_DIR)/srcs/path_handling.c \
 	$(SRC_DIR)/srcs/string_manipulation.c \
 	$(SRC_DIR)/srcs/utility.c \
+	$(SRC_DIR)/srcs/pipex_utils.c \
+	$(SRC_DIR)/srcs/pipex_utils2.c \
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
