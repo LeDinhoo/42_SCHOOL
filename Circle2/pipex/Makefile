@@ -2,7 +2,7 @@
 
 NAME = pipex
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = 
 INCLUDE_DIR = include
 INCLUDES = -I$(INCLUDE_DIR)
 

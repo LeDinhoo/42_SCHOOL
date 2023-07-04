@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 10:34:04 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/23 15:38:26 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/07/04 12:36:41 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	set_last_cmd(t_pip *pip)
 	current = pip->cmd_lst;
 	while (current)
 	{
-		// if (current->cmd)
 		last = current;
 		current = current->next;
 	}
@@ -51,7 +50,6 @@ int	is_only(t_pip *pip)
 	current = pip->cmd_lst;
 	while (current)
 	{
-		// if (current->cmd)
 		current = current->next;
 		i++;
 	}
@@ -74,8 +72,7 @@ void	execute_one_cmd(t_pip *pip)
 
 void	execute_cmd(t_pip *pip, t_cmd_list *current, int pipe_fd[2], int i)
 {
-	if (i == 0)
-		dup2(pip->f1, STDIN_FILENO);
+	handle_stdin(i, pip);
 	if (current->is_last == 1)
 		dup2(pip->f2, STDOUT_FILENO);
 	if (i != 0)

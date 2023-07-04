@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/23 17:16:54 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/07/04 12:04:56 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,8 @@ void					handle_single_cmd_case(t_pip *pip);
 void					iterate_commands(t_pip *pip);
 void					pipex(t_pip *pip);
 
-char					*get_here_doc(char *limiter);
+// here_doc.c
+void					handle_stdin(int i, t_pip *pip);
 void					here_doc(t_pip *pip, char *limiter);
 
 #endif
