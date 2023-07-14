@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_helper.c                                     :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
+/*   By: lalex-ku <lalex-ku@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 12:57:09 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/07/14 15:10:28 by hdupuy           ###   ########.fr       */
+/*   Created: 2022/04/26 14:51:36 by lalex-ku          #+#    #+#             */
+/*   Updated: 2022/06/07 15:56:00 by lalex-ku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini.h"
+#include "minishell.h"
 
-void	print_list(t_token *head)
+int	main(int argc, char **argv, char **envp)
 {
-	t_token	*current;
-
-	current = head;
-	while (current != NULL)
+	if (argv && argc > 1)
 	{
-		printf("Token: %s, Type: %d\n", current->str, current->type);
-		current = current->next;
+		ft_putstr_fd("Minishell can't take arguments 🧙🏻‍♂️\n", STDOUT_FILENO);
+		return (EXIT_FAILURE);
 	}
+	return (minishell(init_minienv(envp)));
 }

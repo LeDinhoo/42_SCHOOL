@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_helper.c                                     :+:      :+:    :+:   */
+/*   handle_expansions_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
+/*   By: lalex-ku <lalex-ku@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 12:57:09 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/07/14 15:10:28 by hdupuy           ###   ########.fr       */
+/*   Created: 2022/05/25 14:51:24 by lalex-ku          #+#    #+#             */
+/*   Updated: 2022/06/28 18:42:43 by lalex-ku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini.h"
+#include "minishell_bonus.h"
 
-void	print_list(t_token *head)
+void	handle_expansions(char **input, t_env *minienv, int exit_status)
 {
-	t_token	*current;
-
-	current = head;
-	while (current != NULL)
-	{
-		printf("Token: %s, Type: %d\n", current->str, current->type);
-		current = current->next;
-	}
+	expand_exit_status(input, exit_status);
+	expand_variables(input, minienv);
+	expand_wildcards(input[0], input, minienv);
 }

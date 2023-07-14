@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_helper.c                                     :+:      :+:    :+:   */
+/*   free_minienv.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
+/*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 12:57:09 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/07/14 15:10:28 by hdupuy           ###   ########.fr       */
+/*   Created: 2022/05/26 11:15:58 by sguilher          #+#    #+#             */
+/*   Updated: 2022/05/26 11:20:00 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini.h"
+#include "minishell.h"
 
-void	print_list(t_token *head)
+void	free_minienv(t_env **minienv)
 {
-	t_token	*current;
+	t_env	*aux;
+	t_env	*next;
 
-	current = head;
-	while (current != NULL)
+	aux = *minienv;
+	while (aux)
 	{
-		printf("Token: %s, Type: %d\n", current->str, current->type);
-		current = current->next;
+		free(aux->key_pair);
+		next = aux->next;
+		free(aux);
+		aux = next;
 	}
+	minienv = NULL;
 }

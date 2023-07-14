@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_helper.c                                     :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
+/*   By: lalexk-ku <lalex-ku@42sp.org.br>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 12:57:09 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/07/14 15:10:28 by hdupuy           ###   ########.fr       */
+/*   Created: 2021/08/13 15:05:41 by lalexk-ku         #+#    #+#             */
+/*   Updated: 2021/08/13 15:05:42 by lalexk-ku        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini.h"
+#include "libft.h"
 
-void	print_list(t_token *head)
+// Iterates the list ’lst’ and applies the function
+// ’f’ to the content of each element.
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	t_token	*current;
-
-	current = head;
-	while (current != NULL)
+	if (!lst)
+		return ;
+	while (lst)
 	{
-		printf("Token: %s, Type: %d\n", current->str, current->type);
-		current = current->next;
+		f(lst->content);
+		lst = lst->next;
 	}
+	return ;
 }

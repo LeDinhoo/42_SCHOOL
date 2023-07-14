@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_helper.c                                     :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
+/*   By: lalexk-ku <lalex-ku@42sp.org.br>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 12:57:09 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/07/14 15:10:28 by hdupuy           ###   ########.fr       */
+/*   Created: 2021/07/31 11:09:36 by lalexk-ku         #+#    #+#             */
+/*   Updated: 2021/07/31 11:13:47 by lalexk-ku        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini.h"
+#include "libft.h"
 
-void	print_list(t_token *head)
+int	ft_toupper(int c)
 {
-	t_token	*current;
-
-	current = head;
-	while (current != NULL)
-	{
-		printf("Token: %s, Type: %d\n", current->str, current->type);
-		current = current->next;
-	}
+	if (c >= 'a' && c <= 'z')
+		c = c - 32;
+	return (c);
 }

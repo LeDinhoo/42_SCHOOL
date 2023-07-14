@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_helper.c                                     :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
+/*   By: lalexk-ku <lalex-ku@42sp.org.br>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 12:57:09 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/07/14 15:10:28 by hdupuy           ###   ########.fr       */
+/*   Created: 2021/07/30 15:28:10 by lalexk-ku         #+#    #+#             */
+/*   Updated: 2021/07/30 15:28:56 by lalexk-ku        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini.h"
+#include "libft.h"
 
-void	print_list(t_token *head)
+int	ft_isdigit(int c)
 {
-	t_token	*current;
-
-	current = head;
-	while (current != NULL)
-	{
-		printf("Token: %s, Type: %d\n", current->str, current->type);
-		current = current->next;
-	}
+	return (c >= '0' && c <= '9');
 }

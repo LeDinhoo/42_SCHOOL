@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_helper.c                                     :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
+/*   By: lalexk-ku <lalex-ku@42sp.org.br>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 12:57:09 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/07/14 15:10:28 by hdupuy           ###   ########.fr       */
+/*   Created: 2021/08/13 15:12:54 by lalexk-ku         #+#    #+#             */
+/*   Updated: 2021/08/13 15:13:23 by lalexk-ku        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini.h"
+#include "libft.h"
 
-void	print_list(t_token *head)
+void	ft_putendl_fd(char *s, int fd)
 {
-	t_token	*current;
-
-	current = head;
-	while (current != NULL)
-	{
-		printf("Token: %s, Type: %d\n", current->str, current->type);
-		current = current->next;
-	}
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

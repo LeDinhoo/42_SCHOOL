@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_helper.c                                     :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
+/*   By: lalexk-ku <lalex-ku@42sp.org.br>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 12:57:09 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/07/14 15:10:28 by hdupuy           ###   ########.fr       */
+/*   Created: 2021/07/30 15:41:43 by lalexk-ku         #+#    #+#             */
+/*   Updated: 2021/08/13 11:19:49 by lalexk-ku        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini.h"
+#include "libft.h"
+/**
+ @brief Returns the length of the string without the \0 at the end
 
-void	print_list(t_token *head)
+ @param str
+ @return size_t
+ */
+size_t	ft_strlen(const char *str)
 {
-	t_token	*current;
+	size_t	i;
 
-	current = head;
-	while (current != NULL)
-	{
-		printf("Token: %s, Type: %d\n", current->str, current->type);
-		current = current->next;
-	}
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

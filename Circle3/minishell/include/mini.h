@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/07/13 10:05:52 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/07/14 14:54:14 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,13 @@
 # include <stdlib.h>
 # include <sys/types.h>
 # include <sys/wait.h>
+# include <limits.h>
+# include <errno.h>
+#include <dirent.h>
 
+
+
+# define PATH_MAX 4096
 # define EMPTY 0
 # define CMD 1
 # define ARG 2

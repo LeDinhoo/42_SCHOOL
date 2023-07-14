@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_helper.c                                     :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
+/*   By: lalexk-ku <lalex-ku@42sp.org.br>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 12:57:09 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/07/14 15:10:28 by hdupuy           ###   ########.fr       */
+/*   Created: 2021/08/13 15:03:07 by lalexk-ku         #+#    #+#             */
+/*   Updated: 2021/08/13 15:03:07 by lalexk-ku        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini.h"
+#include "libft.h"
 
-void	print_list(t_token *head)
+// Returns the last element of the list.
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_token	*current;
-
-	current = head;
-	while (current != NULL)
+	if (!lst)
+		return (NULL);
+	while (lst->next)
 	{
-		printf("Token: %s, Type: %d\n", current->str, current->type);
-		current = current->next;
+		lst = lst->next;
 	}
+	return (lst);
 }

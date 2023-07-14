@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_helper.c                                     :+:      :+:    :+:   */
+/*   minishell_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
+/*   By: sguilher <sguilher@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 12:57:09 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/07/14 15:10:28 by hdupuy           ###   ########.fr       */
+/*   Created: 2022/06/28 18:38:23 by lalex-ku          #+#    #+#             */
+/*   Updated: 2022/06/29 17:01:30 by sguilher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini.h"
+#ifndef MINISHELL_BONUS_H
+# define MINISHELL_BONUS_H
 
-void	print_list(t_token *head)
-{
-	t_token	*current;
+# include "minishell.h"
 
-	current = head;
-	while (current != NULL)
-	{
-		printf("Token: %s, Type: %d\n", current->str, current->type);
-		current = current->next;
-	}
-}
+// Wildcard
+void	expand_wildcards(char *search, char **input, t_env *minienv);
+char	*get_wildcard_value(char *wildcard_label, char **input, t_env *minienv);
+
+#endif

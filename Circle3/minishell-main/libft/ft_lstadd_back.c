@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_helper.c                                     :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
+/*   By: lalexk-ku <lalex-ku@42sp.org.br>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 12:57:09 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/07/14 15:10:28 by hdupuy           ###   ########.fr       */
+/*   Created: 2021/08/10 22:04:12 by lalexk-ku         #+#    #+#             */
+/*   Updated: 2021/08/13 13:59:42 by lalexk-ku        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini.h"
+#include "libft.h"
 
-void	print_list(t_token *head)
+// Adds the element ’new’ at the end of the list.
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_token	*current;
-
-	current = head;
-	while (current != NULL)
+	if (!lst)
+		return ;
+	if (!*lst)
 	{
-		printf("Token: %s, Type: %d\n", current->str, current->type);
-		current = current->next;
+		*lst = new;
+		return ;
 	}
+	ft_lstlast(*lst)->next = new;
 }

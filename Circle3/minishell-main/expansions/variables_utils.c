@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_helper.c                                     :+:      :+:    :+:   */
+/*   variables_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
+/*   By: lalex-ku <lalex-ku@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 12:57:09 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/07/14 15:10:28 by hdupuy           ###   ########.fr       */
+/*   Created: 2022/06/06 16:19:08 by coder             #+#    #+#             */
+/*   Updated: 2022/06/24 19:34:28 by lalex-ku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini.h"
+#include "minishell.h"
 
-void	print_list(t_token *head)
+int	is_varname(char c)
 {
-	t_token	*current;
+	return (ft_isalnum(c) || c == '_');
+}
 
-	current = head;
-	while (current != NULL)
+int	is_valid_varname(char *name)
+{
+	if (!ft_isalpha(*name))
+		return (FALSE);
+	while (*name)
 	{
-		printf("Token: %s, Type: %d\n", current->str, current->type);
-		current = current->next;
+		if (!is_varname(*name))
+			return (FALSE);
+		name++;
 	}
+	return (TRUE);
 }

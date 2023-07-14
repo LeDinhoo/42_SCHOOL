@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_helper.c                                     :+:      :+:    :+:   */
+/*   skip_quotes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
+/*   By: lalex-ku <lalex-ku@42sp.org.br>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 12:57:09 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/07/14 15:10:28 by hdupuy           ###   ########.fr       */
+/*   Created: 2022/06/28 18:31:52 by lalex-ku          #+#    #+#             */
+/*   Updated: 2022/06/28 18:31:58 by lalex-ku         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini.h"
+#include "minishell.h"
 
-void	print_list(t_token *head)
+int	skip_quotes(char *str)
 {
-	t_token	*current;
+	int	i;
 
-	current = head;
-	while (current != NULL)
+	i = 0;
+	if (str[i] == '\'')
 	{
-		printf("Token: %s, Type: %d\n", current->str, current->type);
-		current = current->next;
+		i++;
+		while (str[i] != '\'')
+			i++;
 	}
+	if (str[i] == '"')
+	{
+		i++;
+		while (str[i] != '"')
+			i++;
+	}
+	return (i);
 }
