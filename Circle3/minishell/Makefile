@@ -27,6 +27,8 @@ SRC = 	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/srcs/parsing/string_split.c \
 		$(SRC_DIR)/srcs/parsing/token_identification.c \
 		$(SRC_DIR)/srcs/builtins/echo.c \
+		$(SRC_DIR)/srcs/builtins/cd.c \
+		$(SRC_DIR)/srcs/exec/exec_builtin.c \
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
@@ -81,6 +83,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)/srcs
 	@mkdir -p $(OBJ_DIR)/srcs/parsing/
 	@mkdir -p $(OBJ_DIR)/srcs/builtins/
+	@mkdir -p $(OBJ_DIR)/srcs/exec/
 	@mkdir -p $(OBJ_DIR)/utils
 	@mkdir -p $(LIBFT_DIR).objs
 	@mkdir -p $(PRINTF_DIR).objs

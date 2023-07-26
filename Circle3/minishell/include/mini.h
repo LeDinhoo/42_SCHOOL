@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/07/14 14:54:14 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/07/18 13:12:47 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@
 
 # include "../utils/ft_printf/ft_printf.h"
 # include "../utils/libft/libft.h"
+# include <dirent.h>
+# include <errno.h>
 # include <fcntl.h>
+# include <limits.h>
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <stdbool.h>
@@ -27,11 +30,6 @@
 # include <stdlib.h>
 # include <sys/types.h>
 # include <sys/wait.h>
-# include <limits.h>
-# include <errno.h>
-#include <dirent.h>
-
-
 
 # define PATH_MAX 4096
 # define EMPTY 0
@@ -112,7 +110,7 @@ int					determine_token_type(const char *str);
 char				*substitute_variable_value(char *token, t_split *tkn);
 void				add_token_to_list(t_token **head, const char *start,
 						int tokenLength, t_split *tkn);
-						
+
 // command_processing.c :
 
 void				is_cmd(t_token *current, char **env, int i);
@@ -130,6 +128,11 @@ t_token				*split_string(const char *str);
 void				update_in_quotes(t_parser *parser);
 
 // builtins.c
+void				builtin_exec(t_mini *mini);
 t_token				*echo_build(t_token *head);
+char				*get_git_branch(void);
+char				*get_prompt_str(void);
+int					minishell_cd(char *path);
+void				cd_build(t_mini *mini);
 
 #endif
