@@ -77,7 +77,8 @@ void	execute_cmd(t_pip *pip, t_cmd_list *current, int pipe_fd[2], int i)
 		dup2(pip->f2, STDOUT_FILENO);
 	if (i != 0)
 	{
-		dup2(pip->input_fd, STDIN_FILENO);
+		if (pip->input_fd != 0)
+			dup2(pip->input_fd, STDIN_FILENO);
 		close(pip->input_fd);
 	}
 	if (current->is_last == 0)

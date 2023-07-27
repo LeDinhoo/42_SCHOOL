@@ -39,8 +39,11 @@ void	iterate_commands(t_pip *pip)
 
 	i = 0;
 	current = pip->cmd_lst;
+	pip->input_fd = 0;
 	while (current)
 	{
+		if (pip->f1 == -1 && i == 0)
+			i++;
 		if (current->is_last == 0)
 			pipe(pipe_fd);
 		if (fork() == 0)

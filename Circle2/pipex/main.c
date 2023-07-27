@@ -62,7 +62,6 @@ int	main(int argc, char **argv, char **envp)
 	open_fd(pip.infile, pip.outfile, &pip);
 	process_cmd(&pip);
 	add_command(&pip, &pip.cmd_lst);
-	print_cmd_args(&pip);
 	pipex(&pip);
 	free_structure(&pip);
 	free_cmd_list(pip.cmd_lst);

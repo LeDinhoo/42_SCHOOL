@@ -14,8 +14,15 @@
 
 void	free_false_cmd(t_pip *pipex, int i)
 {
-	free(pipex->tab.cmd_args[i][0]);
-	pipex->tab.cmd_args[i][0] = NULL;
+	int	j;
+
+	j = 0;
+	while (pipex->tab.cmd_args[i][j])
+	{
+		free(pipex->tab.cmd_args[i][j]);
+		pipex->tab.cmd_args[i][j] = NULL;
+		j++;
+	}
 	ft_printf("%s", pipex->tab.cmd[i]);
 	ft_printf(": command not found\n");
 }
