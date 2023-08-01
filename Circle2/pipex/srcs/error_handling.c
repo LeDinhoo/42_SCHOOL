@@ -16,7 +16,7 @@ bool	handle_arguments_error(int argc, char **envp)
 {
 	if (argc < 5)
 	{
-		ft_printf("Error: Not enough arguments\n");
+		write(1, "Error: Not enough arguments\n", 29);
 		return (false);
 	}
 	if (!envp)
@@ -25,4 +25,25 @@ bool	handle_arguments_error(int argc, char **envp)
 		return (false);
 	}
 	return (true);
+}
+
+void	exit_fd(t_pip *pip, int pipe_fd[2])
+{
+	close(pip->f2);
+	close(pipe_fd[0]);
+	close(pipe_fd[1]);
+	free_structure(pip);
+	free_cmd_list(pip->cmd_lst);
+	exit(1);
+}
+
+void	exit_cmd_null(t_pip *pip, int pipe_fd[2])
+{
+	perror("pipex");
+	close(pipe_fd[0]);
+	close(pipe_fd[1]);
+	close(pip->f2);
+	free_structure(pip);
+	free_cmd_list(pip->cmd_lst);
+	exit(1);
 }

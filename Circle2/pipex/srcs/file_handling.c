@@ -25,12 +25,14 @@ void	open_fd(char *infile, char *outfile, t_pip *pipex)
 		pipex->f2 = open(outfile, O_CREAT | O_RDWR | O_TRUNC, 0644);
 	}
 	if (pipex->f1 == -1)
-		perror("Error");
+	{
+		perror("Invalid file descriptor");
+	}
 	if (pipex->f2 == -1)
 	{
 		free_structure(pipex);
 		ft_printf("%s: ", outfile);
-		perror("");
+		perror("Invalid file descriptor");
 		exit(0);
 	}
 }

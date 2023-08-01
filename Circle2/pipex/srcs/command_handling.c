@@ -27,7 +27,6 @@ void	split_cmd_arguments(char **argv, int argc, t_pip *pipex)
 		i++;
 		j++;
 	}
-	pipex->tab.cmd_args[j] = NULL;
 }
 
 void	add_cmd_to_path(t_pip *pipex, char *full_path)

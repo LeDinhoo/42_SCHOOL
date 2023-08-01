@@ -73,15 +73,21 @@ void	execute_one_cmd(t_pip *pip)
 void	execute_cmd(t_pip *pip, t_cmd_list *current, int pipe_fd[2], int i)
 {
 	handle_stdin(i, pip);
-	if (current->is_last == 1)
+	if (i == 0 && pip->f1 == -1)
+	{
+		exit_fd(pip, pipe_fd);
+	}
+	if (current->cmd && current->is_last == 1)
 		dup2(pip->f2, STDOUT_FILENO);
 	if (i != 0)
 	{
 		if (pip->input_fd != 0)
+		{
 			dup2(pip->input_fd, STDIN_FILENO);
-		close(pip->input_fd);
+			close(pip->input_fd);
+		}
 	}
-	if (current->is_last == 0)
+	if (current->cmd && current->is_last == 0)
 	{
 		dup2(pipe_fd[1], STDOUT_FILENO);
 		close(pipe_fd[0]);
@@ -90,10 +96,5 @@ void	execute_cmd(t_pip *pip, t_cmd_list *current, int pipe_fd[2], int i)
 	if (current->cmd)
 		execve(current->cmd_path, current->args, NULL);
 	else
-	{
-		perror("pipex");
-		free_structure(pip);
-		free_cmd_list(pip->cmd_lst);
-		exit(EXIT_FAILURE);
-	}
+		exit_cmd_null(pip, pipe_fd);
 }

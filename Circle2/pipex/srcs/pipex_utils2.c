@@ -14,12 +14,14 @@
 
 void	wait_for_children(t_pip *pip)
 {
-	t_cmd_list	*current;
+	int			i;
+	int			j;
 
-	current = pip->cmd_lst;
-	while (current)
+	j = pip->nb_steps ;
+	i = 0;
+	while (i < j)
 	{
-		current = current->next;
+		i++;
 		wait(NULL);
 	}
 }
@@ -42,8 +44,6 @@ void	iterate_commands(t_pip *pip)
 	pip->input_fd = 0;
 	while (current)
 	{
-		if (pip->f1 == -1 && i == 0)
-			i++;
 		if (current->is_last == 0)
 			pipe(pipe_fd);
 		if (fork() == 0)

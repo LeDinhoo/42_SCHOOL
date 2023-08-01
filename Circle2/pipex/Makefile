@@ -1,8 +1,8 @@
 .PHONY: all clean fclean re
 
 NAME = pipex
-CC = gcc
-CFLAGS = 
+CC = gcc 
+CFLAGS = -Wall -Wextra -Werror
 INCLUDE_DIR = include
 INCLUDES = -I$(INCLUDE_DIR)
 
@@ -45,12 +45,14 @@ PRINTF_DEPS = $(PRINTF_OBJ:.o=.d)
 
 all: $(NAME)
 
+bonus: $(NAME)
+
 $(NAME): $(OBJ) $(LIBFT) $(PRINTF)
 	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(LIBFT) $(PRINTF) -o $@
 	@echo "Compilation terminée avec succès ! ✔️"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	@$(CC) $(CFLAGS) $(INCLUDES) -MMD -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDES)  -c $< -o $@
 
 $(LIBFT): $(LIBFT_OBJ)
 	@$(MAKE) -C $(LIBFT_DIR) -s
@@ -61,10 +63,10 @@ $(PRINTF): $(PRINTF_OBJ)
 	@echo "Compilation de ft_printf terminée ! ✔️"
 
 $(LIBFT_DIR).objs/%.o: $(LIBFT_DIR)%.c
-	@$(CC) $(CFLAGS) $(INCLUDES) -MMD -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDES)  -c $< -o $@
 
 $(PRINTF_DIR).objs/%.o: $(PRINTF_DIR)%.c
-	@$(CC) $(CFLAGS) $(INCLUDES) -MMD -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDES)  -c $< -o $@
 
 force: ;
 

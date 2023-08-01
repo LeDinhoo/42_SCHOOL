@@ -14,9 +14,11 @@
 
 void	handle_stdin(int i, t_pip *pip)
 {
-	if (i == 0)
+	if (i == 0 && pip->f1 != -1)
+	{
 		dup2(pip->f1, STDIN_FILENO);
-	if (i == 0 && pip->is_here_doc == 1)
+	}
+	else if (i == 0 && pip->is_here_doc == 1 && pip->here_doc_fd != -1)
 	{
 		dup2(pip->here_doc_fd, STDIN_FILENO);
 	}

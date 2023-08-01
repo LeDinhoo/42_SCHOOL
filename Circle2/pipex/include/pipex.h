@@ -51,7 +51,6 @@ typedef struct s_pip
 	int					f1;
 	int					f2;
 	int					input_fd;
-	int					pipe_fd[2];
 	int					nb_steps;
 	int					is_here_doc;
 	int					here_doc_fd;
@@ -59,6 +58,8 @@ typedef struct s_pip
 
 // file_handling.c
 void					open_fd(char *infile, char *outfile, t_pip *pipex);
+void					exit_fd(t_pip *pip, int pipe_fd[2]);
+void					exit_cmd_null(t_pip *pip, int pipe_fd[2]);
 
 // command_handling.c
 void					split_cmd_arguments(char **argv, int argc,
