@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 10:09:50 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/08/10 15:36:34 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/08/22 09:12:00 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <unistd.h>
 
 # define MAX_PHILO 200
-# define INT_MAX 2147483647
 
 typedef struct s_philo
 {
@@ -49,6 +48,6 @@ typedef struct s_main
 }							t_main;
 
 int							ft_atoi(const char *str);
-unsigned long long			get_timestamp(void);
+long int					get_timestamp(void);
 
 #endif

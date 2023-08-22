@@ -6,30 +6,30 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 12:46:02 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/08/11 10:09:41 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/08/22 09:12:25 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-pthread_mutex_t		print_mutex;
+pthread_mutex_t	print_mutex;
 
-unsigned long long	get_timestamp(void)
+long int	get_timestamp(void)
 {
-	struct timeval	tv;
+	struct timeval	now;
 
-	gettimeofday(&tv, NULL);
-	return (((unsigned long long)tv.tv_sec) * 1000
-		+ ((unsigned long long)tv.tv_usec) / 1000);
+	gettimeofday(&now, NULL);
+	return ((now.tv_sec * 1000) + (now.tv_usec / 1000));
 }
 
-void	ft_usleep(int ms)
+int	ft_usleep(long int time)
 {
-	long int	time;
+	long int	start_time;
 
-	time = get_timestamp();
-	while (get_timestamp() - time < ms)
-		usleep(ms / 10);
+	start_time = get_timestamp();
+	while ((get_timestamp() - start_time) < time)
+		usleep(150);
+	return (1);
 }
 
 int	handle_nb_philo(t_main *main)
@@ -91,19 +91,19 @@ void	init_thread(t_main *main)
 void	eat(t_philo *philo)
 {
 	pthread_mutex_lock(philo->left_fork);
-	printf("%llu %d has taken a fork\n", get_timestamp(), philo->id);
+	printf("%lu %d has taken a fork\n", get_timestamp(), philo->id);
 	pthread_mutex_lock(philo->right_fork);
-	printf("%llu %d has taken a fork\n", get_timestamp(), philo->id);
-	printf("%llu %d is eating\n", get_timestamp(), philo->id);
+	printf("%lu %d has taken a fork\n", get_timestamp(), philo->id);
+	printf("%lu %d is eating\n", get_timestamp(), philo->id);
 	pthread_mutex_lock(&philo->want_eat);
 	philo->last_eat = (unsigned long long int)get_timestamp();
 	pthread_mutex_unlock(&philo->want_eat);
 	ft_usleep(philo->time_to_eat);
 	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_unlock(philo->left_fork);
-	printf("%llu %d is sleeping\n", get_timestamp(), philo->id);
+	printf("%lu %d is sleeping\n", get_timestamp(), philo->id);
 	ft_usleep(philo->time_to_sleep);
-	printf("%llu %d is thinking\n", get_timestamp(), philo->id);
+	printf("%lu %d is thinking\n", get_timestamp(), philo->id);
 }
 
 void	*philosopher_life(void *arg)
