@@ -2,26 +2,27 @@
 
 NAME = philo
 CC = gcc
-CFLAGS = 
-INCLUDE_DIR = include
-INCLUDES = -I$(INCLUDE_DIR) 
+CFLAGS = -Wall -Wextra -Werror
+INCLUDES = -I include
 
 SRC_DIR = .
 OBJ_DIR = .obj
 
 SRC = 	$(SRC_DIR)/main.c \
 	 	$(SRC_DIR)/srcs/utils.c \
+	 	$(SRC_DIR)/srcs/1.c \
+	 	$(SRC_DIR)/srcs/2.c \
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) -o $@
+	@$(CC) $(CFLAGS) $(OBJ) -lpthread -o $@
 	@echo "Compilation terminée avec succès ! ✔️"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 force: ;
 
