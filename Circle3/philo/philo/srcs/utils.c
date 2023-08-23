@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 12:56:24 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/08/23 08:51:26 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/08/23 17:46:41 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,15 @@ void	thread_destroy(t_main *main)
 		pthread_mutex_destroy(&main->forks[i]);
 		i++;
 	}
+}
+
+void	ft_sleep(t_philo *philo)
+{
+	check_death(philo);
+	print_routine(philo, SLEEP);
+	ft_usleep(philo->time_to_sleep);
+	check_death(philo);
+	print_routine(philo, THINK);
 }
 
 void	free_data(t_main *main)

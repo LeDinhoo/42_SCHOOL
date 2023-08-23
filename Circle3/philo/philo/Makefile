@@ -10,8 +10,8 @@ OBJ_DIR = .obj
 
 SRC = 	$(SRC_DIR)/main.c \
 	 	$(SRC_DIR)/srcs/utils.c \
-	 	$(SRC_DIR)/srcs/1.c \
-	 	$(SRC_DIR)/srcs/2.c \
+	 	$(SRC_DIR)/srcs/error.c \
+	 	$(SRC_DIR)/srcs/init.c \
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

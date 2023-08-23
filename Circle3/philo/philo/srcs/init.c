@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   2.c                                                :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 15:59:56 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/08/23 09:07:03 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/08/23 19:22:47 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,18 @@ void	init_thread(t_main *main)
 	main->philo_data = malloc(sizeof(t_philo) * main->num_philo);
 }
 
-void	ft_sleep(t_philo *philo)
+void	init_philo_data(t_main *main, int i, long int now)
 {
-	check_death(philo);
-	print_routine(philo, SLEEP);
-	ft_usleep(philo->time_to_sleep);
-	check_death(philo);
-	print_routine(philo, THINK);
+	main->philo_data[i].death = &(main->death);
+	main->philo_data[i].id = i + 1;
+	main->philo_data[i].last_eat = now;
+	main->philo_data[i].num_eats = 0;
+	main->philo_data[i].num_times_to_eat = main->num_times_to_eat;
+	main->philo_data[i].print = &(main->print_mutex);
+	main->philo_data[i].thread_start = now;
+	main->philo_data[i].time_to_die = main->time_to_die;
+	main->philo_data[i].time_to_eat = main->time_to_eat;
+	main->philo_data[i].time_to_sleep = main->time_to_sleep;
 }
 
 void	eat(t_philo *philo)
@@ -60,15 +65,20 @@ void	eat(t_philo *philo)
 int	check_death(t_philo *p)
 {
 	long int	now;
+	bool		is_dead;
 
-	pthread_mutex_lock(&p->print);
+	is_dead = *(p->death);
+	pthread_mutex_lock(p->print);
 	now = get_timestamp() - p->last_eat;
-	pthread_mutex_unlock(&p->print);
-	if (now >= p->time_to_die)
+	pthread_mutex_unlock(p->print);
+	if (is_dead == 0 && now >= p->time_to_die)
 	{
-		print_routine(p, DIE);
-		pthread_mutex_lock(&p->print);
-		exit(0);
+		pthread_mutex_lock(p->print);
+		*(p->death) = true;
+		printf("%lums %d \x1B[31mDIED\x1B[0m 💀\n", get_timestamp()
+			- p->thread_start, p->id);
+		pthread_mutex_unlock(p->print);
+		return (1);
 	}
 	return (0);
 }
