@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 10:09:50 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/08/23 09:03:15 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/08/23 10:25:50 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,19 @@
 
 # define MAX_PHILO 200
 
-# define FORK "has taken a fork"
-# define EAT "is eating"
-# define SLEEP "is sleeping"
-# define THINK "is thinking"
-# define DIE "DIED"
+# define RESET "\x1B[0m"
+# define RED "\x1B[31m"
+# define GREEN "\x1B[32m"
+# define YELLOW "\x1B[33m"
+# define BLUE "\x1B[34m"
+# define MAGENTA "\x1B[35m"
+# define CYAN "\x1B[36m"
 
+# define FORK "\x1B[32mhas taken a fork\x1B[0m"
+# define EAT "\x1B[36mis eating\x1B[0m"
+# define SLEEP "\x1B[33mis sleeping\x1B[0m"
+# define THINK "\x1B[34mis thinking\x1B[0m"
+# define DIE "\x1B[31mDIED\x1B[0m"
 
 typedef struct s_philo
 {

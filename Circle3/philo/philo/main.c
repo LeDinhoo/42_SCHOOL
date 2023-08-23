@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 12:46:02 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/08/23 09:09:48 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/08/23 10:15:23 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ void	*philosopher_life(void *arg)
 	}
 	while (1)
 	{
-		if (philo->num_eats >= philo->num_times_to_eat)
-			break ;
 		eat(philo);
+		if (philo->num_times_to_eat > 0
+			&& philo->num_eats >= philo->num_times_to_eat)
+			break ;
 		ft_sleep(philo);
 	}
 	return (NULL);
