@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 12:56:24 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/08/23 17:46:41 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/08/23 20:03:04 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,17 @@ void	thread_destroy(t_main *main)
 
 void	ft_sleep(t_philo *philo)
 {
+	int	wake_time;
+	int	death_time;
+
+	wake_time = (get_timestamp() - philo->last_eat) + philo->time_to_sleep;
+	death_time = (get_timestamp() - philo->last_eat) + philo->time_to_die;
 	check_death(philo);
 	print_routine(philo, SLEEP);
-	ft_usleep(philo->time_to_sleep);
+	if (wake_time >= death_time)
+		ft_usleep(philo->time_to_die);
+	else
+		ft_usleep(philo->time_to_sleep);
 	check_death(philo);
 	print_routine(philo, THINK);
 }
