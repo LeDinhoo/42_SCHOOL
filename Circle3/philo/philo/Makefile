@@ -12,6 +12,7 @@ SRC = 	$(SRC_DIR)/main.c \
 	 	$(SRC_DIR)/srcs/utils.c \
 	 	$(SRC_DIR)/srcs/error.c \
 	 	$(SRC_DIR)/srcs/init.c \
+	 	$(SRC_DIR)/srcs/one.c \
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

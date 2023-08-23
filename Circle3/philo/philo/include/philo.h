@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 10:09:50 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/08/23 19:22:33 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/08/23 20:54:00 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 
 # define FORK "\x1B[32mhas taken a fork\x1B[0m 🥢"
 # define EAT "\x1B[36mis eating\x1B[0m 🍙"
-# define SLEEP "\x1B[33mis sleeping\x1B[0m 💤"
+# define SLEEP "\x1B[33mis sleeping\x1B[0m 🌒"
 # define THINK "\x1B[34mis thinking\x1B[0m 🧠"
 
 typedef struct s_philo
@@ -84,5 +84,6 @@ void				philo(t_main *main);
 void				print_routine(t_philo *p, char *action);
 void				thread_destroy(t_main *main);
 void				thread_join(t_main *main);
+void				handle_one_philo(t_main *main);
 
 #endif
