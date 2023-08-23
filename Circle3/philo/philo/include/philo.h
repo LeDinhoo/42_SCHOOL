@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 10:09:50 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/08/22 18:20:34 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/08/23 09:03:15 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define SLEEP "is sleeping"
 # define THINK "is thinking"
 # define DIE "DIED"
+
 
 typedef struct s_philo
 {

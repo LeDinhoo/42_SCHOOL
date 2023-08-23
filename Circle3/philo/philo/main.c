@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 12:46:02 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/08/22 18:25:21 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/08/23 09:09:48 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	*philosopher_life(void *arg)
 	}
 	while (1)
 	{
+		if (philo->num_eats >= philo->num_times_to_eat)
+			break ;
 		eat(philo);
 		ft_sleep(philo);
 	}
@@ -36,6 +38,19 @@ void	print_routine(t_philo *p, char *action)
 	pthread_mutex_unlock(&p->print);
 }
 
+void	init_philo_data(t_main *main, int i, long int now)
+{
+	main->philo_data[i].id = i + 1;
+	main->philo_data[i].time_to_die = main->time_to_die;
+	main->philo_data[i].time_to_eat = main->time_to_eat;
+	main->philo_data[i].time_to_sleep = main->time_to_sleep;
+	main->philo_data[i].num_eats = 0;
+	main->philo_data[i].num_times_to_eat = main->num_times_to_eat;
+	main->philo_data[i].thread_start = now;
+	main->philo_data[i].last_eat = now;
+	main->philo_data[i].print = main->print_mutex;
+}
+
 void	philo(t_main *main)
 {
 	int			i;
@@ -45,15 +60,7 @@ void	philo(t_main *main)
 	now = get_timestamp();
 	while (i < main->num_philo)
 	{
-		main->philo_data[i].id = i + 1;
-		main->philo_data[i].time_to_die = main->time_to_die;
-		main->philo_data[i].time_to_eat = main->time_to_eat;
-		main->philo_data[i].time_to_sleep = main->time_to_sleep;
-		main->philo_data[i].num_eats = 0;
-		main->philo_data[i].num_times_to_eat = main->num_times_to_eat;
-		main->philo_data[i].thread_start = now;
-		main->philo_data[i].last_eat = now;
-		main->philo_data[i].print = main->print_mutex;
+		init_philo_data(main, i, now);
 		if (i % 2 == 0)
 		{
 			main->philo_data[i].left_fork = &main->forks[i];
