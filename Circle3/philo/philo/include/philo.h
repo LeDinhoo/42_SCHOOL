@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 10:09:50 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/08/23 20:54:00 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/08/29 12:38:10 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@
 # define MAGENTA "\x1B[35m"
 # define CYAN "\x1B[36m"
 
-# define FORK "\x1B[32mhas taken a fork\x1B[0m 🥢"
-# define EAT "\x1B[36mis eating\x1B[0m 🍙"
-# define SLEEP "\x1B[33mis sleeping\x1B[0m 🌒"
-# define THINK "\x1B[34mis thinking\x1B[0m 🧠"
+# define FORK "has taken a fork"
+# define EAT "is eating"
+# define SLEEP "is sleeping"
+# define THINK "is thinking"
 
 typedef struct s_philo
 {
@@ -48,12 +48,16 @@ typedef struct s_philo
 	long int		time_to_die;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*print;
+	pthread_mutex_t	*ready;
 	pthread_mutex_t	*right_fork;
+
 }					t_philo;
 
 typedef struct s_main
 {
 	bool			death;
+	pthread_mutex_t	start;
+	int				*is_take;
 	int				num_philo;
 	int				num_times_to_eat;
 	int				time_to_die;

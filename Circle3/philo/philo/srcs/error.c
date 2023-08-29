@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 15:59:32 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/08/23 20:53:13 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/08/29 12:40:34 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,5 @@ void	init_struct(int argc, char **argv, t_main *main)
 		if (main->num_philo > 0 && main->num_philo < 201)
 			main->forks = malloc(sizeof(pthread_mutex_t) * main->num_philo);
 	}
+	main->is_take = malloc(sizeof(int) * main->num_philo);
 }

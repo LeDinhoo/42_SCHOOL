@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 15:59:56 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/08/23 19:22:47 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/08/29 13:10:56 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	init_philo_data(t_main *main, int i, long int now)
 	main->philo_data[i].time_to_die = main->time_to_die;
 	main->philo_data[i].time_to_eat = main->time_to_eat;
 	main->philo_data[i].time_to_sleep = main->time_to_sleep;
+	main->philo_data[i].ready = &(main->start);
 }
 
 void	eat(t_philo *philo)
@@ -52,14 +53,16 @@ void	eat(t_philo *philo)
 	print_routine(philo, FORK);
 	check_death(philo);
 	pthread_mutex_lock(philo->right_fork);
-	check_death(philo);
 	print_routine(philo, FORK);
 	print_routine(philo, EAT);
+	pthread_mutex_lock(philo->print);
 	philo->last_eat = get_timestamp();
+	pthread_mutex_unlock(philo->print);
+	check_death(philo);
 	ft_usleep(philo->time_to_eat);
-	philo->num_eats++;
-	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_unlock(philo->right_fork);
+	philo->num_eats++;
 }
 
 int	check_death(t_philo *p)
@@ -67,8 +70,8 @@ int	check_death(t_philo *p)
 	long int	now;
 	bool		is_dead;
 
-	is_dead = *(p->death);
 	pthread_mutex_lock(p->print);
+	is_dead = *(p->death);
 	now = get_timestamp() - p->last_eat;
 	pthread_mutex_unlock(p->print);
 	if (is_dead == 0 && now >= p->time_to_die)

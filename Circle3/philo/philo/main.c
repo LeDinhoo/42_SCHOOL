@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 12:46:02 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/08/23 20:49:23 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/08/29 12:40:16 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ void	*philosopher_life(void *arg)
 	bool	is_dead;
 
 	philo = (t_philo *)arg;
-	if (philo->id % 2 == 1)
-	{
-		usleep(500);
-	}
+	pthread_mutex_lock(philo->ready);
+	pthread_mutex_unlock(philo->ready);
 	while (1)
 	{
 		pthread_mutex_lock(philo->print);
@@ -56,15 +54,15 @@ void	init_philo_fork(t_main *main, int i)
 {
 	if (i % 2 == 0)
 	{
-		main->philo_data[i].left_fork = &main->forks[i];
-		main->philo_data[i].right_fork = &main->forks[(i + 1)
-			% main->num_philo];
+		main->philo_data[i].left_fork = &(main->forks[i]);
+		main->philo_data[i].right_fork = &(main->forks[(i + 1)
+				% main->num_philo]);
 	}
 	else
 	{
-		main->philo_data[i].right_fork = &main->forks[(i + 1)
-			% main->num_philo];
-		main->philo_data[i].left_fork = &main->forks[i];
+		main->philo_data[i].right_fork = &(main->forks[(i + 1)
+				% main->num_philo]);
+		main->philo_data[i].left_fork = &(main->forks[i]);
 	}
 }
 
@@ -76,6 +74,8 @@ void	philo(t_main *main)
 	i = 0;
 	now = get_timestamp();
 	main->death = false;
+	pthread_mutex_init(&main->start, NULL);
+	pthread_mutex_lock(&main->start);
 	while (i < main->num_philo)
 	{
 		init_philo_data(main, i, now);
@@ -84,6 +84,7 @@ void	philo(t_main *main)
 			&(main->philo_data[i]));
 		i++;
 	}
+	pthread_mutex_unlock(&main->start);
 	return ;
 }
 
