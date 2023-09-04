@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 12:57:09 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/07/12 16:10:42 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/08/30 12:06:34 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,35 @@ t_token	*split_string(const char *str)
 			if (tkn->end <= tkn->length)
 				tkn->end--;
 		}
-		else if (str[tkn->end] == '<' || str[tkn->end] == '>')
+		else if (str[tkn->end] == '<')
 		{
 			if (tkn->end - tkn->start > 0)
 			{
 				add_token_to_list(&head, &str[tkn->start], tkn->end
 					- tkn->start, tkn);
 			}
-			if (str[tkn->end + 1] == ' ')
+			if (str[tkn->end + 1] != '<')
+			{
+				add_token_to_list(&head, &str[tkn->end], 1, tkn);
+			}
+			else
+			{
+				tkn->tokenlength = 1;
+				if (str[tkn->end + 1] == str[tkn->end])
+					tkn->tokenlength = 2;
+				add_token_to_list(&head, &str[tkn->end], tkn->tokenlength, tkn);
+				tkn->end++;
+			}
+			tkn->start = tkn->end + 1;
+		}
+		else if (str[tkn->end] == '>')
+		{
+			if (tkn->end - tkn->start > 0)
+			{
+				add_token_to_list(&head, &str[tkn->start], tkn->end
+					- tkn->start, tkn);
+			}
+			if (str[tkn->end + 1] != '>')
 			{
 				add_token_to_list(&head, &str[tkn->end], 1, tkn);
 			}

@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:00:01 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/07/18 13:12:47 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/08/30 13:34:14 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,21 @@ typedef struct s_parser
 	int				in_quotes;
 }					t_parser;
 
+typedef struct s_cmd
+{
+	int				is_pipe;
+	char			*cmd;
+	char			*cmd_path;
+	char			**cmd_args;
+	struct s_cmd	*next;
+}					t_cmd;
+
 typedef struct s_mini
 {
 	char			*input;
 	char			**env;
 	struct s_token	*start;
+	struct s_cmd	*cmd_tab;
 }					t_mini;
 
 // path.c :
@@ -134,5 +144,8 @@ char				*get_git_branch(void);
 char				*get_prompt_str(void);
 int					minishell_cd(char *path);
 void				cd_build(t_mini *mini);
+
+// exec.c
+int					execution(t_mini *mini);
 
 #endif
