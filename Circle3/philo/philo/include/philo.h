@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
+/*   By: hdupuy <hdupuy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 10:09:50 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/08/29 12:38:10 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/11/28 23:02:50 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <sys/time.h>
+
 # include <unistd.h>
 
 # define MAX_PHILO 200
@@ -46,6 +46,7 @@ typedef struct s_philo
 	long int		last_eat;
 	long int		thread_start;
 	long int		time_to_die;
+
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*print;
 	pthread_mutex_t	*ready;
@@ -56,13 +57,13 @@ typedef struct s_philo
 typedef struct s_main
 {
 	bool			death;
-	pthread_mutex_t	start;
 	int				*is_take;
 	int				num_philo;
 	int				num_times_to_eat;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
+	pthread_mutex_t	start;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print_mutex;
 	pthread_t		*philo;

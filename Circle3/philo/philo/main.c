@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 12:46:02 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/08/29 12:40:16 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/09/21 14:21:09 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ void	init_philo_fork(t_main *main, int i)
 	}
 	else
 	{
+		main->philo_data[i].left_fork = &(main->forks[i]);
 		main->philo_data[i].right_fork = &(main->forks[(i + 1)
 				% main->num_philo]);
-		main->philo_data[i].left_fork = &(main->forks[i]);
 	}
 }
 

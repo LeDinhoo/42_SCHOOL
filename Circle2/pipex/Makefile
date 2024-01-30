@@ -72,7 +72,7 @@ force: ;
 
 clean:
 	@echo "Suppression des fichiers objets... 🗑️"
-	@rm -rf $(OBJ_DIR)
+	rm -rf $(OBJ_DIR)
 	@$(MAKE) -C $(LIBFT_DIR) clean -s
 	@$(MAKE) -C $(PRINTF_DIR) clean -s
 

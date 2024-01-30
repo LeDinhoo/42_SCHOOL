@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 15:59:32 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/08/29 12:40:34 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/09/21 11:41:09 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ int	handle_error(int argc, char **argv)
 
 void	init_struct(int argc, char **argv, t_main *main)
 {
-	main->num_philo = ft_atoi(argv[1]);
-	main->time_to_die = ft_atoi(argv[2]);
+    main->num_philo = ft_atoi(argv[1]);
+    main->time_to_die = ft_atoi(argv[2]);
 	main->time_to_eat = ft_atoi(argv[3]);
 	main->time_to_sleep = ft_atoi(argv[4]);
 	if (main->num_philo == 1)

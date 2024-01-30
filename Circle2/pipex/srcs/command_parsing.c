@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:11:03 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/06/23 10:47:18 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/08/30 14:01:32 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	add_command(t_pip *pipex, t_cmd_list **head)
 		new_command = create_new_command(pipex, &k, i);
 		if (new_command == NULL)
 			return ;
-		append_command(head, new_command);
+		append_command(head, new_command); 
 		i++;
 	}
 }

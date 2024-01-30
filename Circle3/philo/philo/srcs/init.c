@@ -6,7 +6,7 @@
 /*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 15:59:56 by hdupuy            #+#    #+#             */
-/*   Updated: 2023/08/29 13:10:56 by hdupuy           ###   ########.fr       */
+/*   Updated: 2023/09/21 14:53:19 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,20 @@ void	init_philo_data(t_main *main, int i, long int now)
 
 void	eat(t_philo *philo)
 {
-	check_death(philo);
+	// check_death(philo);
 	pthread_mutex_lock(philo->left_fork);
 	print_routine(philo, FORK);
-	check_death(philo);
+	// check_death(philo);
 	pthread_mutex_lock(philo->right_fork);
 	print_routine(philo, FORK);
-	print_routine(philo, EAT);
-	pthread_mutex_lock(philo->print);
-	philo->last_eat = get_timestamp();
-	pthread_mutex_unlock(philo->print);
-	check_death(philo);
-	ft_usleep(philo->time_to_eat);
-	pthread_mutex_unlock(philo->left_fork);
-	pthread_mutex_unlock(philo->right_fork);
+	// print_routine(philo, EAT);
+	// pthread_mutex_lock(philo->print);
+	// philo->last_eat = get_timestamp();
+	// pthread_mutex_unlock(philo->print);
+	// // check_death(philo);
+	// ft_usleep(philo->time_to_eat);
+	// pthread_mutex_unlock(philo->left_fork);
+	// pthread_mutex_unlock(philo->right_fork);
 	philo->num_eats++;
 }
 
