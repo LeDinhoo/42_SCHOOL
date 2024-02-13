@@ -1,7 +1,5 @@
 {
-	"C_Cpp.errorSquiggles": "disabled",
 	"files.associations": {
-		"ostream": "cpp",
 		"array": "cpp",
 		"atomic": "cpp",
 		"bit": "cpp",
@@ -16,7 +14,6 @@
 		"cstdint": "cpp",
 		"cstdio": "cpp",
 		"cstdlib": "cpp",
-		"ctime": "cpp",
 		"cwchar": "cpp",
 		"cwctype": "cpp",
 		"deque": "cpp",
@@ -37,17 +34,15 @@
 		"type_traits": "cpp",
 		"utility": "cpp",
 		"initializer_list": "cpp",
-		"iomanip": "cpp",
 		"iosfwd": "cpp",
 		"iostream": "cpp",
 		"istream": "cpp",
 		"limits": "cpp",
 		"new": "cpp",
 		"numbers": "cpp",
-		"sstream": "cpp",
+		"ostream": "cpp",
 		"stdexcept": "cpp",
 		"streambuf": "cpp",
-		"typeinfo": "cpp",
-		"fstream": "cpp"
+		"typeinfo": "cpp"
 	}
 }
