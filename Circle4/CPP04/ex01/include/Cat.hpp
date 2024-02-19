@@ -1,44 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdupuy <hdupuy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 09:15:43 by hdupuy            #+#    #+#             */
-/*   Updated: 2024/02/19 12:18:18 by hdupuy           ###   ########.fr       */
+/*   Created: 2024/02/15 10:36:22 by hdupuy            #+#    #+#             */
+/*   Updated: 2024/02/16 11:59:17 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef CAT_HPP
+#define CAT_HPP
 
-#include "AAnimal.hpp"
+#include "Animal.hpp"
 #include "Brain.hpp"
-#include "Cat.hpp"
-#include "Dog.hpp"
 
-int main ()
-{
-	AAnimal *tab[10];
+class Cat : public Animal {
+   public:
+    Cat ();
+    Cat ( Cat const &src );
+    ~Cat ();
 
-	for ( int i = 0; i < 10; i++ )
-	{
-		if ( i % 2 == 0 )
-		{
-			tab[i] = new Dog ();
-		}
-		else
-		{
-			tab[i] = new Cat ();
-		}
-	}
-	for ( int i = 0; i < 10; i++ )
-	{
-		tab[i]->makeSound ();
-	}
-	for ( int i = 0; i < 10; i++ )
-	{
-		delete tab[i];
-	}
-	return 0;
-}
+    Cat &operator= ( Cat const &rhs );
+
+   private:
+    Brain *cell;
+};
+
+#endif

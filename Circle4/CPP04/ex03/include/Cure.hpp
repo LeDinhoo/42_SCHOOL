@@ -1,44 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cure.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdupuy <hdupuy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 09:15:43 by hdupuy            #+#    #+#             */
-/*   Updated: 2024/02/19 12:18:18 by hdupuy           ###   ########.fr       */
+/*   Created: 2024/02/19 13:50:14 by hdupuy            #+#    #+#             */
+/*   Updated: 2024/02/19 13:56:23 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef CURE_HPP
+#define CURE_HPP
+
+#include "AMateria.hpp"
 #include <iostream>
+#include <string>
 
-#include "AAnimal.hpp"
-#include "Brain.hpp"
-#include "Cat.hpp"
-#include "Dog.hpp"
-
-int main ()
+class Cure : public AMateria
 {
-	AAnimal *tab[10];
 
-	for ( int i = 0; i < 10; i++ )
-	{
-		if ( i % 2 == 0 )
-		{
-			tab[i] = new Dog ();
-		}
-		else
-		{
-			tab[i] = new Cat ();
-		}
-	}
-	for ( int i = 0; i < 10; i++ )
-	{
-		tab[i]->makeSound ();
-	}
-	for ( int i = 0; i < 10; i++ )
-	{
-		delete tab[i];
-	}
-	return 0;
-}
+  public:
+	Cure ();
+	Cure ( Cure const &src );
+	~Cure ();
+
+	Cure &operator= ( Cure const &rhs );
+	AMateria *clone () const;
+
+  private:
+};
+
+#endif /* ************************************************************* Cure_H */

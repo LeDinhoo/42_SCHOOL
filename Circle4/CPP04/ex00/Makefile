@@ -1,25 +1,27 @@
 .PHONY: all clean fclean re
 
-NAME = ClapTrap
+NAME = Animals
 CC = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
 SRC_DIR = .
 OBJ_DIR = .obj
+INCLUDE = -I./include
 
 SRC = 	$(SRC_DIR)/main.cpp \
-		$(SRC_DIR)/Animal.cpp \
-		$(SRC_DIR)/Cat.cpp \
-		$(SRC_DIR)/Dog.cpp \
-		$(SRC_DIR)/WrongAnimal.cpp \
-		$(SRC_DIR)/WrongCat.cpp \
+		$(SRC_DIR)/src/Animal.cpp \
+		$(SRC_DIR)/src/Dog.cpp \
+		$(SRC_DIR)/src/Cat.cpp \
+		$(SRC_DIR)/src/WrongAnimal.cpp \
+		$(SRC_DIR)/src/WrongCat.cpp
+
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) $(INCLUDE) -o $@ $^
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 

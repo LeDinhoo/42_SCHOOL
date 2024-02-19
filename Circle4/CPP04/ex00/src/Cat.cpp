@@ -1,44 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdupuy <hdupuy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 09:15:43 by hdupuy            #+#    #+#             */
-/*   Updated: 2024/02/19 12:18:18 by hdupuy           ###   ########.fr       */
+/*   Created: 2024/02/15 10:37:51 by hdupuy            #+#    #+#             */
+/*   Updated: 2024/02/16 11:36:05 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-
-#include "AAnimal.hpp"
-#include "Brain.hpp"
 #include "Cat.hpp"
-#include "Dog.hpp"
 
-int main ()
-{
-	AAnimal *tab[10];
+Cat::Cat () : Animal ( "Cat" ) {
+    std::cout << "Cat <default> constructor called" << std::endl;
+}
 
-	for ( int i = 0; i < 10; i++ )
-	{
-		if ( i % 2 == 0 )
-		{
-			tab[i] = new Dog ();
-		}
-		else
-		{
-			tab[i] = new Cat ();
-		}
-	}
-	for ( int i = 0; i < 10; i++ )
-	{
-		tab[i]->makeSound ();
-	}
-	for ( int i = 0; i < 10; i++ )
-	{
-		delete tab[i];
-	}
-	return 0;
+Cat::Cat ( const Cat &src ) : Animal ( src ) {
+    *this = src;
+    std::cout << "Cat <copy> constructor called" << std::endl;
+}
+
+Cat::~Cat () { std::cout << "Cat destructor called" << std::endl; }
+
+Cat &Cat::operator= ( Cat const &rhs ) {
+    if ( this != &rhs ) {
+	this->type = rhs.getType ();
+    }
+    return *this;
 }

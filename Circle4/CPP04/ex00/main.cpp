@@ -3,100 +3,111 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: hdupuy <hdupuy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 17:35:44 by ael-khni          #+#    #+#             */
-/*   Updated: 2022/07/24 21:09:29 by ael-khni         ###   ########.fr       */
+/*   Created: 2024/02/15 09:15:43 by hdupuy            #+#    #+#             */
+/*   Updated: 2024/02/16 11:39:19 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
+#include <iostream>
 
-C++ virtual function:
-- A C++ virtual function is a member function in the base class that you redefine
-    in a derived class. It is declared using the virtual keyword.
-- It is used to tell the compiler to perform dynamic linkage or late binding
-    on the function.
-- There is a necessity to use the single pointer to refer to all the objects of 
-    the different classes. So, we create the pointer to the base class that refers
-    to all the derived objects. But, when base class pointer contains the address of
-    the derived class object, always executes the base class function. This issue
-    can only be resolved by using the 'virtual' function.
-- A 'virtual' is a keyword preceding the normal declaration of a function.
-- When the function is made virtual, C++ determines which function is to be invoked
-    at the runtime based on the type of the object pointed by the base class pointer.
-
-*/
-
-/* virtual means the the linkage will be dynamic not static 
-    Explaination:
-    At the beginning, we had a statis relution of the function calls, It means that
-    during the compilation, (the compiler) we already will know which function to call.
-    and for this we use the type of the variable.
-    The only way for the compiler to know the behavior of my object is by knowing its type.
-    and we marked it as a Character type. and the compiler will assume that its a Character.
-    Therefore, it uses the Character version of the function.
-    It was a static link! means that during the compilation is determined it won't change later.
-    However, during the compilation let assume that we don't want it as a Warriror, but as a Wizard.
-    it may point on a Warrior once and on the Wizard once based on what the user input.
-    Thanks to the virtual, the resulotion of the function call wil be dynamic. and it will be
-    decided at runtime.
-
-    When we call the member function, during the execution becauese it's a function with 
-    a dynamic link, it will look for the actual type of the object. It will walk 
-    through the inheritance tree to find the actual type.
-
-    A virtual member function is called a method.
-    The definition of a method is a member function which resulotion will be dynamic.
-
-Rules of Virtual Function:
-
-    - Virtual functions must be members of some class.
-    - Virtual functions cannot be static members.
-    - They are accessed through object pointers.
-    - They can be a friend of another class.
-    - A virtual function must be defined in the base class, even though it is not used.
-    - The prototypes of a virtual function of the base class and all the derived classes 
-        must be identical. If the two functions with the same name but different prototypes,
-        C++ will consider them as the overloaded functions.
-    - We cannot have a virtual constructor, but we can have a virtual destructor
-
-*/
-
-#include "Dog.hpp"
+#include "Animal.hpp"
 #include "Cat.hpp"
-
+#include "Dog.hpp"
+#include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
-int main( void )
-{
-    std::cout << "--------------- Animal ---------------" << std::endl;
+int main () {
+    // Affichage de séparateurs pour délimiter les sections du programme
+    std::cout << std::endl;
+    std::cout << "---------------------" << std::endl;
+    std::cout << std::endl;
 
-    const Animal* meta = new Animal();
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
+    // Création d'un objet Animal
+    Animal a;
 
-    std::cout << "J Type: " << j->getType() << " " << std::endl;
-    std::cout << "I Type: " << i->getType() << " " << std::endl;
-    i->makeSound();
-    meta->makeSound();
+    // Affichage de saut de ligne pour séparation
+    std::cout << std::endl;
+    std::cout << std::endl;
 
-    delete  meta;
-    delete  j;
-    delete  i;
+    // Création d'un objet Animal en utilisant le constructeur de copie
+    Animal b ( a );
 
-    std::cout << std::endl << "------------- Wrong Animal -------------" << std::endl;
+    // Affichage de saut de ligne pour séparation
+    std::cout << std::endl;
+    std::cout << std::endl;
 
-    const WrongAnimal *wrong = new WrongAnimal();
-    const WrongAnimal *wrongCat = new WrongCat();
+    // Création d'un objet Animal en utilisant le constructeur avec chaîne de
+    // caractères
+    Animal c ( "Animal" );
 
-    std::cout << "Wrong Type: " << wrong->getType() << " " << std::endl;
-    std::cout << "WrongCat Type: " << wrongCat->getType() << " " << std::endl;
-    wrong->makeSound();
-    wrongCat->makeSound();
+    // Affichage de saut de ligne pour séparation
+    std::cout << std::endl;
+    std::cout << std::endl;
 
-    delete  wrong;
-    delete  wrongCat;
+    // Création d'objets Dog
+    Dog d;
+
+    // Affichage de saut de ligne pour séparation
+    std::cout << std::endl;
+    std::cout << std::endl;
+
+    // Création d'objets Cat
+    Cat e;
+
+    // Affichage de saut de ligne pour séparation
+    std::cout << std::endl;
+    std::cout << std::endl;
+
+    // Création d'objets WrongAnimal et WrongCat en utilisant new
+    const WrongAnimal *f = new WrongAnimal;
+
+    // Affichage de saut de ligne pour séparation
+    std::cout << std::endl;
+    std::cout << std::endl;
+
+    const WrongCat *g = new WrongCat;
+
+    // Affichage de saut de ligne pour séparation
+    std::cout << std::endl;
+    std::cout << std::endl;
+
+    // Affichage de séparateurs pour délimiter les sections du programme
+    std::cout << "---------------------" << std::endl;
+    std::cout << std::endl;
+
+    // Affichage des objets en utilisant l'opérateur <<
+    std::cout << a << std::endl;
+    std::cout << b << std::endl;
+    std::cout << c << std::endl;
+    std::cout << d << std::endl;
+    std::cout << e << std::endl;
+    std::cout << *f << std::endl;
+    std::cout << *g << std::endl;
+
+    // Affichage de séparateurs pour délimiter les sections du programme
+    std::cout << std::endl;
+    std::cout << "---------------------" << std::endl;
+    std::cout << std::endl;
+
+    // Appel de la méthode makeSound() pour chaque objet
+    a.makeSound ();
+    b.makeSound ();
+    c.makeSound ();
+    d.makeSound ();
+    e.makeSound ();
+    f->makeSound ();
+    g->makeSound ();
+
+    // Affichage de séparateurs pour délimiter les sections du programme
+    std::cout << std::endl;
+    std::cout << "---------------------" << std::endl;
+    std::cout << std::endl;
+
+    // Libération de la mémoire allouée avec new
+    delete f;
+    delete g;
 
     return 0;
 }

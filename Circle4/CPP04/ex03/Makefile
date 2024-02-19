@@ -1,60 +1,36 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/24 17:30:02 by ael-khni          #+#    #+#              #
-#    Updated: 2022/07/26 09:10:06 by ael-khni         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-NAME		= materia
-	
-CC			= c++
-FLAGS		= -Wall -Wextra -Werror -std=c++98
-RM			= rm -rf
-
-OBJDIR = .objFiles
-
-FILES		= main AMateria Character MateriaSource Ice Cure
-
-SRC			= $(FILES:=.cpp)
-OBJ			= $(addprefix $(OBJDIR)/, $(FILES:=.o))
-HEADER		= AMateria.hpp ICharacter.hpp Ice.hpp Cure.hpp Character.hpp \
-				MateriaSource.hpp ICharacter.hpp IMateriaSource.hpp
-
-#Colors:
-GREEN		=	\e[92;5;118m
-YELLOW		=	\e[93;5;226m
-GRAY		=	\e[33;2;37m
-RESET		=	\e[0m
-CURSIVE		=	\e[33;3m
-
-#Debug 
-ifeq ($(DEBUG), 1)
-   OPTS = -g
-endif
-
 .PHONY: all clean fclean re
+
+NAME = Materia
+CC = c++
+CFLAGS = -std=c++98 -Wall -Wextra -Werror
+
+SRC_DIR = .
+OBJ_DIR = .obj
+INCLUDE = -I./include
+
+SRC = 	$(SRC_DIR)/main.cpp \
+		$(SRC_DIR)/src/AMateria.cpp \
+		$(SRC_DIR)/src/Character.cpp \
+		$(SRC_DIR)/src/Ice.cpp \
+		$(SRC_DIR)/src/Cure.cpp \
+		$(SRC_DIR)/src/MateriaSource.cpp \
+
+OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(HEADER)
-	@$(CC) $(OBJ) $(OPTS) -o $(NAME)
-	@printf "$(_SUCCESS) $(GREEN)- Executable ready.\n$(RESET)"
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(INCLUDE) -o $@ $^
 
-$(OBJDIR)/%.o: %.cpp $(HEADER)
-	@mkdir -p $(dir $@)
-	@$(CC) $(FLAGS) $(OPTS) -c $< -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 clean:
-	@$(RM) $(OBJDIR) $(OBJ)
-	@printf "$(YELLOW)    - Object files removed.$(RESET)\n"
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@$(RM) $(NAME)
-	@printf "$(YELLOW)    - Executable removed.$(RESET)\n"
+	rm -f $(NAME)
 
 re: fclean all
+
+$(OBJ_DIR):
+	mkdir -p $@

@@ -1,44 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdupuy <hdupuy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 09:15:43 by hdupuy            #+#    #+#             */
-/*   Updated: 2024/02/19 12:18:18 by hdupuy           ###   ########.fr       */
+/*   Created: 2024/02/16 11:50:02 by hdupuy            #+#    #+#             */
+/*   Updated: 2024/02/16 12:00:48 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef BRAIN_HPP
+#define BRAIN_HPP
+
 #include <iostream>
+#include <string>
 
-#include "AAnimal.hpp"
-#include "Brain.hpp"
-#include "Cat.hpp"
-#include "Dog.hpp"
+class Brain {
+   public:
+    Brain ();
+    Brain ( Brain const& src );
+    ~Brain ();
 
-int main ()
-{
-	AAnimal *tab[10];
+   private:
+    std::string ideas[100];
+};
 
-	for ( int i = 0; i < 10; i++ )
-	{
-		if ( i % 2 == 0 )
-		{
-			tab[i] = new Dog ();
-		}
-		else
-		{
-			tab[i] = new Cat ();
-		}
-	}
-	for ( int i = 0; i < 10; i++ )
-	{
-		tab[i]->makeSound ();
-	}
-	for ( int i = 0; i < 10; i++ )
-	{
-		delete tab[i];
-	}
-	return 0;
-}
+#endif
