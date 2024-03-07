@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdupuy <hdupuy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,46 +10,46 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-Form::Form () : _name ( "default" ), _gradeToSign ( 150 ), _gradeToExecute ( 150 )
+AForm::AForm () : _name ( "default" ), _gradeToSign ( 150 ), _gradeToExecute ( 150 )
 {
 	_signed = false;
 }
 
-Form::Form ( std::string const name, int gradeToSign, int gradeToExecute )
+AForm::AForm ( std::string const name, int gradeToSign, int gradeToExecute )
 	: _name ( name ), _gradeToSign ( gradeToSign ), _gradeToExecute ( gradeToExecute )
 {
 	_signed = false;
 	if ( gradeToSign < 1 || gradeToExecute < 1 )
 	{
-		throw Form::GradeTooHighException ();
+		throw AForm::GradeTooHighException ();
 	}
 	else if ( gradeToSign > 150 || gradeToExecute > 150 )
 	{
-		throw Form::GradeTooLowException ();
+		throw AForm::GradeTooLowException ();
 	}
 }
 
-Form::Form ( Form const &src )
+AForm::AForm ( AForm const &src )
 	: _name ( src._name ), _gradeToSign ( src._gradeToSign ), _gradeToExecute ( src._gradeToExecute )
 {
 	_signed = src._signed;
 	if ( _gradeToSign < 1 || _gradeToExecute < 1 )
 	{
-		throw Form::GradeTooHighException ();
+		throw AForm::GradeTooHighException ();
 	}
 	else if ( _gradeToSign > 150 || _gradeToExecute > 150 )
 	{
-		throw Form::GradeTooLowException ();
+		throw AForm::GradeTooLowException ();
 	}
 }
 
-Form::~Form ()
+AForm::~AForm ()
 {
 }
 
-Form &Form::operator= ( Form const &rhs )
+AForm &AForm::operator= ( AForm const &rhs )
 {
 	if ( this != &rhs )
 	{
@@ -58,57 +58,62 @@ Form &Form::operator= ( Form const &rhs )
 	return ( *this );
 }
 
-std::string const Form::getName () const
+std::string const AForm::getName () const
 {
 	return ( _name );
 }
 
-bool Form::getSigned () const
+bool AForm::getSigned () const
 {
 	return ( _signed );
 }
 
-int Form::getGradeToSign () const
+int AForm::getGradeToSign () const
 {
 	return ( _gradeToSign );
 }
 
-int Form::getGradeToExecute () const
+int AForm::getGradeToExecute () const
 {
 	return ( _gradeToExecute );
 }
 
-void Form::beSigned ( Bureaucrat const &bureaucrat )
+void AForm::beSigned ( Bureaucrat const &bureaucrat )
 {
 	if ( bureaucrat.getGrade () > _gradeToSign )
 	{
-		throw Form::GradeTooLowException ();
+		throw AForm::GradeTooLowException ();
 	}
 	else if ( _signed )
 	{
-		throw Form::FormAlreadySignedException ();
+		throw AForm::AFormAlreadySignedException ();
 	}
 	_signed = true;
 }
 
-const char *Form::GradeTooHighException::what () const throw ()
+const char *AForm::GradeTooHighException::what () const throw ()
 {
 	return ( "Grade is too high" );
 }
 
-const char *Form::GradeTooLowException::what () const throw ()
+const char *AForm::GradeTooLowException::what () const throw ()
 {
 	return ( "Grade is too low" );
 }
 
-const char *Form::FormAlreadySignedException::what () const throw ()
+const char *AForm::AFormAlreadySignedException::what () const throw ()
 {
-	return ( "Form is already signed" );
+	return ( "AForm is already signed" );
 }
 
-std::ostream &operator<< ( std::ostream &o, Form const &rhs )
+const char *AForm::AFormNotSignedException::what () const throw ()
 {
-	o << "Form " << rhs.getName () << " is ";
+	return ( "AForm is not signed" );
+}
+
+std::ostream &operator<< ( std::ostream &o, AForm const &rhs )
+{
+	o << "AForm " << rhs.getName () << " is ";
 	if ( rhs.getSigned () )
 	{
 		o << "signed";
