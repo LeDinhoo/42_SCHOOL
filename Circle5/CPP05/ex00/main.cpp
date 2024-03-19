@@ -1,48 +1,41 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <hdupuy@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 10:33:20 by hdupuy            #+#    #+#             */
-/*   Updated: 2024/02/26 10:43:32 by hdupuy           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Bureaucrat.hpp"
 
-int main ()
+int	main(void)
 {
 	try
 	{
-		Bureaucrat b1 ( "B1", 1 );
-		std::cout << b1;
-		b1.incrementGrade ();
-		std::cout << b1;
+		Bureaucrat	Veher("Veher", 0);
 	}
-	catch ( std::exception &e )
+	catch (const std::exception &e)
 	{
-		std::cout << e.what () << std::endl;
+		std::cout << e.what() << "\n\n" << std::endl;
 	}
+
 	try
 	{
-		Bureaucrat b2 ( "B2", 150 );
-		std::cout << b2;
-		b2.decrementGrade ();
-		std::cout << b2;
+		Bureaucrat	Salem("Salem", 1);
+
+		std::cout << Salem;
+
+		Salem.incrementGrade();
 	}
-	catch ( const std::exception &e )
+	catch (const std::exception &e)
 	{
-		std::cerr << e.what () << '\n';
+		std::cout << e.what() << "\n\n" << std::endl;
 	}
+
 	try
 	{
-		Bureaucrat b3 ( "B3", 0 );
-		std::cout << b3;
+		Bureaucrat	Bob("Bob", 149);
+
+		std::cout << Bob;
+		Bob.decrementGrade();
+		std::cout << Bob;
+		Bob.decrementGrade();
 	}
-	catch ( const std::exception &e )
+	catch (const std::exception &e)
 	{
-		std::cerr << e.what () << '\n';
+		std::cout << e.what() << std::endl;
 	}
+	return (0);
 }

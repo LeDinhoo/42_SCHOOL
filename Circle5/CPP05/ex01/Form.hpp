@@ -1,25 +1,15 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <hdupuy@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 10:48:45 by hdupuy            #+#    #+#             */
-/*   Updated: 2024/02/26 11:36:35 by hdupuy           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef FORM_HPP
 #define FORM_HPP
 
 #include "Bureaucrat.hpp"
-#include <iostream>
-#include <string>
+#include <exception>
+#include <fstream>
+
+class Bureaucrat;
 
 class Form
 {
-  private:
+  protected:
 	std::string const _name;
 	bool _signed;
 	int const _gradeToSign;
@@ -52,6 +42,11 @@ class Form
 	};
 
 	class FormAlreadySignedException : public std::exception
+	{
+	  public:
+		virtual const char *what () const throw ();
+	};
+	class FormNotSignedException : public std::exception
 	{
 	  public:
 		virtual const char *what () const throw ();

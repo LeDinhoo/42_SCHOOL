@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <hdupuy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hdupuy <dupuy@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 11:09:54 by hdupuy            #+#    #+#             */
-/*   Updated: 2024/03/07 07:02:49 by hdupuy           ###   ########.fr       */
+/*   Updated: 2024/03/19 10:18:56 by hdupuy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,11 @@ const char *Form::FormAlreadySignedException::what () const throw ()
 	return ( "Form is already signed" );
 }
 
+const char *Form::FormNotSignedException::what () const throw ()
+{
+	return ( "Form is not signed" );
+}
+
 std::ostream &operator<< ( std::ostream &o, Form const &rhs )
 {
 	o << "Form " << rhs.getName () << " is ";
@@ -118,6 +123,6 @@ std::ostream &operator<< ( std::ostream &o, Form const &rhs )
 		o << "not signed";
 	}
 	o << " and requires grade " << rhs.getGradeToSign () << " to be signed and grade " << rhs.getGradeToExecute ()
-	  << " to be executed";
+	  << " to be executed ";
 	return ( o );
 }

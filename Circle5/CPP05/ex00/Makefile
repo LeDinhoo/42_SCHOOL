@@ -11,7 +11,6 @@ INCLUDE = -I./include
 SRC = 	$(SRC_DIR)/main.cpp \
 		$(SRC_DIR)/Bureaucrat.cpp \
 
-
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
