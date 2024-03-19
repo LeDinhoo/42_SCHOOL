@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+#include <cmath>
 
 int main ( int argc, char **argv )
 {
@@ -21,8 +22,33 @@ int main ( int argc, char **argv )
 		return 1;
 	}
 
-	PmergeMe tab ( argv );
-	tab.mergeInsert ();
+	// try
+	// {
+	// 	PmergeMe tab ( argv, argc );
+	// 	tab.mergeInsert ();
+	// }
+	// catch ( std::exception &e )
+	// {
+	// 	std::cerr << e.what () << std::endl;
+	// }
+	(void) argv;
+	size_t index = 2;
+	size_t nb	 = 2;
+	size_t temp = index;
 
-	return 0;
+	for (size_t i = 0; i < 100; i++)
+	{
+		if (temp == 0)
+		{
+			nb++;
+			index = pow(2, nb) - index;
+			temp = index;
+		}
+		else
+			temp--;
+	// INSERT DS VECTOR TRIER LES NON TRIER AVEC INDEX
+		std::cout << index << std::endl;
+	}
+
+		return 0;
 }

@@ -16,27 +16,52 @@
 #include <algorithm>
 #include <cstdlib>
 #include <iostream>
+#include <limits>
 #include <list>
 #include <sstream>
 #include <string>
+#include <utility>
 #include <vector>
 
 class PmergeMe
 {
   private:
 	char **_argv;
-	std::vector<int> _vData;
+	int _argc;
+	std::vector< std::pair< int, int > > _vData;
 	void parsing ();
 	void checkArg ();
+	void printBaseList ();
+	void fillVector ();
+	void printVector ();
+	void fillLeftPairs ();
 
   public:
-	PmergeMe ( char **argv );
+	PmergeMe ( char **argv, int argc );
 	PmergeMe ( const PmergeMe &src );
 	~PmergeMe ();
 
 	PmergeMe &operator= ( const PmergeMe &rhs );
 
 	void mergeInsert ();
+
+	class WrongArgumentsError : public std::exception
+	{
+	  public:
+		virtual const char *what () const throw ()
+		{
+			return ( "Error: Wrong syntax in arguments" );
+		}
+	};
+
+	class OutOfLimits : public std::exception
+	{
+	  public:
+		virtual const char *what () const throw ()
+		{
+			return ( "Error: Arguments are out of limit" );
+		}
+	};
 };
 
 #endif
