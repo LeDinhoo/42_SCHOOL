@@ -3,52 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdupuy <hdupuy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: cbacquet <cbacquet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 15:15:54 by hdupuy            #+#    #+#             */
-/*   Updated: 2024/03/13 13:32:25 by hdupuy           ###   ########.fr       */
+/*   Created: 2024/02/26 11:41:57 by cbacquet          #+#    #+#             */
+/*   Updated: 2024/03/19 17:34:20 by cbacquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-#include <cmath>
+#include <string>
+#include <cstdlib>
+#include <ctime>
 
-int main ( int argc, char **argv )
+int main(int argc, char **argv)
 {
-	if ( argc == 1 )
+	if (argc < 2)
 	{
-		std::cout << "Wrong number of arguments." << std::endl;
-		std::cout << "Usage: ./ex02 <string>" << std::endl;
-		return 1;
+		std::cerr << "Error : 2 arguments minimum needed" << std::endl;
+		return (1);
 	}
-
-	// try
-	// {
-	// 	PmergeMe tab ( argv, argc );
-	// 	tab.mergeInsert ();
-	// }
-	// catch ( std::exception &e )
-	// {
-	// 	std::cerr << e.what () << std::endl;
-	// }
-	(void) argv;
-	size_t index = 2;
-	size_t nb	 = 2;
-	size_t temp = index;
-
-	for (size_t i = 0; i < 100; i++)
+	for (int i = 1 ; i < argc; i++)
 	{
-		if (temp == 0)
+		std::string arg(argv[i]);
+		for (size_t j = 0; j < arg.size(); j++)
 		{
-			nb++;
-			index = pow(2, nb) - index;
-			temp = index;
+			
+			if (!isdigit(arg[j]))
+			{
+				std::cerr << "Error: the sequence should only take positive integer" << std::endl;
+				return (1);
+			}
 		}
-		else
-			temp--;
-	// INSERT DS VECTOR TRIER LES NON TRIER AVEC INDEX
-		std::cout << index << std::endl;
 	}
-
-		return 0;
+	PmergeMe 	SeqtoSort(argc, argv);
+	return (0);
 }
